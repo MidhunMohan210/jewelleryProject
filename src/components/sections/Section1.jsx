@@ -86,12 +86,12 @@ function Section1() {
                 A trendy and spacious handbag with braided accents.
               </p>
               <motion.button
-                className="bg-gray-500 hover:text-gray-900 text-textColor px-4 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Shop Now
-              </motion.button>
+              className="bg-transparent border-2 hover:text-gray-900 text-textColor px-4 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Shop Now
+            </motion.button>
             </motion.div>
           </div>
         </motion.div>
@@ -123,12 +123,12 @@ function Section1() {
                 Stylish and comfortable sneakers for daily wear.
               </p>
               <motion.button
-                className="bg-gray-500 hover:text-gray-900 text-textColor px-4 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Shop Now
-              </motion.button>
+              className="bg-transparent border-2 hover:text-gray-900 text-textColor px-4 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Shop Now
+            </motion.button>
             </motion.div>
           </div>
         </motion.div>
