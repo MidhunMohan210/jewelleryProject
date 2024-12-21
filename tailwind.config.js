@@ -14,6 +14,7 @@ export default {
   			thirdColor: '#8871A9',
   			redColor: '#B22222',
   			footerColor: '#F8F8F8',
+        greyColor:'#edede9',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

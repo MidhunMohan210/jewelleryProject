@@ -2,12 +2,15 @@ import React from 'react'
 import { Header } from '../../components/layout/Header'
 import { Banner } from '../../components/banner/Banner'
 import Section1 from '../../components/sections/Section1'
+import Section2 from '../../components/sections/Section2'
 function Home() {
   return (
 <>
    
     <Banner />
     <Section1/>
+    <Section2/>
+
     <main className="pt-16">
       {/* Add some content to enable scrolling */}
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
