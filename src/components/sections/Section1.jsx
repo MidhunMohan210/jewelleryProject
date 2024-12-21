@@ -1,10 +1,9 @@
-import necklace1 from "../../assets/section1/beautiful-luxury-necklace-jewelry-stand-neck.jpg";
-import image1 from "../../assets/section1/pexels-judy-sengsone-235902-750148.jpg";
+
 import { motion } from "framer-motion";
 
 function Section1() {
   return (
-    <div className="bg-white flex flex-wrap p-5 sm:p-16 lg:flex-nowrap lg:h-auto">
+    <div className="bg-white flex flex-wrap p-5 sm:px-10 lg:flex-nowrap lg:h-auto">
       {/* Left Section (Card 1) */}
       <motion.div
         className="w-full lg:w-1/2 p-2 relative group"
