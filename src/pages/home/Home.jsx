@@ -1,13 +1,15 @@
-import React from 'react'
 import { Header } from '../../components/layout/Header'
 import { Banner } from '../../components/banner/Banner'
 import Section1 from '../../components/sections/Section1'
 import Section2 from '../../components/sections/Section2'
+import CarouselComponent from '@/components/carousel/CarouselComponent'
+
 function Home() {
   return (
 <>
    
     <Banner />
+    {/* <CarouselComponent/> */}
     <Section1/>
     <Section2/>
 

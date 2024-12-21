@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { motion } from 'framer-motion';
-import banner from "../../assets/home/banner/banner.jpg";
+import banner from "../../assets/home/banner/banner3.jpg";
 
 export function Banner() {
   return (
@@ -13,7 +13,7 @@ export function Banner() {
           backgroundImage: `url(${banner})`,
         }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
       </div>
 
       {/* Content */}
