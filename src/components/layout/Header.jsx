@@ -24,7 +24,7 @@ export function Header() {
           backgroundColor: scrollPosition > 500 ? "#6c757d" : "transparent",
         }}
         transition={{ duration: 0.1 }}
-        className={`fixed w-full top-0 z-50 transition-all duration-300`}
+        className={`fixed w-full top-0 z-50 transition-all duration-300 `}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -37,7 +37,7 @@ export function Header() {
             <nav className="hidden md:flex space-x-8">
               {navItems.map((item) => (
                 <div key={item} className="relative group">
-                  <button className="inline-flex items-center px-1 pt-1 text-xs hoverScale font-medium hover:text-yellow-500 transition-colors text-white">
+                  <button className="inline-flex items-center px-1 pt-1 text-xs  font-medium hover:text-yellow-500 transition-colors text-white">
                     {item}
                     <ChevronDown className="ml-1 h-4 w-4" />
                   </button>

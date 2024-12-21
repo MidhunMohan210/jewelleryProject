@@ -10,7 +10,7 @@ import Autoplay from "embla-carousel-autoplay";
 function CarouselComponent() {
 
   return (
-    <div className="max-w-screen-xl mx-auto px-4">
+    <div className="max-w-screen-xl ">
       <Carousel
         plugins={[
           Autoplay({
@@ -19,7 +19,7 @@ function CarouselComponent() {
          stopOnMouseEnter:true
           }),
         ]}
-        className="w-full sm:py-5 "
+        className="w-full sm:py-8"
         opts={{
           align: "center",
           loop: true,
