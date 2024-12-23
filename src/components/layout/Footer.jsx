@@ -7,7 +7,7 @@ export function Footer() {
    
 
       {/* <hr className="border-gray-900 " /> */}
-      <footer className={`bg-gray-600 p-8`}>
+      <footer className={`bg-[#6c757d] p-8`}>
         <div className="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12  text-center md:justify-between">
           <h1 className="text-2xl font-bold text-white">Cliq aa</h1>
 

@@ -8,7 +8,9 @@ import Autoplay from "embla-carousel-autoplay";
 
 function CarouselComponent() {
   return (
+
     <div className="w-full">
+
       <Carousel
         plugins={[
           Autoplay({

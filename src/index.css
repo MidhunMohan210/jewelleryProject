@@ -139,6 +139,56 @@
 
 
 
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.wdt-sparkles {
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+.wdt-sparkle-loader1 {
+  animation-delay: 0.2s;
+}
+
+.wdt-sparkle-loader2 {
+  animation-delay: 0.4s;
+}
+
+.wdt-sparkle-loader3 {
+  animation-delay: 0.6s;
+}
+
+.wdt-sparkle-loader4 {
+  animation-delay: 0.8s;
+}
+
+.wdt-sparkle-loader5 {
+  animation-delay: 1s;
+}
+
+.wdt-sparkle-loader6 {
+  animation-delay: 1.2s;
+}
+
+.wdt-sparkle-loader7 {
+  animation-delay: 1.4s;
+}
+
+.wdt-sparkle-loader8 {
+  animation-delay: 1.6s;
+}
+
+.wdt-sparkle-loader9 {
+  animation-delay: 1.8s;
+}
 
 
 
@@ -149,5 +199,22 @@
   }
   .hoverScale:hover {
     @apply scale-[1.1];
+  }
+}
+
+@layer components {
+  .highlight {
+    @apply relative inline-block text-headingColor;
+  
+    /* The after pseudo-element */
+    &:after {
+      @apply absolute w-full h-[2px] bg-yellow-500 left-0 bottom-0 origin-center scale-x-0 transition-transform duration-300 ease-out;
+      content: '';
+    }
+  
+    /* Hover effect */
+    &:hover:after {
+      @apply scale-x-100 origin-center;
+    }
   }
 }
