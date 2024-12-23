@@ -37,7 +37,7 @@ export function Header() {
             <nav className="hidden md:flex space-x-8">
               {navItems.map((item) => (
                 <div key={item} className="relative group">
-                  <button className="inline-flex items-center px-1 pt-1 text-xs  font-medium hover:text-yellow-500 transition-colors text-white">
+                  <button className=" hoverScale inline-flex items-center px-1 pt-1 text-xs  font-medium hover:text-yellow-500 transition-colors text-white">
                     {item}
                     <ChevronDown className="ml-1 h-4 w-4" />
                   </button>

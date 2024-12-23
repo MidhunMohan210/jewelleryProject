@@ -6,17 +6,15 @@ import {
 import { carouselText } from "../../data/carouselText";
 import Autoplay from "embla-carousel-autoplay";
 
-
 function CarouselComponent() {
-
   return (
-    <div className="max-w-screen-xl ">
+    <div className="w-full">
       <Carousel
         plugins={[
           Autoplay({
             delay: 2000,
             stopOnInteraction: false,
-         stopOnMouseEnter:true
+            stopOnMouseEnter: true,
           }),
         ]}
         className="w-full sm:py-8"
@@ -44,7 +42,6 @@ function CarouselComponent() {
           ))}
         </CarouselContent>
       </Carousel>
-     
     </div>
   );
 }
