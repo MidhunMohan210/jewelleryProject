@@ -2,7 +2,7 @@ import React from 'react';
 
 function Section4() {
   return (
-    <div className="flex flex-col lg:flex-row justify-around items-center mb-7 p-6 lg:p-16 space-y-12 lg:space-y-0 min-h-screen bg-white">
+    <div className="flex flex-col lg:flex-row justify-around items-center mb-7  p-6 lg:p-16 space-y-12 lg:space-y-0 min-h-screen bg-white">
       {/* Left Section */}
       <div className="text-center lg:text-left max-w-md">
         {/* <p className="text-red-500 text-sm font-bold tracking-wider">SPECIAL</p> */}
@@ -16,7 +16,7 @@ function Section4() {
             <img
               src="https://img.freepik.com/free-photo/celebrate-sunset-beach-creative-gemstone_1232-3550.jpg?ga=GA1.1.861024462.1723481111&semt=ais_hybrid"
               alt="Rib-knit cardigan"
-              className="w-[200px] h-[300px] object-cover mx-auto shadow-md"
+              className="w-[250px] h-[300px] object-cover mx-auto shadow-md"
             />
             <p className="mt-4 text-headingColor font-medium">Rib-knit cardigan</p>
             <p className="text-gray-500 text-sm font-semibold">$24.99</p>
@@ -27,7 +27,7 @@ function Section4() {
             <img
               src="https://img.freepik.com/free-photo/render-diamond-crown-expensive-grind_1232-3549.jpg?ga=GA1.1.861024462.1723481111&semt=ais_hybrid"
               alt="Linen-blend trousers"
-              className="w-[200px] h-[300px] object-cover mx-auto shadow-md"
+              className="w-[250px] h-[300px] object-cover mx-auto shadow-md"
             />
             <p className="mt-4 text-headingColor font-medium">Linen-blend trousers</p>
             <p className="text-gray-500 text-sm font-semibold">$19.99</p>

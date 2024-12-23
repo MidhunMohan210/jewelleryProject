@@ -77,7 +77,7 @@ export function Header() {
               </button>
               <button className="p-2 hover:text-blue-400 transition-colors relative">
                 <ShoppingCart className="h-6 w-6" />
-                <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   2
                 </span>
               </button>

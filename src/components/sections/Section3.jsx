@@ -4,13 +4,14 @@ import bg from '../../assets/section3/WhatsApp Image 2024-12-21 at 23.51.46.jpeg
 
 const Section3 = () => {
   return (
-    <div className="relative w-full  bg-yellow-900">
+    <div className="relative w-full mt-[-15px]  bg-yellow-900">
       {/* Background image div with overlay */}
       <div
         className="absolute inset-0 w-full h-full"
         style={{
-
-          backgroundImage: `url('https://img.freepik.com/free-photo/fine-jewelry-promotion-ears-woman_114579-11505.jpg?t=st=1734807471~exp=1734811071~hmac=51aae76e52b540445a807f0acc3b02230340671158443b1ccea7c1488ec91bfc&w=996')`,
+          // https://portotheme.com/html/molla/assets/images/demos/demo-25/banners/banner-5.jpg
+          backgroundImage: `url('https://portotheme.com/html/molla/assets/images/demos/demo-25/banners/banner-5.jpg')`,
+          // backgroundImage: `url('https://img.freepik.com/free-photo/fine-jewelry-promotion-ears-woman_114579-11505.jpg?t=st=1734807471~exp=1734811071~hmac=51aae76e52b540445a807f0acc3b02230340671158443b1ccea7c1488ec91bfc&w=996')`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -30,12 +31,12 @@ const Section3 = () => {
         </div>
 
         {/* Main heading */}
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-4">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-headingColor mb-4">
           HIGH QUALITY SINCE 1990
         </h1>
 
         {/* Subheading */}
-        <p className="text-lg md:text-xl text-gray-300 mb-6">
+        <p className="text-lg md:text-xl text-gray-500 mb-6">
           Everything you need to complete the perfect collection
         </p>
         {/* <div className=" hidden sm:flex w-[20px] h-[20px]">
@@ -105,7 +106,7 @@ const Section3 = () => {
 
         {/* Description text */}
 
-        <p className="text-textColor mb-10 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
           For over three decades, we've been creating masterpieces that celebrate
           life's precious moments. Our commitment to excellence and attention to
           detail has made us a trusted name in fine jewelry since 1990. Each

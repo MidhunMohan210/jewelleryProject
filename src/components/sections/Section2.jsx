@@ -7,6 +7,8 @@ function Section2() {
   const image4 = 'https://wdtswarna.wpengine.com/wp-content/uploads/2024/11/product-5-2.jpg';
   const image5 = 'https://wdtswarna.wpengine.com/wp-content/uploads/2024/11/product-5-1.jpg';
 
+//   https://portotheme.com/html/molla/assets/images/demos/demo-25/product/product-1.jpg
+
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -118,6 +120,15 @@ function Section2() {
         images: [image2, image3],
         colors: ['#6ee7b7', '#000000'],
       },
+      {
+        id: 13,
+        category: 'DIAMOND',
+        isWishlist: true,
+        title: 'Paper bag trousers',
+        price: '$120.00',
+        images: [image2, image3],
+        colors: ['#6ee7b7', '#000000'],
+      },
     // Add other products...
   ]);
 
@@ -189,7 +200,7 @@ function Section2() {
   
 
   return (
-    <div className="bg-gray-100 p-5 sm:p-16">
+    <div className="bg-white p-5 sm:p-16">
       <div className="text-center mb-6">
         <h2 className="text-2xl text-headingColor font-bold">Recent Arrivals</h2>
         <p className="text-gray-400">Aliquam tincidunt mauris eurisus</p>
