@@ -1,63 +1,48 @@
 import React from 'react';
 
-function Section4() {
+const Section4 = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-around items-center mb-7 p-6 lg:p-16 space-y-12 lg:space-y-0 min-h-screen bg-white">
-      {/* Left Section */}
-      <div className="text-center lg:text-left max-w-md">
-        {/* <p className="text-red-500 text-sm font-bold tracking-wider">SPECIAL</p> */}
-        <h1 className="text-4xl font-bold text-headingColor mt-2">Refine Your Style.</h1>
-        <p className="text-gray-500 text-base mt-4 leading-relaxed">
-          Get on our exclusive email list and be the first to hear about sales, coupons, new arrivals, and more!
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center lg:justify-start mt-8 gap-8">
-          {/* Product Card 1 */}
-          <div className="text-center">
-            <img
-              src="https://img.freepik.com/free-photo/celebrate-sunset-beach-creative-gemstone_1232-3550.jpg?ga=GA1.1.861024462.1723481111&semt=ais_hybrid"
-              alt="Rib-knit cardigan"
-              className="w-[200px] h-[300px] object-cover mx-auto shadow-md"
+    <section className="py-16 px-10 bg-white ">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
+        {/* Left side with image and overlay */}
+        <div className="relative w-full md:w-1/2">
+          <div className="relative">
+            <img 
+              src="https://qx-bronza.myshopify.com/cdn/shop/files/since.jpg?v=1732776259&width=832"
+              alt="Model wearing jewelry"
+              className="w-full object-cover"
             />
-            <p className="mt-4 text-headinColor font-medium">Rib-knit cardigan</p>
-            <p className="text-gray-500 text-sm font-semibold">$24.99</p>
-          </div>
-
-          {/* Product Card 2 */}
-          <div className="text-center">
-            <img
-              src="https://img.freepik.com/free-photo/render-diamond-crown-expensive-grind_1232-3549.jpg?ga=GA1.1.861024462.1723481111&semt=ais_hybrid"
-              alt="Linen-blend trousers"
-              className="w-[200px] h-[300px] object-cover mx-auto shadow-md"
-            />
-            <p className="mt-4 text-headingColor font-medium">Linen-blend trousers</p>
-            <p className="text-gray-500 text-sm font-semibold">$19.99</p>
+            {/* Overlay card
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white p-6 rounded-lg text-center w-4/5">
+              <div className="flex justify-center mb-4">
+                <svg className="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div className="text-2xl font-semibold mb-2">Since 1998</div>
+              <p className="text-sm">
+                Discover timeless elegance with our stunning sapphire pendant necklace, featuring a brilliant blue stone.
+              </p>
+            </div> */}
           </div>
         </div>
-      </div>
-
-      {/* Right Section */}
-      <div className="relative max-w-lg">
-        <img
-          src="https://img.freepik.com/free-photo/side-view-pair-silver-diamond-earrings-with-emerald-black-wall-black_140725-12860.jpg?t=st=1734936228~exp=1734939828~hmac=d7534c8936af9259b90fdc3e50a29ab366440f04136bf6f8bd7ee02ba8e6e904&w=360"
-          alt="Model wearing rib-knit cardigan and linen-blend trousers"
-          className="w-[600px] h-[600px] object-cover rounded-lg shadow-lg"
-        />
-         <div className="absolute inset-8 rounded-md bg-white bg-opacity-30"></div>
-        <div className="absolute inset-0 flex flex-col justify-center items-center p-8">
-          <p className="text-white text-lg font-bold text-center">Casual basics and trendy key pieces.</p>
-          <p className="text-white mt-4 text-sm uppercase tracking-wide text-center">IN THIS LOOK</p>
-          <ul className="text-white mt-4 text-sm text-center">
-            <li>• Rib-knit cardigan</li>
-            <li>• Linen-blend paper bag trousers</li>
-          </ul>
-          <p className="text-white mt-6 text-center text-lg font-bold">$19.99 - $48.00</p>
-          <button className="mt-6 px-6 py-3 bg-white text-gray-900 font-semibold rounded-full shadow hover:bg-gray-100 transition">
-            BUY ALL
+        
+        {/* Right side content */}
+        <div className="w-full md:w-1/2 space-y-6">
+          <p className="text-amber-700 font-medium">Radiant gemstone beauty.</p>
+          <h2 className="text-4xl philosopher-bold font-bold text-gray-700">
+            Jewels that celebrate your unique beauty and style.
+          </h2>
+          <p className="text-gray-600 leading-relaxed">
+            We believe in creating jewellery that lasts. Each piece is made from high-quality materials, ensuring durability and timeless beauty. Our commitment to excellence means you can wear your favourite pieces with confidence, knowing they'll withstand the test of time.
+          </p>
+          <button className="bg-amber-700 text-white px-8 py-3 rounded hover:bg-amber-800 transition-colors">
+            SEE MORE
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
 
 export default Section4;
