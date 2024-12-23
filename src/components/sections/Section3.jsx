@@ -2,7 +2,6 @@
 import { GiDiamondRing } from "react-icons/gi";
 import bg from '../../assets/section3/WhatsApp Image 2024-12-21 at 23.51.46.jpeg'
 
-
 const Section3 = () => {
   return (
     <div className="relative w-full  bg-yellow-900">
@@ -10,6 +9,7 @@ const Section3 = () => {
       <div
         className="absolute inset-0 w-full h-full"
         style={{
+
           backgroundImage: `url('https://img.freepik.com/free-photo/fine-jewelry-promotion-ears-woman_114579-11505.jpg?t=st=1734807471~exp=1734811071~hmac=51aae76e52b540445a807f0acc3b02230340671158443b1ccea7c1488ec91bfc&w=996')`,
           backgroundPosition: "center",
           backgroundSize: "cover",
@@ -26,7 +26,7 @@ const Section3 = () => {
       <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">
         {/* Ring icon */}
         <div className="flex justify-center mb-6 text-yellow-600">
-         <GiDiamondRing size={30}/>
+          <GiDiamondRing size={30} />
         </div>
 
         {/* Main heading */}
@@ -104,12 +104,14 @@ const Section3 = () => {
     </div> */}
 
         {/* Description text */}
+
         <p className="text-textColor mb-10 max-w-2xl mx-auto leading-relaxed">
           For over three decades, we've been creating masterpieces that celebrate
           life's precious moments. Our commitment to excellence and attention to
           detail has made us a trusted name in fine jewelry since 1990. Each
           piece reflects our dedication to craftsmanship and our passion for
           timeless beauty.
+
         </p>
 
         {/* CTA Button */}

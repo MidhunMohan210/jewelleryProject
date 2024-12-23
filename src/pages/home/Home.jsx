@@ -5,7 +5,11 @@ import Section2 from "../../components/sections/Section2";
 import CarouselComponent from "@/components/carousel/CarouselComponent";
 import GetInTouch from "@/components/footer/GetInTouch";
 import Section6 from "@/components/sections/Section6";
+
+import Section5 from "@/components/sections/Section5";
+
 import Section4 from '@/components/sections/Section4'
+
 
 function Home() {
   return (
@@ -31,6 +35,7 @@ function Home() {
 
         {/* A section component with some dummy content */}
         <Section6 />
+        <Section5 />
       <GetInTouch />
     </>
   );
