@@ -10,7 +10,7 @@ import Autoplay from "embla-carousel-autoplay";
 function CarouselComponent() {
 
   return (
-    <div className="max-w-screen-xl ">
+    <div className="w-full ">
       <Carousel
         plugins={[
           Autoplay({

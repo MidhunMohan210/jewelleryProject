@@ -22,6 +22,7 @@ export function Header() {
               : 0,
           opacity: scrollPosition > 500 ? 1 : 1, // Ensure visibility after 100px
           backgroundColor: scrollPosition > 500 ? "#6c757d" : "transparent",
+          
         }}
         transition={{ duration: 0.1 }}
         className={`fixed w-full top-0 z-50 transition-all duration-300 `}
@@ -37,9 +38,9 @@ export function Header() {
             <nav className="hidden md:flex space-x-8">
               {navItems.map((item) => (
                 <div key={item} className="relative group">
-                  <button className="inline-flex items-center px-1 pt-1 text-xs  font-medium hover:text-yellow-500 transition-colors text-white">
+                  <button className="inline-flex hoverScale items-center px-1 pt-1 text-sm  font-medium hover:text-yellow-500 transition-colors text-white">
                     {item}
-                    <ChevronDown className="ml-1 h-4 w-4" />
+                    {/* <ChevronDown className="ml-1 h-4 w-4" /> */}
                   </button>
                   {/* <div className="absolute hidden group-hover:block w-48 bg-black shadow-lg py-2 mt-1">
                     <a
