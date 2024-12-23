@@ -250,7 +250,7 @@ function Section2() {
                     onClick={() => handleWishlistClick(product.id)}
                     className={`p-[4px] rounded-full w-7 h-7 shadow-md opacity-0 group-hover:opacity-100 transition duration-300 ${
                       product.isWishlist
-                    ? 'bg-red-500 text-white scale-110 hover:bg-red-600'
+                    ? 'bg-red-500 text-white scale-110 '
       : 'bg-gray-200 text-red-500 hover:bg-yellow-500 hover:text-white'
                     }`}
                     aria-label="Add to wishlist"

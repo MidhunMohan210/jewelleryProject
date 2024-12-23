@@ -18,7 +18,7 @@ function Section4() {
               alt="Rib-knit cardigan"
               className="w-[200px] h-[300px] object-cover mx-auto shadow-md"
             />
-            <p className="mt-4 text-headinColor font-medium">Rib-knit cardigan</p>
+            <p className="mt-4 text-headingColor font-medium">Rib-knit cardigan</p>
             <p className="text-gray-500 text-sm font-semibold">$24.99</p>
           </div>
 
