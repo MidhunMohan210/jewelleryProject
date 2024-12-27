@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPhoneVolume} from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +9,7 @@ function PhoneComponent() {
   
    
   return (
-    <div className=' flex flex-col gap-5 z-50 fixed bottom-40 right-4'>
+    <div className=' flex flex-col gap-5 z-50 fixed bottom-[100px] right-4'>
     <motion.div
   
       className="relative flex items-center"

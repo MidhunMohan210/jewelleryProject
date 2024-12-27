@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { motion } from 'framer-motion';
@@ -50,7 +50,7 @@ const ScrollComponents = () => {
       )}
 
       {/* Scroll to Bottom Button */}
-      {!isAtBottom && (
+      {/* {!isAtBottom && (
         <motion.button
           onClick={scrollToBottom}
           className="bg-gray-400 text-lg hover:bg-gray-600 text-white p-3 rounded-full flex items-center shadow-lg"
@@ -60,7 +60,7 @@ const ScrollComponents = () => {
         >
           <FontAwesomeIcon icon={faArrowDown} className="text-white w-5 h-5  text-lg" />
         </motion.button>
-      )}
+      )} */}
     </div>
   );
 };
