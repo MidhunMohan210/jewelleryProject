@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,8 +9,24 @@ import { reviewData } from "@/data/reviewData";
 function Review() {
   const [activeIndex, setActiveIndex] = useState(1);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const isSmallScreen = window.innerWidth < 640;
+      setActiveIndex(isSmallScreen ? 0 : 1);
+    };
+
+    // Initialize on mount
+    handleResize();
+
+    // Update on resize
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div className="my-10 py-10">
+    <div className="">
       <Swiper
         modules={[Pagination]}
         spaceBetween={30}
@@ -33,13 +49,17 @@ function Review() {
             spaceBetween: 30,
           },
         }}
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex + 1)}
+        onSlideChange={(swiper) =>
+          setActiveIndex(swiper.activeIndex + (window.innerWidth < 640 ? 0 : 1))
+        }
       >
         {reviewData.map((review, index) => (
           <SwiperSlide key={index}>
             <div
-              className={` cursor-pointer !pb-14 pt-10 transition-all duration-300 h-full ${
-                index === activeIndex ? "scale-[1.03] " : "bg-white-500 scale-75"
+              className={` cursor-pointer !pb-14 pt-10 px-6 sm:px-0 transition-all duration-300 h-full  ${
+                index === activeIndex
+                  ? "scale-[1.03] "
+                  : "bg-white-500 scale-75"
               }`}
             >
               <div
@@ -47,7 +67,7 @@ function Review() {
                   index === activeIndex
                     ? "bg-[#f1f6f7] shadow-[0_20px_20px_-15px_rgba(59,130,246,0.3)]"
                     : ""
-                } p-6 h-[200px]`}
+                } p-6 ]`}
               >
                 <div className="flex items-center gap-[13px]">
                   <div>

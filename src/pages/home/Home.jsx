@@ -20,7 +20,7 @@ function Home() {
       <hr className="mt-1" />
       <CarouselComponent />
       {/* <hr /> */}
-<div className="flex flex-col gap-6">
+<div className="flex flex-col gap-6 mt-3">
    {/* A section component with some dummy content */}
    <Section1 />
       {/* A section component with some dummy content */}

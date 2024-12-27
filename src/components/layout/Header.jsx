@@ -20,7 +20,7 @@ export function Header() {
             scrollPosition < 500
               ? -100
               : 0,
-          opacity: scrollPosition > 500 ? 1 : 1, // Ensure visibility after 100px
+          // opacity: scrollPosition > 500 ? 1 : 1, // Ensure visibility after 100px
           backgroundColor: scrollPosition > 500 ? "#6c757d" : "transparent",
           
         }}
@@ -64,23 +64,23 @@ export function Header() {
 
             {/* Search and Icons */}
             <div className="flex items-center space-x-4 text-white">
-              {/* <div className="hidden md:flex items-center">
+              <div className="hidden md:flex items-center">
                 <input
                   type="text"
                   placeholder="Search product ..."
                   className="w-64 px-4 py-1 rounded-full border border-gray-300 focus:outline-none focus:border-blue-500 bg-transparent"
                 />
                 <Search className="h-5 w-5 -ml-8" />
-              </div> */}
+              </div>
               <button className="p-2 hover:text-yellow-500 transition-colors">
                 <Heart className="h-6 w-6" />
               </button>
-              {/* <button className="p-2 hover:text-blue-400 transition-colors relative">
+              <button className="p-2 hover:text-blue-400 transition-colors relative">
                 <ShoppingCart className="h-6 w-6" />
                 <span className="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   2
                 </span>
-              </button> */}
+              </button>
               <button
                 className="md:hidden p-2"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
