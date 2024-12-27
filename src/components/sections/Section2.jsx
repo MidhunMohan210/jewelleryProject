@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import image2 from '../../assets/section2/product-1-2.jpg';
 import image3 from '../../assets/section2/product-1.jpg';
@@ -189,7 +189,7 @@ function Section2() {
   
 
   return (
-    <div className="bg-gray-100 p-5 sm:p-16">
+    <div className="bg-white p-5 sm:p-16">
       <div className="text-center mb-6">
         <h2 className="text-2xl text-headingColor font-bold">Recent Arrivals</h2>
         <p className="text-gray-400">Aliquam tincidunt mauris eurisus</p>
