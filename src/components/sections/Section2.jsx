@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import image2 from '../../assets/section2/product-1-2.jpg';
 import image3 from '../../assets/section2/product-1.jpg';
@@ -379,7 +379,7 @@ function Section2() {
                 onClick={() => handleDotClick(index + 1)}
                 className={`w-3 h-3 rounded-full inline-block mx-1 cursor-pointer ${
                   index === Math.floor(startIndex / cardsPerPage)
-                    ? 'bg-gray-400'
+                    ? 'bg-yellow-500 '
                     : 'bg-gray-200'
                 }`}
                 whileHover={{ scale: 1.2 }}
