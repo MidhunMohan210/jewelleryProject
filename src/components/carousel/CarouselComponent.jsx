@@ -19,17 +19,17 @@ function CarouselComponent() {
             stopOnMouseEnter: true,
           }),
         ]}
-        className="w-full sm:py-8"
+        className="w-full py-4 sm:py-8 "
         opts={{
           align: "center",
           loop: true,
         }}
       >
-        <CarouselContent className="flex gap-5 sm:gap-5 items-center">
+        <CarouselContent className="flex gap-5 sm:gap-5 items-center ">
           {carouselText.map((item, index) => (
             <CarouselItem
               key={index}
-              className="flex items-center justify-center basis-1/2 sm:basis-1/3 md:basis-1/4 cursor-pointer"
+              className="flex items-center  justify-center basis-1/2 sm:basis-1/3 md:basis-1/4 cursor-pointer"
             >
               <div
                 className="text-center transform transition-all duration-300 text-headingColor hover:text-[#b69121] hover:scale-105 "

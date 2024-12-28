@@ -8,8 +8,8 @@ import Section6 from "@/components/sections/Section6";
 
 import Section5 from "@/components/sections/Section5";
 
-import Section4 from '@/components/sections/Section4'
-
+import Section4 from "@/components/sections/Section4";
+import Sectiont7 from "@/components/sections/Sectiont7";
 
 function Home() {
   return (
@@ -20,24 +20,23 @@ function Home() {
       <hr className="mt-1" />
       <CarouselComponent />
       {/* <hr /> */}
-<div className="flex flex-col gap-6">
-   {/* A section component with some dummy content */}
-   <Section1 />
-      {/* A section component with some dummy content */}
-      <Section2 />
-      {/* A section component with some dummy content */}
-      <Section3 />
-    
+      <div className="flex flex-col gap-6 mt-3">
+        {/* A section component with some dummy content */}
+        <Section1 />
+        {/* A section component with some dummy content */}
+        {/* <Section2 /> */}
+        <Sectiont7 />
 
-     
+        {/* A section component with some dummy content */}
+        <Section3 />
 
-      <Section4/>
+        <Section4 />
 
         {/* A section component with some dummy content */}
         <Section6 />
         <Section5 />
-</div>
-   
+      </div>
+
       <GetInTouch />
     </>
   );

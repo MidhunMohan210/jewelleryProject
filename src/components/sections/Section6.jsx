@@ -82,11 +82,11 @@ const Section6 = () => {
           {categories.map((category, index) => (
             <div
               key={index}
-              className="text-center px-6 border-r hover:scale-[1.03] transform-transition cursor-pointer duration-700 last:border-r-0 border-gray-500 flex flex-col justify-center items-center "
+              className="text-center  px-6 sm:border-r hover:scale-[1.03] transform-transition cursor-pointer duration-700 last:border-r-0 border-gray-500 flex flex-col justify-center items-center "
             >
-              <p className="h-14 w-14 mb-5 animate-small-bounce">{category.icon}</p>
-              <h3 className="text-2xl font-serif mb-4">{category.title}</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className=" w-12 h-12  sm:h-14 sm:w-14  mb-5 animate-small-bounce ">{category.icon}</p>
+              <h3 className=" text-xl  sm:text-2xl font-serif mb-4 jost  ">{category.title}</h3>
+              <p className="text-gray-600 leading-relaxed jost    sm:text-md  ">
                 {category.description}
               </p>
             </div>
