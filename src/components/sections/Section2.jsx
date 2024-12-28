@@ -377,7 +377,7 @@ function Section2() {
               <motion.span
                 key={index}
                 onClick={() => handleDotClick(index + 1)}
-                className={`w-3 h-3 rounded-full inline-block mx-1 cursor-pointer ${
+                className={`w-2 h-2 rounded-full inline-block mx-1 cursor-pointer ${
                   index === Math.floor(startIndex / cardsPerPage)
                     ? 'bg-yellow-500 '
                     : 'bg-gray-200'

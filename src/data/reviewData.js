@@ -1,44 +1,42 @@
 export const reviewData = [
-    {
-      name: "John Smith",
-      rating: 4,
-      comment: "The hospital staff was very professional, and the facilities were clean and modern. I had a positive experience overall."
-    },
-    {
-      name: "Sarah Johnson",
-      rating: 5,
-      comment: "I received outstanding care at this hospital. The medical team was attentive, and the hospital's commitment to patient well-being was evident throughout."
-    },
-    {
-      name: "Michael Brown",
-      rating: 3,
-      comment: "While the medical care was good, I found the hospital environment a bit noisy. More quiet areas would be appreciated."
-    },
-    {
-      name: "Emily Davis",
-      rating: 5,
-      comment: "Exceptional service! The hospital staff went above and beyond to make my stay comfortable and stress-free. I highly recommend this hospital."
-    },
-    {
-      name: "Alex Turner",
-      rating: 4,
-      comment: "The hospital's facilities are top-notch, and the medical team is skilled and caring. My experience here was reassuring and positive."
-    },
-    {
-      name: "Sophia Martin",
-      rating: 2,
-      comment: "I was disappointed with the hospital's cleanliness. More attention to detail is needed in maintaining a hygienic environment."
-    },
-    {
-      name: "David White",
-      rating: 4,
-      comment: "The hospital staff was friendly and accommodating. While the wait times were a bit long, the care I received was excellent."
-    },
-    {
-      name: "Olivia Garcia",
-      rating: 5,
-      comment: "I can't express how grateful I am for the care I received here. The hospital's dedication to patient comfort and well-being is commendable."
-    }
-  ];
-
-  
+  {
+    name: "Arjun Nair",
+    rating: 5,
+    comment: "The jewelry designs are absolutely stunning, and the craftsmanship is excellent. I couldn't be happier with my purchase!"
+  },
+  {
+    name: "Meera Menon",
+    rating: 4,
+    comment: "The collection is elegant and diverse. I found the perfect earrings for a special occasion. Highly recommended!"
+  },
+  {
+    name: "Vishnu Pillai",
+    rating: 3,
+    comment: "The jewelry quality is good, but I felt the prices were slightly on the higher side. A bit more affordability would be great."
+  },
+  {
+    name: "Anjali Krishnan",
+    rating: 5,
+    comment: "Exceptional experience! The staff was incredibly helpful in guiding me through the selection process. Beautiful designs."
+  },
+  {
+    name: "Hari Kumar",
+    rating: 4,
+    comment: "The craftsmanship is excellent, and the jewelry is exquisite. My wife loved the necklace I got for her. Thank you!"
+  },
+  {
+    name: "Lakshmi Iyer",
+    rating: 2,
+    comment: "The collection was good, but I was disappointed with the delivery delay. Timely service would improve the experience."
+  },
+  {
+    name: "Rajesh Warrier",
+    rating: 4,
+    comment: "The staff was friendly and accommodating. The quality of the jewelry exceeded my expectations. Will definitely shop again!"
+  },
+  {
+    name: "Devika Ramesh",
+    rating: 5,
+    comment: "Amazing designs and impeccable service! I got a beautiful ring that exceeded my expectations. Highly recommended."
+  }
+];

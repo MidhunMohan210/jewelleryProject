@@ -9,7 +9,7 @@ function PhoneComponent() {
   
    
   return (
-    <div className=' flex flex-col gap-5 z-50 fixed bottom-[100px] right-4'>
+    <div className=' flex flex-col gap-5 z-50 fixed bottom-[105px] right-4'>
     <motion.div
   
       className="relative flex items-center"
@@ -38,7 +38,7 @@ function PhoneComponent() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
-          className="absolute right-12 bottom-0 bg-gray-400 text-white px-3 py-2 rounded-lg shadow-lg text-sm w-max"
+          className="absolute right-[60px] bottom-1 bg-gray-400 text-white px-3 py-2 rounded-lg shadow-lg text-sm w-max"
         >
           Call us
         </motion.div>
