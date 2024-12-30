@@ -14,6 +14,7 @@ import { HomeProducts } from '@/data/HomeProduct';
 
 
 
+
 const Sectiont7 = () => {
   const [activeCategory, setActiveCategory] = useState('ALL');
   const categories = ['ALL', 'DIAMOND', 'GOLD', 'PLATINUM'];
@@ -25,7 +26,7 @@ const Sectiont7 = () => {
     : HomeProducts.filter(product => product.category === activeCategory);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16">
+    <div className="w-full sm:max-w-full overflow-hidden mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h2 className="text-3xl font-medium mb-2">Recent Arrivals</h2>
         <p className="text-gray-500">Aliquam tincidunt mauris eurisus</p>
@@ -47,10 +48,10 @@ const Sectiont7 = () => {
         ))}
       </div>
 
-      <Carousel className="relative">
-        <CarouselContent className="-ml-4">
+      <Carousel className="relative w-full px-8">
+        <CarouselContent className=" ">
           {filteredHomeProducts.map((product) => (
-            <CarouselItem key={product.id} className="pl-4 basis-1/3 md:basis-1/3">
+            <CarouselItem key={product.id} className=" flex  gap-8 max-w-[200px] sm:basis-2/6">
               <ProductCard product={product} />
             </CarouselItem>
           ))}

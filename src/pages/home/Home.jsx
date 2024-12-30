@@ -24,8 +24,8 @@ function Home() {
         {/* A section component with some dummy content */}
         <Section1 />
         {/* A section component with some dummy content */}
-        {/* <Section2 /> */}
-        <Sectiont7 />
+        <Section2 />
+        {/* <Sectiont7 /> */}
 
         {/* A section component with some dummy content */}
         <Section3 />
