@@ -66,6 +66,10 @@
 }
 
 
+
+
+
+
 /* fonts styles */
 
 .dynalight {
@@ -235,6 +239,19 @@
 .oswald {
   font-family: "Oswald", serif;
   font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.outfit {
+  font-family: "Outfit", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.marcellus-regular {
+  font-family: "Marcellus", serif;
   font-weight: 400;
   font-style: normal;
 }

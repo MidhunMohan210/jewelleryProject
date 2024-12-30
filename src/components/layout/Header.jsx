@@ -1,13 +1,22 @@
 import { useState } from "react";
-import { Search, Heart, ShoppingCart, ChevronDown, Menu } from "lucide-react";
+import { Search, Heart, ShoppingCart, Menu } from "lucide-react";
 import { useScrollPosition } from "../hooks/useScrollPosition";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollPosition, scrollDirection } = useScrollPosition();
+  const location = useLocation();
 
-  const navItems = ["HOME", "PRODUCTS", "ABOUT", "GALLERY"];
+  const navItems = [
+    { to: "/", title: "HOME", isActive: true },
+    { to: "/products", title: "PRODUCTS", isActive: false },
+    { to: "/about", title: "ABOUT", isActive: true },
+    { to: "/gallery", title: "GALLERY", isActive: false },
+  ];
+
+  const isHomePage = location.pathname === "/" || location.pathname === "/about";
 
   return (
     <AnimatePresence>
@@ -20,12 +29,11 @@ export function Header() {
             scrollPosition < 500
               ? -100
               : 0,
-          // opacity: scrollPosition > 500 ? 1 : 1, // Ensure visibility after 100px
-          backgroundColor: scrollPosition > 500 ? "#6c757d" : "transparent",
-          
+          backgroundColor:
+            !isHomePage || scrollPosition > 500 ? "#6c757d" : "transparent",
         }}
         transition={{ duration: 0.1 }}
-        className={`fixed w-full top-0 z-50 transition-all duration-300 `}
+        className={`fixed w-full top-0 z-50 transition-all duration-300`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -37,27 +45,12 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
               {navItems.map((item) => (
-                <div key={item} className="relative group">
-
-                  <button className=" hoverScale inline-flex items-center px-1 pt-1 text-xs  font-medium hover:text-yellow-500 transition-colors text-white">
-
-                    {item}
-                    {/* <ChevronDown className="ml-1 h-4 w-4" /> */}
-                  </button>
-                  {/* <div className="absolute hidden group-hover:block w-48 bg-black shadow-lg py-2 mt-1">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-800"
-                    >
-                      Option 1
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-800"
-                    >
-                      Option 2
-                    </a>
-                  </div> */}
+                <div key={item?.title} className="relative group">
+                  <Link to={item?.isActive && item?.to}>
+                    <button className="hoverScale inline-flex items-center px-1 pt-1 text-xs font-medium hover:text-yellow-500 transition-colors text-white">
+                      {item?.title}
+                    </button>
+                  </Link>
                 </div>
               ))}
             </nav>
@@ -103,11 +96,11 @@ export function Header() {
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navItems.map((item) => (
                   <a
-                    key={item}
+                    key={item.title}
                     href="#"
                     className="block px-3 py-2 text-base font-medium text-gray-200 hover:text-blue-400 hover:bg-gray-800"
                   >
-                    {item}
+                    {item.title}
                   </a>
                 ))}
               </div>

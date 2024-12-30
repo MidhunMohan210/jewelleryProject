@@ -1,22 +1,22 @@
 import  { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { motion } from 'framer-motion';
 import debounce from 'lodash.debounce';
 // import './ScrollComponents.css'
 
 const ScrollComponents = () => {
   const [isAtTop, setIsAtTop] = useState(true);
-  const [isAtBottom, setIsAtBottom] = useState(false);
+  // const [isAtBottom, setIsAtBottom] = useState(false);
 
   // Function to handle scroll visibility
   const handleScroll = debounce(() => {
     const scrollY = window.pageYOffset;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
+    // const windowHeight = window.innerHeight;
+    // const documentHeight = document.documentElement.scrollHeight;
 
     setIsAtTop(scrollY === 0); // At the top
-    setIsAtBottom(scrollY + windowHeight >= documentHeight - 10); // At the bottom
+    // setIsAtBottom(scrollY + windowHeight >= documentHeight - 10); // At the bottom
   }, 100); // Debounce to limit function calls
 
   // Scroll to Top
@@ -25,9 +25,9 @@ const ScrollComponents = () => {
   };
 
   // Scroll to Bottom
-  const scrollToBottom = () => {
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
-  };
+  // const scrollToBottom = () => {
+  //   window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+  // };
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
