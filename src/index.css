@@ -323,4 +323,7 @@
       @apply scale-x-100 origin-center;
     }
   }
+  .basic-padding{
+    @apply  p-5  sm:p-16;
+  }
 }
