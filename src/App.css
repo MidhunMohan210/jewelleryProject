@@ -21,3 +21,13 @@ body {
     font-weight: 900;
   }
   
+  .slick-dots li button:before {
+    color: gray; /* Default color for inactive dots */
+    opacity: 1; /* Ensure the color is visible */
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: yellow; /* Active dot color */
+  }
+  
+ 

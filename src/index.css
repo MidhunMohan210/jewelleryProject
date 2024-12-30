@@ -66,6 +66,10 @@
 }
 
 
+
+
+
+
 /* fonts styles */
 
 .dynalight {
@@ -162,6 +166,39 @@
   font-style: italic;
 }
 
+/* Target the entire scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 20px; /* Height of the scrollbar (for horizontal scrollbars) */
+}
+
+/* Background of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #f4f4f4; /* Light gray background */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Medium gray color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker gray when hovered */
+}
+
+/* Scrollbar buttons (optional) */
+::-webkit-scrollbar-button {
+  background: #ccc; /* Light gray buttons */
+}
+
+/* Hide scrollbar if necessary (optional) */
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
+}
+
 
 
 @keyframes twinkle {
@@ -235,6 +272,25 @@
 .oswald {
   font-family: "Oswald", serif;
   font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.outfit {
+  font-family: "Outfit", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.marcellus-regular {
+  font-family: "Marcellus", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.bellefair-regular {
+  font-family: "Bellefair", serif;
   font-weight: 400;
   font-style: normal;
 }
