@@ -11,12 +11,12 @@ export function Header() {
 
   const navItems = [
     { to: "/", title: "HOME", isActive: true },
-    { to: "/products", title: "PRODUCTS", isActive: false },
+    { to: "/products", title: "PRODUCTS", isActive: true },
     { to: "/about", title: "ABOUT", isActive: true },
     { to: "/gallery", title: "GALLERY", isActive: false },
   ];
 
-  const isHomePage = location.pathname === "/" || location.pathname === "/about";
+  const isHomePage = location.pathname === "/" || location.pathname === "/about" || location.pathname === "/products";
 
   return (
     <AnimatePresence>
