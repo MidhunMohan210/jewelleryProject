@@ -2,8 +2,10 @@
 import { fadeIn, fadeInUp } from "@/components/animation/variants";
 import SidebarFilter from "@/components/filter/sidebarFilter";
 import SidebarFilterDesktop from "@/components/filter/SidebarFilterDesktop";
+import ProductCard1 from "@/components/product/ProductCard1";
 import { motion } from "framer-motion";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
+import productsData from "@/data/productData";
 
 function Products() {
   return (
@@ -60,12 +62,31 @@ function Products() {
       {/* content */}
       <div className="flex flex-row  basic-padding  w-full ">
         {/* sidebar filter for desktop */}
-        <div className="w-1/4">
+        <div className="sm:flex hidden w-1/4">
           <SidebarFilterDesktop />
         </div>
 
         {/* products */}
-        <div className="flex flex-1"></div>
+        <div className="flex flex-1">
+        <div className="container mx-auto p-4">
+                <div className="flex justify-between items-center mb-8 sm-mb-0">
+                    <span className="sm:flex hidden">1–12 Products of 34 Products</span>
+                    <div className="flex items-center justify-end w-full space-x-2">
+                        <span>Sort by</span>
+                        <select className="border p-2 rounded">
+                            <option>Default sorting</option>
+                        </select>
+                        {/* <i className="fas fa-th-large"></i>
+                        <i className="fas fa-th-list"></i> */}
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {productsData.map(product => (
+                        <ProductCard1 key={product.id} product={product} />
+                    ))}
+                </div>
+            </div>
+        </div>
       </div>
     </div>
   );
