@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import ProductCard1 from "./ProductCard1";
 
 function SimilarProduct() {
-  const [similarProducts] = useState(productsData.slice(0, 4));
+  const [similarProducts] = useState(productsData.slice(0, 3));
 
   const settings = {
     dots: true,
@@ -42,9 +42,9 @@ function SimilarProduct() {
         Related Products
       </h2>
 
-      <Slider {...settings}>
+      <Slider  {...settings}>
         {similarProducts.map((product, index) => (
-          <div key={index} className="px-2">
+          <div key={index} className="px-2 ">
             <ProductCard1 product={product} />
           </div>
         ))}
