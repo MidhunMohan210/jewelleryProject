@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/select";
 import { IoIosCloseCircle } from "react-icons/io";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
+import SimilarProduct from "@/components/product/SimilarProduct";
 
 function ProductDetailPage() {
   const location = useLocation();
@@ -314,7 +315,9 @@ function ProductDetailPage() {
               </div>
             </div>
           </div>
+     
         </div>
+   <SimilarProduct/>
       </section>
     </>
   );

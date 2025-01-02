@@ -68,7 +68,7 @@ function Products() {
       </div>
 
       {/* content */}
-      <div className="flex flex-row px-6 py-10  ">
+      <div className="flex flex-row px-6 py-20  ">
         {/* sidebar filter for desktop */}
         <div className="sm:flex hidden w-1/4">
           <SidebarFilterDesktop />
