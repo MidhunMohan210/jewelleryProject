@@ -295,6 +295,16 @@
   font-style: normal;
 }
 
+.no-focus-box{
+  box-shadow: none !important;
+  border-color: #b6b6b6 !important;
+  
+  }
+  
+  .no-focus-box-shadow{
+  border-color: #b6b6b6 !important;
+  
+  }
 
 
 
@@ -326,4 +336,5 @@
   .basic-padding{
     @apply  p-5  sm:p-16;
   }
+
 }

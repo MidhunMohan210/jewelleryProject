@@ -1,81 +1,77 @@
 import React from 'react';
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart } from "lucide-react";
 
-const ProductCard = ({ product }) => {
+const ProductCard1 = ({ product }) => {
   return (
-    <div className="group relative w-full max-w-sm mx-auto bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+    <div className="group relative w-full max-w-sm mx-auto bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
       {/* Image Container */}
-      <div className="relative h-80 w-full overflow-hidden rounded-t-xl">
+      <div className="relative h-80 w-full overflow-hidden rounded-t-lg">
         <img
           src={product.image}
           alt={product.name}
-          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
         />
         {product.image1 && (
           <img
             src={product.image1}
             alt={`${product.name} alternate`}
-            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 group-hover:opacity-100"
           />
         )}
         
         {/* Label Badge */}
         {product.label && (
-          <span className="absolute left-4 top-4 rounded-full bg-red-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm">
+          <span className="absolute left-4 top-4 rounded-full bg-black/80 backdrop-blur-sm px-4 py-1 text-xs font-light tracking-wide text-white">
             {product.label}
           </span>
         )}
       </div>
 
       {/* Content Container */}
-      <div className="p-6">
+      {/* hidden group-hover:block */}
+      <div className="p-6  ">
         {/* Category */}
-        <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
+        <p className="text-xs font-light uppercase tracking-widest text-gray-400">
           {product.category}
         </p>
         
         {/* Product Name */}
-        <h3 className="mt-2 text-lg font-semibold text-headingColor line-clamp-1">
+        <h3 className="mt-2 text-lg font-normal text-gray-900 line-clamp-1">
           {product.name}
         </h3>
 
         {/* Price Section */}
         <div className="mt-4 flex items-center justify-between">
           <div className="flex items-baseline space-x-2">
-            <span className="text-xl font-bold text-yellow-600">
+            <span className="text-lg font-light text-gray-900">
               {product.price}
             </span>
             {product.oldPrice && (
-              <span className="text-sm text-gray-500 line-through">
+              <span className="text-sm text-gray-400 line-through font-light">
                 {product.oldPrice}
               </span>
             )}
           </div>
           
           {/* Status Badge */}
-          <span className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${
+          <span className={`inline-flex items-center rounded-full px-3 py-0.5 text-xs tracking-wide ${
             product.status === 'In Stock' 
-              ? 'bg-green-100 text-green-700'
-              : 'bg-red-100 text-red-700'
+              ? 'bg-gray-50 text-gray-700'
+              : 'bg-gray-50 text-gray-500'
           }`}>
             {product.status}
           </span>
         </div>
 
-        {/* Action Buttons */}
-        <div className="mt-6 flex items-center justify-between space-x-4">
-          <button className="group-hover:bg-blue-50 rounded-full p-2.5 transition-colors duration-300">
-            <Heart className="h-5 w-5 text-yellow-600" />
+        {/* Action Button */}
+        <div className=" absolute top-2 right-2  flex items-center justify-end">
+          <button className=" p-2.5 transition-all duration-300">
+            <Heart className="h-5 w-5 text-gray-400 transition-colors duration-300 group-hover:text-gray-700 " />
           </button>
-          
-          {/* <button className="flex-1 flex items-center justify-center space-x-2 bg-yellow-500 hover:bg-yellow-600 px-4 py-2.5 text-sm font-medium text-white rounded-lg  transition-colors duration-300">
-            <ShoppingCart className="h-4 w-4" />
-            <span>Add to Cart</span>
-          </button> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default ProductCard;
+export default ProductCard1;

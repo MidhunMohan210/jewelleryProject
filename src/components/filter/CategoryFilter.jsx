@@ -8,7 +8,7 @@ import { categories } from "@/data/filters/categories";
 
 function CategoryFilter() {
   return (
-    <Accordion type="single" collapsible>
+    <Accordion defaultValue="item-1" type="single" collapsible>
       <AccordionItem value="item-1">
         <AccordionTrigger>
           <p className="text-gray-800">Categories</p>

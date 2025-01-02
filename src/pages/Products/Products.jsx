@@ -5,11 +5,18 @@ import SidebarFilterDesktop from "@/components/filter/SidebarFilterDesktop";
 import ProductCard1 from "@/components/product/ProductCard1";
 import { motion } from "framer-motion";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import productsData from "@/data/productData";
 
 function Products() {
   return (
-    <div className="">
+    <div className=" ">
       <motion.div
         variants={fadeIn}
         initial="initial"
@@ -25,7 +32,7 @@ function Products() {
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
-          className="absolute basic-padding bottom-7"
+          className="absolute p-6 jost bottom-7"
         >
           <motion.div
             className="flex  items-center gap-3 cursor-pointer"
@@ -55,12 +62,12 @@ function Products() {
       </motion.div>
 
       {/* filter */}
-      <div className="basic-padding ">
+      <div className="sm:hidden  ">
         <SidebarFilter />
       </div>
 
       {/* content */}
-      <div className="flex flex-row  basic-padding  w-full ">
+      <div className="flex flex-row px-6 py-10  ">
         {/* sidebar filter for desktop */}
         <div className="sm:flex hidden w-1/4">
           <SidebarFilterDesktop />
@@ -68,14 +75,22 @@ function Products() {
 
         {/* products */}
         <div className="flex flex-1">
-        <div className="container mx-auto p-4">
-                <div className="flex justify-between items-center mb-8 sm-mb-0">
+        <div className="container mx-auto">
+                <div className="flex flex-nowrap  justify-between items-center mb-8 sm-mb-0">
                     <span className="sm:flex hidden">1–12 Products of 34 Products</span>
-                    <div className="flex items-center justify-end w-full space-x-2">
+                    <div className="flex items-center justify-end  space-x-4">
                         <span>Sort by</span>
-                        <select className="border p-2 rounded">
-                            <option>Default sorting</option>
-                        </select>
+                        <Select >
+  <SelectTrigger className="w-[180px] no-focus-box">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>
+
                         {/* <i className="fas fa-th-large"></i>
                         <i className="fas fa-th-list"></i> */}
                     </div>
@@ -85,6 +100,7 @@ function Products() {
                         <ProductCard1 key={product.id} product={product} />
                     ))}
                 </div>
+        
             </div>
         </div>
       </div>
