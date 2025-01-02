@@ -1,9 +1,14 @@
 import React from 'react';
 import { Heart } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard1 = ({ product }) => {
+
+    const navigate = useNavigate()
   return (
-    <div className="group relative w-full max-w-sm mx-auto bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+    <div  onClick={()=>navigate(`/productDetail/${product._id}`,{
+        state:{product}
+      })} className="group relative w-full max-w-sm mx-auto bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
       {/* Image Container */}
       <div className="relative h-80 w-full overflow-hidden rounded-t-lg">
         <img

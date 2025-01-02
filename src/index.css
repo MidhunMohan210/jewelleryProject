@@ -262,6 +262,12 @@
     "wdth" 100;
 }
 
+.jost_heading{
+  font-family: "Jost", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
 .jost{
   font-family: "Jost", serif;
   font-optical-sizing: auto;
@@ -305,6 +311,20 @@
   border-color: #b6b6b6 !important;
   
   }
+
+
+.no-focus-box{
+  box-shadow: none !important;
+  border-color: #b6b6b6 !important;
+  
+  }
+  
+  .no-focus-box-shadow{
+  border-color: #b6b6b6 !important;
+  
+  }
+  
+
 
 
 

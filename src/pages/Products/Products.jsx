@@ -4,6 +4,7 @@ import SidebarFilter from "@/components/filter/sidebarFilter";
 import SidebarFilterDesktop from "@/components/filter/SidebarFilterDesktop";
 import ProductCard1 from "@/components/product/ProductCard1";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import {
   Select,
@@ -97,6 +98,7 @@ function Products() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {productsData.map(product => (
+                     
                         <ProductCard1 key={product.id} product={product} />
                     ))}
                 </div>
