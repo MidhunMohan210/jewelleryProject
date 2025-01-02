@@ -25,7 +25,7 @@ function Products() {
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
-          className="absolute basic-padding bottom-7"
+          className="absolute p-4 bottom-7"
         >
           <motion.div
             className="flex  items-center gap-3 cursor-pointer"
@@ -55,37 +55,39 @@ function Products() {
       </motion.div>
 
       {/* filter */}
-      <div className="basic-padding ">
+      <div className="p-4 sm:hidden ">
         <SidebarFilter />
       </div>
 
       {/* content */}
-      <div className="flex flex-row  basic-padding  w-full ">
+      <div className="flex flex-row   w-full mt-5 p-4 ">
         {/* sidebar filter for desktop */}
         <div className="sm:flex hidden w-1/4">
           <SidebarFilterDesktop />
         </div>
 
         {/* products */}
-        <div className="flex flex-1">
-        <div className="container mx-auto p-4">
-                <div className="flex justify-between items-center mb-8 sm-mb-0">
-                    <span className="sm:flex hidden">1–12 Products of 34 Products</span>
-                    <div className="flex items-center justify-end w-full space-x-2">
-                        <span>Sort by</span>
-                        <select className="border p-2 rounded">
-                            <option>Default sorting</option>
-                        </select>
-                        {/* <i className="fas fa-th-large"></i>
+        <div className="flex flex-1  ">
+          <div className="container mx-auto p-4">
+            <div className="flex justify-between items-center mb-8 sm-mb-0">
+              <span className="sm:flex hidden w-full ">
+                1–12 Products of 34 Products
+              </span>
+              <div className="flex items-center justify-end w-full space-x-2">
+                <span>Sort by</span>
+                <select className="border p-2 rounded">
+                  <option>Default sorting</option>
+                </select>
+                {/* <i className="fas fa-th-large"></i>
                         <i className="fas fa-th-list"></i> */}
-                    </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {productsData.map(product => (
-                        <ProductCard1 key={product.id} product={product} />
-                    ))}
-                </div>
+              </div>
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {productsData.map((product) => (
+                <ProductCard1 key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
