@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 import { Heart } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 

@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/select";
 import { IoIosCloseCircle } from "react-icons/io";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
+import ProductDetailAccordion from "@/components/accordion/ProductDetailAccordion";
 
 function ProductDetailPage() {
   const location = useLocation();
@@ -155,7 +156,7 @@ function ProductDetailPage() {
         </div>
       )}
 
-      <section className="text-gray-700 body-font overflow-hidden bg-white px-6 sm:px-14 py-20 sm:py-28 jost">
+      <section className="text-gray-700 body-font overflow-hidden bg-white px-6 sm:px-14 py-10 sm:pt-28 jost">
         <div className="container">
           <div className="lg:w-full flex flex-wrap">
             <section className="lg:w-1/2 w-full">
@@ -315,6 +316,12 @@ function ProductDetailPage() {
             </div>
           </div>
         </div>
+      </section>
+      <hr />
+      {/* more information section */}
+
+      <section className="px-6 sm:px-14 py-5 pb-20 ">
+        <ProductDetailAccordion />
       </section>
     </>
   );
