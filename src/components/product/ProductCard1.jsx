@@ -8,7 +8,7 @@ const ProductCard1 = ({ product }) => {
   return (
     <div  onClick={()=>navigate(`/productDetail/${product._id}`,{
         state:{product}
-      })} className="group relative w-full max-w-sm mx-auto bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+      })} className="group jost relative w-full max-w-sm mx-auto bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
       {/* Image Container */}
       <div className="relative h-80 w-full overflow-hidden rounded-t-lg">
         <img

@@ -11,6 +11,7 @@ export function Banner() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${banner})`,
+          // backgroundImage: `url(https://parkofideas.com/goldish/demo/wp-content/uploads/2021/11/goldish-0440915816.jpg)`,
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-10"></div>
