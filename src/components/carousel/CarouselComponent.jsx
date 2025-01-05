@@ -42,6 +42,9 @@ function CarouselComponent() {
           ))}
         </CarouselContent>
       </Carousel>
+
+
+      <hr />
     </div>
   );
 }

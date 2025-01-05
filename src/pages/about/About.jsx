@@ -4,6 +4,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { GiDiamondHard } from "react-icons/gi";
 import { LiaCertificateSolid } from "react-icons/lia";
 import { ShieldCheck } from "lucide-react";
+import flower from "../../assets/about/flower.png";
 
 function About() {
   // Animation variants
@@ -93,7 +94,7 @@ function About() {
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1578513492798-0f8a1ac3e1f0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
         }}
-        className="h-[290px] sm:h-[400px] bg-cover bg-center flex flex-col relative text-white px-6 sm:px-8"
+        className="h-[290px] sm:h-[400px] bg-cover bg-center flex flex-col relative text-white px-6 sm:px-8 padding-reverse"
       >
         <motion.div
           variants={fadeInUp}
@@ -139,9 +140,7 @@ function About() {
           viewport={{ once: true }}
           className="text-center mb-16 flex flex-col items-center"
         >
-          <motion.div
-            className="text-amber-800 mb-4"
-          >
+          <motion.div className="text-amber-800 mb-4">
             <img
               src="https://auriane.jwsuperthemes.com/wp-content/uploads/2022/03/jewelry_img-2.svg"
               alt=""
@@ -246,7 +245,7 @@ function About() {
         style={{
           backgroundImage: `url(https://caketheme.com/html/mojuri/media/banner/bg-img-2.jpg)`,
         }}
-        className="py-16 px-4"
+        className="py-16 px-4 padding-reverse"
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -266,7 +265,8 @@ function About() {
               >
                 <motion.div
                   className="w-12 h-12 sm:h-14 sm:w-14 mb-5 text-gray-700"
-                  transition={{ duration: 0.6 }}>
+                  transition={{ duration: 0.6 }}
+                >
                   {category.icon}
                 </motion.div>
                 <h3 className="text-xl sm:text-2xl font-serif mb-4 jost">
@@ -287,8 +287,11 @@ function About() {
         initial="initial"
         whileInView="whileInView"
         viewport={{ once: true }}
-        className="max-w-6xl mx-auto px-4 py-16"
+        className=" relative max-w-6xl mx-auto px-4 py-16 overflow-hidden padding-reverse "
       >
+        <div className="  absolute sm:h-1/2 sm:w-1/2 sm:top-10 bottom-0 right-[-100px] transform scale-x-[-1]  opacity-[0.17]  pointer-events-none">
+          <img src={flower} alt="" className="rotate-[50deg]" />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <motion.h2
             variants={fadeInUp}

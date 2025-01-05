@@ -35,7 +35,7 @@ export function Header() {
             !isHomePage || scrollPosition > 500 ? "#6c757d" : "transparent",
         }}
         transition={{ duration: 0.1 }}
-        className={`fixed w-full top-0 z-50 transition-all duration-300`}
+        className={`fixed w-full top-0 z-50 transition-all duration-300 basic-padding`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">

@@ -1,5 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import { motion } from "framer-motion";
-import image from "../../assets/section8/section8.webp";
+import flower from "../../assets/section8/flower.png";
 
 function Section8() {
   // Animation Variants
@@ -14,7 +15,12 @@ function Section8() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className=" relative flex flex-col overflow-hidden  sm:mt-10">
+
+        <div className="absolute top-20 bottom-0 left-[-100px] opacity-20 sm:opacity-10 pointer-events-none">
+              <img src={flower} alt="" className="transform scale-x-[-1]" />
+           
+            </div>
       {/* First Section */}
       <div className="max-w-6xl mx-auto px-8 sm:px-16 py-16 jost ">
         <motion.div
@@ -80,7 +86,7 @@ function Section8() {
             className="space-y-6 md:pl-16 w-full"
             variants={fadeInUp}
           >
-            <h2 className="text-4xl sm:text-5xl  text-gray-900 max-w-56 ">
+            <h2 className="text-4xl sm:text-5xl  text-gray-600 max-w-56 ">
               It's Always the Right Size
             </h2>
 

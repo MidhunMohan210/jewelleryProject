@@ -55,7 +55,7 @@ function Review() {
       >
         {reviewData.map((review, index) => (
           <SwiperSlide key={index}>
-            <div
+            <div  
               className={` cursor-pointer jost !pb-14 pt-10 px-6 sm:px-0 transition-all duration-300 h-full  ${
                 index === activeIndex
                   ? "scale-[1.03] "

@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import productsData from "@/data/productData";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 
 function Section2() {
   const [filteredCategory, setFilteredCategory] = useState("ALL");
@@ -89,13 +91,35 @@ function Section2() {
   return (
     <div className="bg-white p-6  sm:p-16">
       {/* Header */}
-      <div className="text-center mb-8">
+      {/* <div className="text-center mb-8">
         <h2 className="text-3xl philosopher-bold font-bold text-gray-800 jost">
           New Arrivals
         </h2>
         <p className="text-gray-400 text-md sm:text-lg jost  ">
           Discover our latest collection
         </p>
+      </div> */}
+
+
+<div className="text-center mb-6 relative z-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-2xl sm:text-3xl jost text-headingColor font-semibold"
+        >
+         New Arrivals
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-[#7777] mt-1 text-sm sm:text-[17px]"
+        >
+           Discover our latest collection
+        </motion.p>
       </div>
 
       {/* Category Tabs */}
@@ -159,7 +183,7 @@ function Section2() {
                   state: { product },
                 })
               }
-              className=" jost group relative cursor-pointer w-full max-w-sm mx-auto bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+              className=" jost group  relative cursor-pointer w-full max-w-sm mx-auto bg-white rounded-lg  shadow-md transition-all duration-300"
             >
               {/* Image Container */}
               <div className="relative h-80 w-full overflow-hidden rounded-t-lg">

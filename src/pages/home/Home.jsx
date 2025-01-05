@@ -3,13 +3,13 @@ import { Banner } from "../../components/banner/Banner";
 import Section1 from "../../components/sections/Section1";
 import Section2 from "../../components/sections/Section2";
 import CarouselComponent from "@/components/carousel/CarouselComponent";
-import GetInTouch from "@/components/footer/GetInTouch";
+// import GetInTouch from "@/components/footer/GetInTouch";
 import Section6 from "@/components/sections/Section6";
 
 import Section5 from "@/components/sections/Section5";
 
-import Section4 from "@/components/sections/Section4";
-import Sectiont7 from "@/components/sections/Sectiont7";
+// import Section4 from "@/components/sections/Section4";
+// import Sectiont7 from "@/components/sections/Sectiont7";
 import Section8 from "@/components/sections/Section8";
 
 function Home() {
@@ -23,18 +23,20 @@ function Home() {
         {/* first section with photo and text  */}
 
         <Section1 />
-        <hr className="mx-16 sm:mx-32 border my-5 mt-10" />
+        <hr className="mx-16 sm:mx-32 border reverse-Gap-Top" />
         {/* A section component with some dummy content */}
         <Section2 />
+        <hr className="mx-16 mt-5 sm:mx-32 border  sm:hidden " />
+
 
         {/* <Sectiont7 /> */}
 
         {/* A section component with some dummy content */}
-        {/* <Section3 /> */}
+        <Section3 />
 
         {/* <Section4 /> */}
 
-        <hr className="mx-16 sm:mx-32 border my-5 mt-10" />
+        <hr className="mx-16 sm:mx-32 border reverse-Gap-Top  " />
 
         <Section8 />
 

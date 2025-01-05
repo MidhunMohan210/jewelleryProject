@@ -79,7 +79,7 @@ const Section6 = () => {
       style={{
         backgroundImage: `url(https://caketheme.com/html/mojuri/media/banner/bg-img-2.jpg)`,
       }}
-      className=" flex items-center  py-16 sm:mt-16 pb-24 padding-reverse  overflow-hidden "
+      className=" flex items-center  py-16 sm:mt-28 pb-24 padding-reverse  overflow-hidden  "
     >
       <div className="max-w-7xl mx-auto ">
         {/* Categories Grid */}

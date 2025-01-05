@@ -1,9 +1,21 @@
+/* eslint-disable react/no-unescaped-entities */
 import { motion } from "framer-motion";
-import { fadeInFromLeft, fadeInFromRight, fadeInUp } from "../animation/variants";
+import {
+  fadeInFromLeft,
+  fadeInFromRight,
+  fadeInUp,
+} from "../animation/variants";
+import flower from "../../assets/section1/flower.png";
 
 const Section1 = () => {
   return (
-    <div className="w-full min-h-screen bg-white jost  mt-5  py-14 sm:py-16 ">
+    <div className="w-full min-h-screen bg-white jost mt-5 py-14 sm:py-16 relative overflow-hidden">
+      {/* Decorative Flower SVG */}
+      <div className="absolute  sm:top-20 bottom-0 left-[-100px] opacity-[0.08] pointer-events-none">
+        <img src={flower} alt="" className="rotate-[30deg]" />
+     
+      </div>
+
       <motion.div
         variants={fadeInUp}
         initial="initial"
@@ -35,19 +47,19 @@ const Section1 = () => {
           classic allure.
         </motion.p>
       </motion.div>
-      <div className="max-w-7xl mx-auto  px-8 sm:px-28 sm:py-16 flex flex-col md:flex-row items-center gap-6 sm:gap-12">
+      <div className="max-w-7xl mx-auto px-8 sm:px-28 sm:py-16 flex flex-col md:flex-row items-center gap-6 sm:gap-12">
         {/* Image Section */}
         <motion.div
           className="w-full md:w-1/2"
           variants={fadeInFromLeft}
           initial="initial"
           whileInView="whileInView"
-          viewport={{ once: false }} // Ensures it animates once when in view
+          viewport={{ once: false }}
         >
           <img
             src="https://wpbingo-adena.myshopify.com/cdn/shop/files/banner-25.jpg?v=1730707956"
             alt="Elegant woman wearing jewelry"
-            className="w-full h-[400px] sm:h-[550px] object-cover grayscale  "
+            className="w-full h-[400px] sm:h-[550px] object-cover grayscale"
           />
         </motion.div>
 
@@ -58,10 +70,9 @@ const Section1 = () => {
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: false }}
-          
         >
           <motion.p
-            className=" text-goldColor uppercase tracking-wider text-sm font-medium"
+            className="text-goldColor uppercase tracking-wider text-sm font-medium"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -101,7 +112,7 @@ const Section1 = () => {
           </motion.p>
 
           <motion.button
-            className="bg-gray-800 text-white px-8 py-3 text-sm uppercase tracking-wider hover:bg-gray-700 transition-colors duration-300"
+            className="bg-gray-800  text-white px-8 py-3 text-sm uppercase tracking-wider hover:bg-gray-700 transition-colors duration-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
