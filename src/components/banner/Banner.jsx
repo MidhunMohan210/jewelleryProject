@@ -5,7 +5,7 @@ import banner from "../../assets/home/banner/banner3.jpg";
 
 export function Banner() {
   return (
-    <div className="relative h-screen  overflow-hidden">
+    <div className="relative h-screen  overflow-hidden padding-reverse">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -18,7 +18,7 @@ export function Banner() {
       </div>
 
       {/* Content */}
-      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative h-full max-w-7xl mx-auto ">
         <div className="flex items-center justify-center h-full">
           <motion.div 
             className="text-center text-textColor"

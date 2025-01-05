@@ -10,6 +10,7 @@ import Section5 from "@/components/sections/Section5";
 
 import Section4 from "@/components/sections/Section4";
 import Sectiont7 from "@/components/sections/Sectiont7";
+import Section8 from "@/components/sections/Section8";
 
 function Home() {
   return (
@@ -17,27 +18,34 @@ function Home() {
       {/* A hero banner section with a background image and text */}
       <Banner />
       {/* A carousel component with some dummy content */}
-      <hr className="mt-1" />
       <CarouselComponent />
-      {/* <hr /> */}
       <div className="flex flex-col gap-6 mt-3">
-        {/* A section component with some dummy content */}
+        {/* first section with photo and text  */}
+
         <Section1 />
+        <hr className="mx-16 sm:mx-32 border my-5 mt-10" />
         {/* A section component with some dummy content */}
         <Section2 />
+
         {/* <Sectiont7 /> */}
 
         {/* A section component with some dummy content */}
-        <Section3 />
+        {/* <Section3 /> */}
 
-        <Section4 />
+        {/* <Section4 /> */}
+
+        <hr className="mx-16 sm:mx-32 border my-5 mt-10" />
+
+        <Section8 />
 
         {/* A section component with some dummy content */}
         <Section6 />
+        <hr className="mx-16 sm:mx-32 border my-2 " />
+
         <Section5 />
       </div>
 
-      <GetInTouch />
+      {/* <GetInTouch /> */}
     </>
   );
 }
