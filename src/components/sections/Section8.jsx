@@ -18,7 +18,7 @@ function Section8() {
     <div className=" relative flex flex-col overflow-hidden  sm:mt-10">
 
         <div className="absolute top-20 bottom-0 left-[-100px] opacity-20 sm:opacity-10 pointer-events-none">
-              <img src={flower} alt="" className="transform scale-x-[-1]" />
+              <img src={flower} alt="" className="transform scale-x-[-1] animate-swayhome" />
            
             </div>
       {/* First Section */}
@@ -27,12 +27,12 @@ function Section8() {
           className="grid md:grid-cols-2 gap-10 sm:gap-2 items-start"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false }}
+          // viewport={{ once: false }}
           transition={{ staggerChildren: 0.2 }}
         >
           {/* Left Column - Product Title */}
           <motion.div className="space-y-8" variants={fadeInUp}>
-            <h1 className="text-4xl md:text-5xl font-medium text-gray-600 leading-tight">
+            <h1  className="text-4xl md:text-5xl font-prem font-medium text-gray-600 leading-tight">
               Timeless Elegance
               <br />
               in Every Detail
@@ -64,7 +64,7 @@ function Section8() {
           className="grid md:grid-cols-2 gap-8 items-center"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false }}
+          // viewport={{ once: false }}
           transition={{ staggerChildren: 0.2 }}
         >
           {/* Image Section */}
@@ -86,7 +86,7 @@ function Section8() {
             className="space-y-6 md:pl-16 w-full"
             variants={fadeInUp}
           >
-            <h2 className="text-4xl sm:text-5xl  text-gray-600 max-w-56 ">
+            <h2 className="text-4xl sm:text-5xl font-prem font-medium  text-gray-600 max-w-56 ">
               It's Always the Right Size
             </h2>
 

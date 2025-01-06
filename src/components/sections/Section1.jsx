@@ -12,7 +12,7 @@ const Section1 = () => {
     <div className="w-full min-h-screen bg-white jost mt-5 py-14 sm:py-16 relative overflow-hidden">
       {/* Decorative Flower SVG */}
       <div className="absolute  sm:top-20 bottom-0 left-[-100px] opacity-[0.08] pointer-events-none">
-        <img src={flower} alt="" className="rotate-[30deg]" />
+        <img src={flower} alt="" className="rotate-[30deg] " />
      
       </div>
 

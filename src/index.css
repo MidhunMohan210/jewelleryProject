@@ -264,7 +264,7 @@
   font-weight: 500;
   font-style: normal;
 }
-.jost {
+.jost p span  {
   font-family: "Jost", serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -285,6 +285,9 @@
   font-style: normal;
 }
 
+.font-prem{
+  font-family: "Playfair Display, serif" ;
+}
 .marcellus-regular {
   font-family: "Marcellus", serif;
   font-weight: 400;
@@ -314,6 +317,73 @@
 .no-focus-box-shadow {
   border-color: #b6b6b6 !important;
 }
+@keyframes sway {
+  0% {
+    transform: rotate(0deg) translateX(0) translateY(0) scale(1);
+  }
+  20% {
+    transform: rotate(3deg) translateX(-2px) translateY(2px) scale(1.01);
+  }
+  50% {
+    transform: rotate(-3deg) translateX(2px) translateY(-2px) scale(0.99);
+  }
+  80% {
+    transform: rotate(3deg) translateX(-2px) translateY(2px) scale(1.01);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0) translateY(0) scale(1);
+  }
+}
+
+.animate-sway {
+  animation: sway 10s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+@keyframes swayhome {
+  0% {
+    transform: rotate(0deg) translateX(0) translateY(0) scale(1);
+  }
+  20% {
+    transform: rotate(3deg) translateX(-2px) translateY(2px) scale(1.01);
+  }
+  50% {
+    transform: rotate(-3deg) translateX(2px) translateY(-2px) scale(0.99);
+  }
+  80% {
+    transform: rotate(3deg) translateX(-2px) translateY(2px) scale(1.01);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0) translateY(0) scale(1);
+  }
+}
+
+.animate-swayhome {
+  animation: swayhome 10s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+@keyframes sway-bounce {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.animate-sway-bounce {
+  animation: sway-bounce 4s ease-in-out infinite; /* Adjust duration for smoothness */
+}
+
+
 
 @layer utilities {
   .hoverScale {

@@ -14,11 +14,11 @@ export function Header() {
     { to: "/products", title: "PRODUCTS", isActive: true },
     { to: "/about", title: "ABOUT", isActive: true },
     { to: "/gallery", title: "GALLERY", isActive: false },
-    { to: "/contact", title: "CONTACT", isActive: false },
+    { to: "/contact", title: "CONTACT", isActive: true },
 
   ];
 
-  const isHomePage = location.pathname === "/" || location.pathname === "/about" || location.pathname === "/products";
+  const isHomePage = location.pathname === "/" || location.pathname === "/about" || location.pathname === "/products" || location.pathname === "/contact";
 
   return (
     <AnimatePresence>

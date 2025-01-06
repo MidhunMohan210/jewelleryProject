@@ -29,7 +29,7 @@ function Section2() {
   const NextArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute right-[-50px] top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center z-10 hover:bg-gray-50 transition-all duration-200"
+      className="absolute hidden right-[-50px] top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md sm:flex items-center justify-center z-10 hover:bg-gray-50 transition-all duration-200"
       aria-label="Next"
     >
       <ChevronRight className="w-6 h-6 text-gray-600" />
@@ -39,7 +39,7 @@ function Section2() {
   const PrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute left-[-50px] top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center z-10 hover:bg-gray-50 transition-all duration-200"
+      className="absolute left-[-50px] hidden top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md sm:flex items-center justify-center z-10 hover:bg-gray-50 transition-all duration-200"
       aria-label="Previous"
     >
       <ChevronLeft className="w-6 h-6 text-gray-600" />
@@ -183,7 +183,7 @@ function Section2() {
                   state: { product },
                 })
               }
-              className=" jost group  relative cursor-pointer w-full max-w-sm mx-auto bg-white rounded-lg  shadow-md transition-all duration-300"
+              className=" jost group  relative cursor-pointer w-full max-w-sm  bg-white rounded-lg  shadow-md transition-all duration-300"
             >
               {/* Image Container */}
               <div className="relative h-80 w-full overflow-hidden rounded-t-lg">
@@ -217,14 +217,14 @@ function Section2() {
                 </p>
 
                 {/* Product Name */}
-                <h3 className="mt-2 text-lg font-normal text-gray-900 line-clamp-1">
+                <h3 className="mt-2 text-sm sm:text-lg font-normal text-gray-900 line-clamp-1">
                   {product.name}
                 </h3>
 
                 {/* Price Section */}
                 <div className="mt-4 flex items-center justify-between">
                   <div className="flex items-baseline space-x-2">
-                    <span className="text-lg font-light text-gray-900">
+                    <span className="text-sm sm:text-lg font-light text-gray-900">
                       {product.price}
                     </span>
                     {product.oldPrice && (
