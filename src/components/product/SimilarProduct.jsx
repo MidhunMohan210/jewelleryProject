@@ -42,9 +42,9 @@ function SimilarProduct() {
         Related Products
       </h2>
 
-      <Slider {...settings}>
+      <Slider  {...settings}>
         {similarProducts.map((product, index) => (
-          <div key={index} className="px-2">
+          <div key={index} className="px-2 ">
             <ProductCard1 product={product} />
           </div>
         ))}
