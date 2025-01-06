@@ -12,7 +12,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import productsData from "@/data/productData";
 
 function Products() {
@@ -26,7 +26,7 @@ function Products() {
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(https://images.unsplash.com/photo-1620891239438-eb4b8b467fb7?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
         }}
-        className="h-[290px] sm:h-[400px] bg-cover bg-center flex flex-col relative text-white px-6 sm:px-8"
+        className="h-[290px] sm:h-[400px] bg-cover bg-center flex flex-col relative text-white padding-reverse"
       >
         <motion.div
           variants={fadeInUp}
@@ -68,7 +68,7 @@ function Products() {
       </div>
 
       {/* content */}
-      <div className="flex flex-row px-6 py-20  ">
+      <div className="flex flex-row  py-10  ">
         {/* sidebar filter for desktop */}
         <div className="sm:flex hidden w-1/4">
           <SidebarFilterDesktop />
@@ -76,34 +76,34 @@ function Products() {
 
         {/* products */}
         <div className="flex flex-1">
-        <div className="container mx-auto">
-                <div className="flex flex-nowrap  justify-between items-center mb-8 sm-mb-0">
-                    <span className="sm:flex hidden">1–12 Products of 34 Products</span>
-                    <div className="flex items-center justify-end  space-x-4">
-                        <span>Sort by</span>
-                        <Select >
-  <SelectTrigger className="w-[180px] no-focus-box">
-    <SelectValue placeholder="Theme" />
-  </SelectTrigger>
-  <SelectContent>
-    <SelectItem value="light">Light</SelectItem>
-    <SelectItem value="dark">Dark</SelectItem>
-    <SelectItem value="system">System</SelectItem>
-  </SelectContent>
-</Select>
+          <div className="container mx-auto">
+            <div className="flex flex-nowrap  justify-between items-center mb-8 sm-mb-0">
+              <span className="sm:flex hidden">
+                1–12 Products of 34 Products
+              </span>
+              <div className="flex items-center justify-end  space-x-4">
+                <span>Sort by</span>
+                <Select>
+                  <SelectTrigger className="w-[180px] no-focus-box">
+                    <SelectValue placeholder="Theme" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="light">Light</SelectItem>
+                    <SelectItem value="dark">Dark</SelectItem>
+                    <SelectItem value="system">System</SelectItem>
+                  </SelectContent>
+                </Select>
 
-                        {/* <i className="fas fa-th-large"></i>
+                {/* <i className="fas fa-th-large"></i>
                         <i className="fas fa-th-list"></i> */}
-                    </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {productsData.map(product => (
-                     
-                        <ProductCard1 key={product.id} product={product} />
-                    ))}
-                </div>
-        
+              </div>
             </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {productsData.map((product) => (
+                <ProductCard1 key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

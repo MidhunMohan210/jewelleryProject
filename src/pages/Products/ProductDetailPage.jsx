@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/select";
 import { IoIosCloseCircle } from "react-icons/io";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
+import ProductDetailAccordion from "@/components/accordion/ProductDetailAccordion";
 import SimilarProduct from "@/components/product/SimilarProduct";
 
 function ProductDetailPage() {
@@ -156,7 +157,7 @@ function ProductDetailPage() {
         </div>
       )}
 
-      <section className="text-gray-700 body-font overflow-hidden bg-white px-6 sm:px-14 py-20 sm:py-28 jost">
+      <section className="text-gray-700 body-font overflow-hidden bg-white px-6 sm:px-14 py-10 sm:pt-28 jost">
         <div className="container">
           <div className="lg:w-full flex flex-wrap">
             <section className="lg:w-1/2 w-full">
@@ -208,7 +209,7 @@ function ProductDetailPage() {
                     index < productDetail?.rating ? (
                       <IoMdStar
                         key={index}
-                        className="text-2xl text-red-500 cursor-pointer"
+                        className="text-2xl text-gray-500 cursor-pointer"
                       />
                     ) : (
                       <IoMdStarOutline
@@ -315,9 +316,17 @@ function ProductDetailPage() {
               </div>
             </div>
           </div>
-     
         </div>
-   <SimilarProduct/>
+      </section>
+      <hr />
+      {/* more information section */}
+
+      <section className="px-6 sm:px-14 py-5  ">
+        <ProductDetailAccordion />
+      </section>
+
+      <section className="px-6 sm:px-14  pb-20 ">
+        <SimilarProduct />
       </section>
     </>
   );

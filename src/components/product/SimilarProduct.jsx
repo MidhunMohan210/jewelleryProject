@@ -37,7 +37,7 @@ function SimilarProduct() {
   };
 
   return (
-    <div className="container mx-auto basic-padding mt-10">
+    <div className="container mx-auto basic-padding ">
       <h2 className="text-2xl text-headingColor philosopher-bold font-semibold text-center my-6">
         Related Products
       </h2>

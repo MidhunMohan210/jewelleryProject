@@ -71,22 +71,31 @@ const categories = [
       "Perfect presents for every occasion, wrapped in elegance and sophistication",
   },
 ];
-// bg-[#F1ECE8] 
+// bg-[#F1ECE8]
 
 const Section6 = () => {
   return (
-    <div className=" bg-[#F6F5F3] py-16 px-4">
+    <div
+      style={{
+        backgroundImage: `url(https://caketheme.com/html/mojuri/media/banner/bg-img-2.jpg)`,
+      }}
+      className=" flex items-center  py-16 sm:mt-28 pb-24 padding-reverse  overflow-hidden  "
+    >
       <div className="max-w-7xl mx-auto ">
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 ">
           {categories.map((category, index) => (
             <div
               key={index}
               className="text-center  px-6 sm:border-r hover:scale-[1.03] transform-transition cursor-pointer duration-700 last:border-r-0 border-gray-500 flex flex-col justify-center items-center "
             >
-              <p className=" w-12 h-12  sm:h-14 sm:w-14  mb-5 animate-small-bounce ">{category.icon}</p>
-              <h3 className=" text-xl  sm:text-2xl font-serif mb-4 jost  ">{category.title}</h3>
-              <p className="text-gray-600 leading-relaxed jost    sm:text-md  ">
+              <p className=" w-12 h-12  sm:h-14 sm:w-14  mb-5 animate-small-bounce ">
+                {category.icon}
+              </p>
+              <h3 className=" text-xl  sm:text-2xl font-serif mb-4 jost  ">
+                {category.title}
+              </h3>
+              <p className="text-lightTextColor leading-relaxed jost    sm:text-md px-5  ">
                 {category.description}
               </p>
             </div>

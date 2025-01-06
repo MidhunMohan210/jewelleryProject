@@ -9,10 +9,10 @@ function Layout() {
     <>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-grow">
+        <main className="flex flex-col flex-grow gap-3 sm:gap-4 lg:gap-5  px-4 sm:px-6 lg:px-8">
           <Router />
           <PhoneComponent />
-          <ScrollComponents />
+          <ScrollComponents />  
         </main>
         <Footer className="mt-auto bottom-0" />
       </div>

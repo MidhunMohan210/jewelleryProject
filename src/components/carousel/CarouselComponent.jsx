@@ -8,9 +8,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 function CarouselComponent() {
   return (
-
-    <div className="w-full">
-
+    <div className="reverse-Gap-Top padding-reverse ">
       <Carousel
         plugins={[
           Autoplay({
@@ -32,7 +30,7 @@ function CarouselComponent() {
               className="flex items-center  justify-center basis-1/2 sm:basis-1/3 md:basis-1/4 cursor-pointer"
             >
               <div
-                className="text-center transform transition-all duration-300 text-headingColor hover:text-[#b69121] hover:scale-105 "
+                className="text-center transform transition-all duration-300 text-headingColor hover:text-goldColor hover:scale-105 "
                 style={{ fontFamily: item.fontFamily }}
               >
                 <h2 className={item.className}>{item.text}</h2>
@@ -44,6 +42,9 @@ function CarouselComponent() {
           ))}
         </CarouselContent>
       </Carousel>
+
+
+      <hr />
     </div>
   );
 }
