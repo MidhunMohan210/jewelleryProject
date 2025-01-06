@@ -34,8 +34,8 @@ const Section3 = () => {
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 py-16 text-center">
         {/* Main heading */}
         <motion.h1 className='text-gray-700 jost'
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
           className="text-2xl md:text-4xl lg:text-5xl font-bold jost text-gray-700 sm:mb-4"
         > 
@@ -54,8 +54,8 @@ const Section3 = () => {
 
         {/* Paragraph */}
         <motion.p
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
           className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto leading-relaxed jost mt-10 sm:mt-0  px-4 sm:px-8 mb-10"
         >
@@ -68,8 +68,8 @@ const Section3 = () => {
 
         {/* CTA Button */}
         <motion.button
-          initial={{ opacity: 0, scale: 0.9, y:-50 }}
-          whileInView={{ opacity: 1, scale: 1,y:0  }}
+          initial={{ opacity: 0, scale: 0.9,  }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
           className="inline-block px-8 py-3 text-sm uppercase tracking-wider text-amber-700 border-b border-amber-400 hover:text-amber-600 hover:border-amber-600 transition-all duration-300"
         >
