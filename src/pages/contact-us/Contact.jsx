@@ -81,7 +81,7 @@ function Contact() {
             <img
               src={contactBackground2}
               alt="Flower"
-              className="h-[800px] opacity-20 rotate-[-20deg] top-10 "
+              className="h-[800px] opacity-20 rotate-[-20deg] animate-sway top-10 "
             />
           </div >
 

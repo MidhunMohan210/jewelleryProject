@@ -13,7 +13,7 @@ export function Header() {
     { to: "/", title: "HOME", isActive: true },
     { to: "/products", title: "PRODUCTS", isActive: true },
     { to: "/about", title: "ABOUT", isActive: true },
-    { to: "/gallery", title: "GALLERY", isActive: false },
+    // { to: "/gallery", title: "GALLERY", isActive: false },
     { to: "/contact", title: "CONTACT", isActive: true },
 
   ];
@@ -37,7 +37,7 @@ export function Header() {
         transition={{ duration: 0.1 }}
         className={`fixed w-full top-0 z-50 transition-all duration-300 basic-padding`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="  ">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
@@ -63,16 +63,16 @@ export function Header() {
                 <input
                   type="text"
                   placeholder="Search product ..."
-                  className="w-64 px-4 py-1 rounded-full border border-gray-300 focus:outline-none focus:border-blue-500 bg-transparent"
+                  className="w-64 px-4 py-1 rounded-full border border-gray-300 focus:outline-none focus:text-yellow-500 bg-transparent"
                 />
                 <Search className="h-5 w-5 -ml-8" />
               </div>
               <button className="p-2 hover:text-yellow-500 transition-colors">
                 <Heart className="h-6 w-6" />
               </button>
-              <button className="p-2 hover:text-blue-400 transition-colors relative">
+              <button className="p-2 hover:text-yellow-500 transition-colors relative">
                 <ShoppingCart className="h-6 w-6" />
-                <span className="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-goldColor text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   2
                 </span>
               </button>

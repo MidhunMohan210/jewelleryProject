@@ -40,7 +40,7 @@ function PhoneComponent() {
           exit={{ opacity: 0, x: 20 }}
           className="absolute right-[60px] bottom-1 bg-gray-400 text-white px-3 py-2 rounded-lg shadow-lg text-sm w-max"
         >
-          Call us
+          Ring us
         </motion.div>
       )}
     </motion.div>

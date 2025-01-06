@@ -200,7 +200,7 @@ function ProductDetailPage() {
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
                 {productDetail?.brandName}
               </h2>
-              <h1 className="text-gray-900 text-2xl sm:text-3xl title-font font-bold mb-1 jost_heading">
+              <h1 className="text-headingColor text-2xl sm:text-3xl title-font font-bold mb-1 jost_heading">
                 {productDetail?.name}
               </h1>
               <div className="flex mb-4">
