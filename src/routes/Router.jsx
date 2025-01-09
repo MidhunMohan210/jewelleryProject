@@ -3,7 +3,7 @@ import Home from '../pages/home/Home'
 import About from '@/pages/about/About'
 import Products from '@/pages/Products/Products'
 import ProductDetailPage from '@/pages/Products/ProductDetailPage'
-import Contact from '@/pages/Contact-us/Contact'
+import Contact from '@/pages/contact-us/Contact'
 
 function Router() {
     return (
