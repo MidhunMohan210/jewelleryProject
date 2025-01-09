@@ -13,16 +13,17 @@ import SizeFilter from "./SizeFilter";
 import { Circle } from "lucide-react";
 import StatusFilter from "./StatusFilter";
 import { IoReorderThreeOutline } from "react-icons/io5";
+import { BsFilterLeft } from "react-icons/bs";
 
 function SidebarFilter() {
   return (
     <Sheet>
       <SheetTrigger className="flex items-center justify-center gap-2 jost">
         <div className="flex items-center gap-1 ">
-          <IoReorderThreeOutline size={20} />
+          <IoReorderThreeOutline size={28} />
           Filter
         </div>
-        <div className= " hidden sm:block text-gray-600 text-sm sm:text-base">
+        <div className=" hidden sm:block text-gray-600 text-sm sm:text-base">
           <p>1–12 Products of 34 Products</p>
         </div>
       </SheetTrigger>
@@ -31,16 +32,12 @@ function SidebarFilter() {
         className="w-[320px] p-0  max-h-screen overflow-y-scroll scrollbar-none pb-10"
       >
         <SheetHeader className="">
-          <SheetTitle className="bg-[#6c757d] text-white p-4 sticky top-0 ">
+          <SheetTitle className="bg-[#a0a5a9] text-white p-4 sticky top-0 ">
             <div className="flex items-center gap-3  ">
-              <h1 className=" text-lg sm:text-2xl font-bold text-left">
+              <h1 className=" text-lg sm:text-2xl font-bold text-left px-3">
                 Filters
               </h1>
-              <div className="flex items-center gap-1 sm:mt-2">
-                <Circle fill="#fff" size={10} />
-                <Circle fill="#fff" size={10} />
-                <Circle fill="#fff" size={10} />
-              </div>
+              <BsFilterLeft />
             </div>
           </SheetTitle>
         </SheetHeader>

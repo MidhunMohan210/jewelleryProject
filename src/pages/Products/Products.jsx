@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import productsData from "@/data/productData";
+import BreadCrumb from "@/components/breadCrumb/BreadCrumb";
 
 function Products() {
   return (
@@ -62,13 +63,17 @@ function Products() {
         </motion.div>
       </motion.div>
 
-      {/* filter */}
-      <div className="sm:hidden  ">
-        <SidebarFilter />
-      </div>
+      <BreadCrumb
+        tab1="Home"
+        tab1Path="/"
+        tab2="Products"
+        tab2Path="/products"
+        // tab3="Product"
+        // tab3Path="/product"
+      />
 
       {/* content */}
-      <div className="flex flex-row  py-10  ">
+      <div className="flex flex-row  ">
         {/* sidebar filter for desktop */}
         <div className="sm:flex hidden w-1/4">
           <SidebarFilterDesktop />
@@ -78,17 +83,22 @@ function Products() {
         <div className="flex flex-1">
           <div className="container mx-auto">
             <div className="flex flex-nowrap  justify-between items-center mb-8 sm-mb-0">
+              {/* filter */}
+              <div className="sm:hidden  ">
+                <SidebarFilter />
+              </div>
+
               <span className="sm:flex hidden">
                 1–12 Products of 34 Products
               </span>
               <div className="flex items-center justify-end  space-x-4">
-                <span>Sort by</span>
+                <span className="text-sm sm:text-base">Sort by</span>
                 <Select>
                   <SelectTrigger className="w-[180px] no-focus-box">
                     <SelectValue placeholder="Theme" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="light">Light</SelectItem>
+                    <SelectItem  value="light">Light</SelectItem>
                     <SelectItem value="dark">Dark</SelectItem>
                     <SelectItem value="system">System</SelectItem>
                   </SelectContent>
@@ -98,7 +108,7 @@ function Products() {
                         <i className="fas fa-th-list"></i> */}
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-5 sm:px-0">
               {productsData.map((product) => (
                 <ProductCard1 key={product.id} product={product} />
               ))}

@@ -122,9 +122,7 @@ function About() {
               variants={fadeInUp}
               className="max-w-[600px] mt-0.5 sm:mt-2 text-gray-200 text-sm sm:text-base"
             >
-              We craft timeless elegance with precision and passion. Our
-              exquisite collection blends traditional artistry with modern
-              designs, celebrating life's special moments.
+             Crafting timeless elegance with a blend of tradition and innovation. Discover our story of passion and precision.
             </motion.p>
           </div>
         </motion.div>

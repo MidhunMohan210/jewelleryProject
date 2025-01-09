@@ -8,7 +8,7 @@ import StatusFilter from "./StatusFilter";
 
 function SidebarFilterDesktop() {
   return (
-    <div className="px-6 z-0 w-full">
+    <div className="pr-6 z-0 w-full">
       <CategoryFilter />
       <PricingFilter />
       <MaterialFilter />

@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import {
@@ -6,7 +5,6 @@ import {
   HiOutlinePhone,
   HiOutlineClock,
 } from "react-icons/hi";
-import contactBackground from "../../assets/contact/rb_105557.png";
 import contactBackground2 from "../../assets/contact/contact2.png";
 
 function Contact() {
@@ -29,7 +27,7 @@ function Contact() {
         whileInView="whileInView"
         viewport={{ once: true }}
         style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(https://images.unsplash.com/photo-1578513492798-0f8a1ac3e1f0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
+          backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url(https://images.unsplash.com/photo-1504257234803-3fa883dcdcc1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
         }}
         className="h-[300px]  sm:h-[400px] bg-cover bg-center flex flex-col justify-end relative text-white px-6 sm:px-8"
       >
@@ -54,11 +52,10 @@ function Contact() {
             </motion.h1>
             <motion.p
               variants={fadeInUp}
-              className="max-w-lg mt-2 text-gray-300 text-sm sm:text-base"
+              className="max-w-sm sm:max-w-lg mt-2 text-gray-300 text-sm sm:text-base"
             >
-              We craft timeless elegance with precision and passion. Our
-              exquisite collection blends traditional artistry with modern
-              designs, celebrating life's special moments.
+              We’re here to assist you every step of the way. Reach out to us
+              and let’s create something truly meaningful together.
             </motion.p>
           </div>
         </motion.div>
@@ -74,30 +71,30 @@ function Contact() {
             // backgroundRepeat: "no-repeat",
           }
         }
-        className=" py-16 relative  lg:px-8 overflow-hidden"
+        className=" py-16 relative   px-8 overflow-hidden"
       >
-          {/* Animated Flower Image */}
-          <div className="absolute  top-10  flex justify-center items-center pointer-events-none">
-            <img
-              src={contactBackground2}
-              alt="Flower"
-              className="h-[800px] opacity-20 rotate-[-20deg] animate-sway top-10 "
-            />
-          </div >
+        {/* Animated Flower Image */}
+        <div className="absolute  top-10  flex justify-center items-center pointer-events-none">
+          <img
+            src={contactBackground2}
+            alt="Flower"
+            className="h-[800px] opacity-20 rotate-[-20deg] animate-sway top-10 "
+          />
+        </div>
 
-          <div className=" px-4 sm:px-6 max-w-5xl lg:px-8 mx-auto">
+        <div className=" px-4 sm:px-6 max-w-5xl lg:px-8 mx-auto text-sm sm:text-base">
           {/* Form Content */}
           <h1
-            className="text-3xl sm:text-4xl font-bold text-headingColor  text-center mb-8 relative z-10"
+            className="text-2xl sm:text-4xl font-bold text-headingColor  text-center mb-8 relative z-10"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
             Keep In Touch with Us
           </h1>
-          <p className="text-center text-gray-600 mb-6 relative z-10">
+          <p className="text-center text-gray-600 mb-6 relative z-10 ">
             Our Customer Care team is available Monday – Friday, 9am to 5pm IST.
             <br />
           </p>
-          <p className="text-center text-gray-600 mb-10 relative z-10">
+          <p className="text-center text-gray-600 mb-10 relative z-10 ">
             Contact us on +12 (0)20 654 4522 or use the form below to email us.
             Response times may take up to 48 hours during busy periods.
           </p>
@@ -107,46 +104,45 @@ function Contact() {
                 <input
                   type="text"
                   placeholder="Your name*"
-                  className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="border no-focus-box  border-gray-50 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <input
                   type="email"
                   placeholder="Your email*"
-                  className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="border no-focus-box  border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <input
                 type="text"
                 placeholder="Your phone (optional)"
-                className="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border no-focus-box  border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <textarea
                 placeholder="Message..."
-                className="border border-gray-300 p-3 w-full h-32 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border no-focus-box  border-gray-300 p-3 w-full h-32 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               ></textarea>
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-black text-white py-3 px-6 rounded-lg shadow-md hover:bg-gray-800 transition-all"
+                  className=" w-full no-focus-box  text-white py-3 px-6 rounded-lg shadow-md bg-gray-700 hover:bg-gray-800 transition-all"
                 >
                   Send Message
                 </button>
               </div>
             </form>
           </div>
-
-          </div>
+        </div>
       </div>
 
       {/* Location, Contact Info, and Business Hours Section */}
-      <div 
-      style={{
-        backgroundImage: `url(https://caketheme.com/html/mojuri/media/banner/bg-img-2.jpg)`,
-      }}
-      
-      className=" py-16 px-4 sm:px-8">
+      <div
+        style={{
+          backgroundImage: `url(https://caketheme.com/html/mojuri/media/banner/bg-img-2.jpg)`,
+        }}
+        className=" py-16 px-4 sm:px-8"
+      >
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center text-sm sm:text-base">
             {/* Store Location */}
             <motion.div
               variants={fadeInUp}
@@ -155,8 +151,8 @@ function Contact() {
               viewport={{ once: true }}
               className="flex flex-col items-center group transition-all duration-1000 border-r-0  sm:border-r-2 ease-in-out transform hover:scale-110"
             >
-              <HiOutlineLocationMarker className="text-5xl text-gray-500 mb-4 animate-sway-bounce transform-transition cursor-pointer group-hover:text-gray-700 transition-colors " />
-              <h3 className="text-lg font-semibold mb-2 group-hover:text-gray-700 transition-colors duration-300 ease-in-out">
+              <HiOutlineLocationMarker className="text-4xl sm:text-5xl text-gray-500 mb-4 animate-sway-bounce transform-transition cursor-pointer group-hover:text-gray-700 transition-colors " />
+              <h3 className=" text-base sm:text-lg font-semibold mb-2 group-hover:text-gray-700 transition-colors duration-300 ease-in-out">
                 OUR STORE
               </h3>
               <p className="text-gray-600 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
@@ -174,8 +170,8 @@ function Contact() {
               viewport={{ once: true }}
               className="flex jost flex-col items-center group transition-all duration-1000 border-r-0  sm:border-r-2  ease-in-out transform hover:scale-110"
             >
-              <HiOutlinePhone className="text-5xl text-gray-500 mb-4 animate-sway-bounce group-hover:text-gray-700 transition-colors duration-300 ease-in-out" />
-              <h3 className="text-lg font-semibold mb-2 group-hover:text-gray-700 transition-colors duration-300 ease-in-out">
+              <HiOutlinePhone className="text-4xl sm:text-5xl text-gray-500 mb-4 animate-sway-bounce group-hover:text-gray-700 transition-colors duration-300 ease-in-out" />
+              <h3 className="text-base sm:text-lg font-semibold mb-2 group-hover:text-gray-700 transition-colors duration-300 ease-in-out">
                 CONTACT INFO
               </h3>
               <p className="text-gray-600 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
@@ -193,8 +189,8 @@ function Contact() {
               viewport={{ once: true }}
               className="flex flex-col items-center group transition-all duration-1000 border-r-0  sm:border-r-2 ease-in-out transform hover:scale-110"
             >
-              <HiOutlineClock className="text-5xl text-gray-500 mb-4 animate-sway-bounce group-hover:text-gray-700 transition-colors duration-300 ease-in-out" />
-              <h3 className="text-lg font-semibold mb-2 group-hover:text-gray-700 transition-colors duration-300 ease-in-out">
+              <HiOutlineClock className="text-4xl sm:text-5xl text-gray-500 mb-4 animate-sway-bounce group-hover:text-gray-700 transition-colors duration-300 ease-in-out" />
+              <h3 className="text-base sm:text-lg font-semibold mb-2 group-hover:text-gray-700 transition-colors duration-300 ease-in-out">
                 BUSINESS HOURS
               </h3>
               <p className="text-gray-600 opacity-90 group-hover:opacity-100 transition-opacity duration-300">

@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { Search, Heart, ShoppingCart, Menu } from "lucide-react";
+import { Search, Heart } from "lucide-react";
 import { useScrollPosition } from "../hooks/useScrollPosition";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import NavbarPhone from "./NavbarPhone";
+import SearchDrawer from "../drawer/SearchDrawer";
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollPosition, scrollDirection } = useScrollPosition();
   const location = useLocation();
 
@@ -13,12 +13,14 @@ export function Header() {
     { to: "/", title: "HOME", isActive: true },
     { to: "/products", title: "PRODUCTS", isActive: true },
     { to: "/about", title: "ABOUT", isActive: true },
-    // { to: "/gallery", title: "GALLERY", isActive: false },
     { to: "/contact", title: "CONTACT", isActive: true },
-
   ];
 
-  const isHomePage = location.pathname === "/" || location.pathname === "/about" || location.pathname === "/products" || location.pathname === "/contact";
+  const isHomePage =
+    location.pathname === "/" ||
+    location.pathname === "/about" ||
+    location.pathname === "/products" ||
+    location.pathname === "/contact";
 
   return (
     <AnimatePresence>
@@ -32,13 +34,21 @@ export function Header() {
               ? -100
               : 0,
           backgroundColor:
-            !isHomePage || scrollPosition > 500 ? "#6c757d" : "transparent",
+            !isHomePage || scrollPosition > 500
+              ? "rgba(108, 117, 125, 1)" // Solid color for desktop
+              : "transparent",
         }}
         transition={{ duration: 0.1 }}
-        className={`fixed w-full top-0 z-50 transition-all duration-300 basic-padding`}
+        className="fixed w-full top-0 z-50 md:backdrop-blur-none basic-padding "
+        style={{
+          backgroundColor:
+            !isHomePage || scrollPosition > 500
+              ? "rgba(108, 117, 125, 0.95)" // Slightly transparent for mobile
+              : "transparent",
+        }}
       >
-        <div className="  ">
-          <div className="flex justify-between items-center h-16">
+        <div>
+          <div className="flex justify-between items-center h-16 ml-4 sm:ml-0">
             {/* Logo */}
             <div className="flex-shrink-0">
               <h1 className="text-2xl font-bold text-white">Cliq</h1>
@@ -58,57 +68,28 @@ export function Header() {
             </nav>
 
             {/* Search and Icons */}
-            <div className="flex items-center space-x-4 text-white">
-              <div className="hidden md:flex items-center">
+            <div className="flex items-center space-x-4 text-white mr-2 sm:mr-0">
+              <div className="relative hidden md:flex items-center">
+                <Search className="h-5 w-5 absolute left-3 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Search product ..."
-                  className="w-64 px-4 py-1 rounded-full border border-gray-300 focus:outline-none focus:text-yellow-500 bg-transparent"
+                  className="w-64 pl-10 pr-4 py-1 bg-gray-700  rounded-full focus:outline-none focus:text-yellow-500"
                 />
-                <Search className="h-5 w-5 -ml-8" />
               </div>
+
               <button className="p-2 hover:text-yellow-500 transition-colors">
                 <Heart className="h-6 w-6" />
               </button>
-              <button className="p-2 hover:text-yellow-500 transition-colors relative">
-                <ShoppingCart className="h-6 w-6" />
-                <span className="absolute -top-1 -right-1 bg-goldColor text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  2
-                </span>
-              </button>
-              <button
-                className="md:hidden p-2"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                <Menu className="h-6 w-6" />
-              </button>
+              <div className="sm:hidden">
+                <SearchDrawer />
+              </div>
+              <div className="sm:hidden">
+                <NavbarPhone />
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-transparent"
-            >
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {navItems.map((item) => (
-                  <a
-                    key={item.title}
-                    href="#"
-                    className="block px-3 py-2 text-base font-medium text-gray-200 hover:text-blue-400 hover:bg-gray-800"
-                  >
-                    {item.title}
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.header>
     </AnimatePresence>
   );

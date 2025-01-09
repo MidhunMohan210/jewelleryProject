@@ -7,10 +7,10 @@ import {
 
 const ProductDetailAccordion = () => {
   return (
-    <div className="w-full  mx-auto">
-      <Accordion type="single" collapsible className="w-full jost">
+    <div className="w-full  ">
+      <Accordion type="single" collapsible className="w-full jost ">
         <AccordionItem value="description">
-          <AccordionTrigger className="text-lg font-medium">Description</AccordionTrigger>
+          <AccordionTrigger className="sm:text-lg  font-medium">Description</AccordionTrigger>
           <AccordionContent className="text-gray-600 space-y-4">
             <p>
               The Kalvesna Diamond Twig Ring is a stunning piece of jewelry that combines natural beauty with elegant design. This unique ring features:
@@ -27,7 +27,7 @@ const ProductDetailAccordion = () => {
         </AccordionItem>
 
         <AccordionItem value="additional-information">
-          <AccordionTrigger className="text-lg font-medium">Additional Information</AccordionTrigger>
+          <AccordionTrigger className="sm:text-lg font-medium">Additional Information</AccordionTrigger>
           <AccordionContent className="text-gray-600">
             <div className="grid grid-cols-2 gap-4">
               <div className="font-medium">Material</div>
@@ -52,7 +52,7 @@ const ProductDetailAccordion = () => {
         </AccordionItem>
 
         <AccordionItem value="reviews">
-          <AccordionTrigger className="text-lg font-medium">Reviews</AccordionTrigger>
+          <AccordionTrigger className="sm:text-lg font-medium">Reviews</AccordionTrigger>
           <AccordionContent>
             <div className="space-y-6">
               <div className="flex items-center justify-between mb-4">

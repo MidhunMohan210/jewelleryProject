@@ -1,20 +1,17 @@
-
+import ScrollToTop from "./components/scroll/ScrollToTop ";
 import Layout from "./layout/Layout";
 import { BrowserRouter } from "react-router-dom";
 // import './App.css'
 
-
 function App() {
-  return(
+  return (
     <>
-    <BrowserRouter>
-    <Layout />
-    </BrowserRouter>
-    
-    
+      <BrowserRouter>
+        <ScrollToTop />
+        <Layout />
+      </BrowserRouter>
     </>
-
-  )
+  );
 }
 
 export default App;

@@ -9,7 +9,6 @@ import productsData from "@/data/productData";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-
 function Section2() {
   const [filteredCategory, setFilteredCategory] = useState("ALL");
 
@@ -100,8 +99,7 @@ function Section2() {
         </p>
       </div> */}
 
-
-<div className="text-center mb-6 relative z-10">
+      <div className="text-center mb-6 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -109,7 +107,7 @@ function Section2() {
           transition={{ duration: 0.6 }}
           className="text-2xl sm:text-3xl jost text-headingColor font-semibold"
         >
-         New Arrivals
+          New Arrivals
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -118,7 +116,7 @@ function Section2() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-[#7777] mt-1 text-sm sm:text-[17px]"
         >
-           Discover our latest collection
+          Discover our latest collection
         </motion.p>
       </div>
 
@@ -128,7 +126,7 @@ function Section2() {
           <button
             key={category}
             onClick={() => handleCategoryChange(category)}
-            className={`px-4 py-2 mx-2  font-medium text-sm sm:text-base jost transition-all duration-300  ${
+            className={`px-4 py-2 mx-1  font-medium text-sm sm:text-base jost transition-all duration-300  ${
               filteredCategory === category
                 ? "border-goldColor border-b-2 text-goldColor"
                 : "text-gray-500 hover:text-goldColor"
@@ -140,7 +138,7 @@ function Section2() {
       </div>
 
       {/* Slider Section */}
-      <div className="relative px-8 mt-14 ">
+      <div className="relative  mt-14 ">
         <style>
           {`
             .slick-dots {
