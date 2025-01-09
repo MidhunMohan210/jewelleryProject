@@ -9,6 +9,7 @@ import contactBackground2 from "../../assets/contact/contact2.png";
 import { Link } from "react-router-dom";
 
 
+
 function Contact() {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },

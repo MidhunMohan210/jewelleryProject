@@ -32,9 +32,9 @@ function SearchDrawer() {
           </DrawerHeader>
           {/* Uncomment if you need footer actions */}
           <DrawerFooter>
-            <Button className="w-full rounded-3xl mt-[-12px] bg-gray-700 text-white">Submit</Button>
+            <Button className="w-full rounded-[50px] mt-[-12px] bg-gray-700 text-white">Submit</Button>
             <DrawerClose>
-              <Button className="w-full rounded-3xl " variant="outline">Cancel</Button>
+              <Button className="w-full rounded-[50px] " variant="outline">Cancel</Button>
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
