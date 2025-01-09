@@ -14,6 +14,30 @@ function Section2() {
 
   const navigate = useNavigate();
   const [products, setProducts] = useState(productsData);
+  const handleWishlistToggle = (productId) => {
+    // Update the products state
+    console.log(productId,'productId')
+    const updatedProducts = products.map((product) =>
+      product._id === productId
+        ? { ...product, isWishlist: !product.isWishlist }
+        : product
+    );
+    setProducts(updatedProducts);
+  
+    // Update the original productsData array
+    const productIndex = productsData.findIndex((product) => product._id === productId);
+    if (productIndex !== -1) {
+      console.log('done')
+      productsData[productIndex].isWishlist = !productsData[productIndex].isWishlist;
+    }
+
+    console.log(productsData,'pppp')
+  };
+
+  const handleClick = (event, productId) => {
+    event.stopPropagation(); // Prevents event from reaching parent elements
+    handleWishlistToggle(productId);
+  };
   // const handleWishlistClick = (productId) => {
   //   setProducts((prevProducts) =>
   //     prevProducts.map((product) =>
@@ -56,11 +80,17 @@ function Section2() {
           (p) => p.material.toLowerCase() === filteredCategory.toLowerCase()
         );
 
+
+     
+      
+
   const settings = {
     dots: true,
     infinite: filteredProducts.length > 4, // Only enable infinite scroll if there are more than 4 items
     speed: 500,
-    slidesToShow: Math.min(filteredProducts.length, 3), // Adjust slidesToShow dynamically
+    
+    slidesToShow: Math.min(filteredProducts.length, 3),
+   
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -173,7 +203,7 @@ function Section2() {
           `}
         </style>
 
-        <Slider {...settings}>
+        <Slider {...settings} className="custom-slider">
           {filteredProducts.map((product) => (
             <div
               onClick={() =>
@@ -245,11 +275,29 @@ function Section2() {
                 </div>
 
                 {/* Action Button */}
-                <div className=" absolute top-2 right-2  flex items-center justify-end">
-                  <button className=" p-2.5 transition-all duration-300">
-                    <Heart className="h-5 w-5 text-gray-400 transition-colors duration-300 group-hover:text-gray-700 " />
-                  </button>
-                </div>
+                <div className="absolute top-2 right-2 flex items-center justify-end">
+  <button
+    onClick={(e) => handleClick(e, product._id)}
+    className={`p-2.5 transition-all duration-300 relative ${
+      product.isWishlist ? "text-red-500" : "text-gray-400"
+    }`}
+  >
+    <Heart
+      className={`h-5 w-5 transition-colors duration-300 ${
+        product.isWishlist
+          ? "fill-current text-red-500 animate-crackle"
+          : "group-hover:text-gray-700"
+      }`}
+    />
+    {product.isWishlist && (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="crackle-animation"></div>
+      </div>
+    )}
+  </button>
+</div>
+
+
               </div>
             </div>
           ))}

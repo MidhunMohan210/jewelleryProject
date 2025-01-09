@@ -6,6 +6,8 @@ import {
   HiOutlineClock,
 } from "react-icons/hi";
 import contactBackground2 from "../../assets/contact/contact2.png";
+import { Link } from "react-router-dom";
+
 
 function Contact() {
   const fadeInUp = {
@@ -35,14 +37,17 @@ function Contact() {
           variants={fadeInUp}
           className="absolute bottom-8 left-6 sm:left-8"
         >
+          <Link to={'/'}>
+          
           <motion.div
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex  items-center gap-3 cursor-pointer"
             whileHover={{ x: -5 }}
             transition={{ duration: 0.2 }}
           >
-            <IoArrowBackCircleOutline className="text-3xl sm:text-4xl" />
-            <h1 className="text-base sm:text-lg font-normal">Back to home</h1>
+            <IoArrowBackCircleOutline className="opacity-80 text-2xl sm:text-4xl sm:mt-1" />
+            <h1 className="text-sm sm:text-xl font-normal">Back to home</h1>
           </motion.div>
+          </Link>
           <div className="mt-4">
             <motion.h1
               variants={fadeInUp}

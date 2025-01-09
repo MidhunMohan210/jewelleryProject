@@ -36,6 +36,8 @@ function Products() {
           viewport={{ once: true }}
           className="absolute p-6 jost bottom-7"
         >
+          <Link to={'/'}>
+          
           <motion.div
             className="flex  items-center gap-3 cursor-pointer"
             whileHover={{ x: -5 }}
@@ -44,6 +46,8 @@ function Products() {
             <IoArrowBackCircleOutline className="opacity-80 text-2xl sm:text-4xl sm:mt-1" />
             <h1 className="text-sm sm:text-xl font-normal">Back to home</h1>
           </motion.div>
+          </Link>
+
           <div className="mt-3 sm:mt-5 ml-1">
             <motion.h1
               variants={fadeInUp}

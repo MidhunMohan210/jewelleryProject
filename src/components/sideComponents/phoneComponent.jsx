@@ -1,15 +1,43 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPhoneVolume} from "@fortawesome/free-solid-svg-icons";
+import debounce from 'lodash.debounce';
 
 function PhoneComponent() {
     const [isHovered, setIsHovered] = useState(false);
 
+    const [isAtTop, setIsAtTop] = useState(true);
+    // const [isAtBottom, setIsAtBottom] = useState(false);
   
+    // Function to handle scroll visibility
+    const handleScroll = debounce(() => {
+      const scrollY = window.pageYOffset;
+      // const windowHeight = window.innerHeight;
+      // const documentHeight = document.documentElement.scrollHeight;
+  
+      setIsAtTop(scrollY === 0); // At the top
+      // setIsAtBottom(scrollY + windowHeight >= documentHeight - 10); // At the bottom
+    }, 100); // Debounce to limit function calls
+  
+    // Scroll to Top
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  
+    // Scroll to Bottom
+    // const scrollToBottom = () => {
+    //   window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    // };
+  
+    useEffect(() => {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
    
   return (
-    <div className=' flex flex-col gap-5 z-50 fixed bottom-[105px] right-4'>
+    <div className={`flex flex-col gap-5 z-50 fixed ${isAtTop ? 'bottom-10' : 'bottom-[105px]'} right-4`}>
+
     <motion.div
   
       className="relative flex items-center"
