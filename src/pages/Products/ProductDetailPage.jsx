@@ -12,6 +12,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import ProductDetailAccordion from "@/components/accordion/ProductDetailAccordion";
 import SimilarProduct from "@/components/product/SimilarProduct";
+import BreadCrumb from "@/components/breadCrumb/BreadCrumb";
 
 function ProductDetailPage() {
   const location = useLocation();
@@ -157,7 +158,16 @@ function ProductDetailPage() {
         </div>
       )}
 
-      <section className="text-gray-700 body-font overflow-hidden bg-white px-6 sm:px-14 py-10 sm:pt-28 jost">
+      <section className="text-gray-700 body-font overflow-hidden bg-white  py-10 pt-16 jost">
+        <BreadCrumb
+          tab1="Home"
+          tab1Path="/"
+          tab2="Products"
+          tab2Path="/products"
+          tab3="Product Detail"
+          tab3Path="/productDetail/1"
+        />
+
         <div className="container">
           <div className="lg:w-full flex flex-wrap">
             <section className="lg:w-1/2 w-full">
@@ -321,11 +331,11 @@ function ProductDetailPage() {
       <hr />
       {/* more information section */}
 
-      <section className="px-6 sm:px-14 py-5  ">
+      <section className=" py-5  ">
         <ProductDetailAccordion />
       </section>
 
-      <section className="px-6 sm:px-14  pb-20 ">
+      <section className="  pb-20 ">
         <SimilarProduct />
       </section>
     </>

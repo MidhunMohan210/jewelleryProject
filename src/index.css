@@ -78,6 +78,7 @@
   font-weight: 400;
   font-style: normal;
 }
+/*  */
 
 .bebas-neue {
   font-family: "Bebas Neue", serif;
@@ -414,7 +415,7 @@
   }
 
   .padding-reverse {
-    @apply mx-[-1rem] sm:mx-[-1.5rem] lg:mx-[-2rem];
+    @apply mx-[-2rem] sm:mx-[-2.5rem] lg:mx-[-3rem];
   }
 
   .reverse-Gap-Top {
