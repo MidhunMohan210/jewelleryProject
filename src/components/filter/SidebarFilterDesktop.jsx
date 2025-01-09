@@ -3,7 +3,7 @@ import CategoryFilter from "./CategoryFilter";
 import PricingFilter from "./PricingFilter";
 import MaterialFilter from "./MaterialFilter";
 import ColorFilter from "./ColorFilter";
-import SizeFilter from "./Sizefilter";
+import SizeFilter from "./SizeFilter";
 import StatusFilter from "./StatusFilter";
 
 function SidebarFilterDesktop() {
