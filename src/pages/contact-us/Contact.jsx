@@ -6,7 +6,7 @@ import {
   HiOutlineClock,
 } from "react-icons/hi";
 import contactBackground2 from "../../assets/contact/contact2.png";
-import { Link } from "react-router-dom";\
+import { Link } from "react-router-dom";
 
 
 
