@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { fadeIn, fadeInUp } from "@/components/animation/variants";
-import SidebarFilter from "@/components/filter/sidebarFilter";
+import SidebarFilter from "@/components/filter/SidebarFilter";
 import SidebarFilterDesktop from "@/components/filter/SidebarFilterDesktop";
 import ProductCard1 from "@/components/product/ProductCard1";
 import { motion } from "framer-motion";
