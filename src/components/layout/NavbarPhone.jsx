@@ -49,7 +49,10 @@ function NavbarPhone() {
           {/* Navbar Header */}
           <SheetTitle className="bg-[#a0a5a9] text-white p-4 sticky top-0">
             <div className="flex items-center gap-3 text-2xl sarina-regular px-3">
+              <Link to={'/'}>
               Cliq
+
+              </Link>
             </div>
           </SheetTitle>
         </SheetHeader>
