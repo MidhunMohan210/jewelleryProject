@@ -15,14 +15,14 @@ import { Button } from "../ui/Button";
 function SearchDrawer() {
   return (
     <div>
-      <Drawer >
+      <Drawer>
         <DrawerTrigger>
-          <FiSearch className="h-6 w-6 mt-[6px] " />
+          <FiSearch className="h-6 w-6 mt-[6px]" />
         </DrawerTrigger>
-        <DrawerContent className=" rounded-t-[30px] py-4 px-4 max-h-[500px]  ">
+        <DrawerContent className="rounded-t-[30px] py-4 px-4 max-h-[500px]">
           <DrawerHeader>
             <DrawerTitle className="text-left ml-1 mb-5">Search</DrawerTitle>
-            <div className=" relative">
+            <div className="relative">
               <Input
                 className="rounded-full bg-gray-200 pl-10 h-[50px] no-focus-box"
                 placeholder="Search..."
@@ -30,11 +30,22 @@ function SearchDrawer() {
               <FiSearch className="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500" />
             </div>
           </DrawerHeader>
-          {/* Uncomment if you need footer actions */}
           <DrawerFooter>
-            <Button className="w-full rounded-[50px] mt-[-12px] bg-gray-700 text-white">Submit</Button>
+            {/* Submit Button with proper rounded-full */}
+            <Button
+              className="w-full rounded-full mt-2 bg-gray-700 text-white"
+              style={{ borderRadius: "9999px" }}
+            >
+              Submit
+            </Button>
             <DrawerClose>
-              <Button className="w-full rounded-[50px] " variant="outline">Cancel</Button>
+              <Button
+                className="w-full rounded-full mt-2"
+                variant="outline"
+                style={{ borderRadius: "9999px" }}
+              >
+                Cancel
+              </Button>
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>

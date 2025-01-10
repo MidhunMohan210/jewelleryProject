@@ -34,7 +34,7 @@ function Products() {
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
-          className="absolute p-6 jost bottom-7"
+          className="absolute p-6 jost bottom-2"
         >
           <Link to={'/'}>
           

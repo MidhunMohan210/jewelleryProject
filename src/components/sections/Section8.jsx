@@ -17,7 +17,7 @@ function Section8() {
   return (
     <div className=" relative flex flex-col overflow-hidden  sm:mt-10">
 
-        <div className="absolute top-20 bottom-0 left-[-100px] opacity-20 sm:opacity-10 pointer-events-none">
+        <div className="absolute top-40 sm:top-20 bottom-0 left-[-100px] opacity-20 sm:opacity-10 pointer-events-none">
               <img src={flower} alt="" className="transform scale-x-[-1] animate-swayhome" />
            
             </div>

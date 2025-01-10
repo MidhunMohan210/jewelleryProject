@@ -21,7 +21,7 @@ export function Banner() {
       <div className="relative h-full max-w-7xl mx-auto ">
         <div className="flex items-center justify-center h-full">
           <motion.div 
-            className="text-center text-textColor"
+            className="text-center absolute bottom-[100px] sm:bottom-20 text-textColor"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -42,16 +42,16 @@ export function Banner() {
             >
               Mystery Deals
             </motion.h1>
-            <motion.p 
+            {/* <motion.p 
               className="text-xl md:text-2xl mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               Online Only
-            </motion.p>
+            </motion.p> */}
             <motion.button 
-              className="bg-gray-500 hover:text-gray-900 text-textColor px-8 py-3 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors duration-300"
+              className="bg-gray-500 hover:text-gray-900 mt-2 text-textColor px-8 py-3 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
