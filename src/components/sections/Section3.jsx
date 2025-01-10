@@ -46,7 +46,10 @@ const Section3 = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       style={{
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)), url(${background})`,
+        backgroundImage: `
+        linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)),
+        url(${background})
+      `,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "right",
         
