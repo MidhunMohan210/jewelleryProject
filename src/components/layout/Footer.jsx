@@ -57,7 +57,7 @@ export function Footer() {
           </span>
         </div>
         <p className="mt-4 text-sm sm:text-base leading-6 text-center text-gray-400">
-          © 2025 Midhun & Albert, Inc. All rights reserved.
+          © 2025 Albert & Midhun, Inc. All rights reserved.
         </p>
       </div>
     </section>

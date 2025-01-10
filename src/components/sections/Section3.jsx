@@ -49,13 +49,14 @@ const Section3 = () => {
         backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)), url(${background})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "right",
+        
       }}
-      className="relative  h-full bg-cover sm:bg-[length:40%] padding-reverse bg-[#FBF8F6] sm:mt-12"
+      className="relative  h-full bg-cover sm:bg-[length:40%] padding-reverse  bg-[#FBF8F6] sm:mt-12"
     >
       {/* Content container */}
       <motion.div
         variants={containerVariants}
-        className="relative z-10 max-w-4xl mx-auto px-5 py-16 md:py-24 text-center flex flex-col justify-center items-center"
+        className="relative z-10 max-w-4xl mx-auto px-5 py-16 md:py-24 text-center  flex flex-col justify-center items-center"
       >
         {/* Icon */}
         <motion.div
