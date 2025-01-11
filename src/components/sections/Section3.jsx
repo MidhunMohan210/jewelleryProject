@@ -1,9 +1,29 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useState, useEffect } from "react";
 import background from "../../assets/section3/background2.png";
+import background2 from "../../assets/section3/bgMobile.png";
 import { GiDiamondRing } from "react-icons/gi";
 import { motion } from "framer-motion";
 
 const Section3 = () => {
+  const [bgImage, setBgImage] = useState(background2);
+
+  // Determine background based on screen width
+  useEffect(() => {
+    const updateBackground = () => {
+      if (window.innerWidth < 640) {
+        setBgImage(background2); // For small screens
+      } else {
+        setBgImage(background); // For larger screens
+      }
+    };
+
+    updateBackground(); // Set initial background
+    window.addEventListener("resize", updateBackground);
+
+    return () => window.removeEventListener("resize", updateBackground);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,17 +66,16 @@ const Section3 = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       style={{
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)), url(${background})`,
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)), url(${bgImage})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "right",
-        
       }}
-      className="relative  h-full bg-cover sm:bg-[length:40%] padding-reverse  bg-[#FBF8F6] sm:mt-12"
+      className="relative h-full bg-cover sm:bg-[length:40%] padding-reverse bg-[#FBF8F6] sm:mt-12"
     >
       {/* Content container */}
       <motion.div
         variants={containerVariants}
-        className="relative z-10 max-w-4xl mx-auto px-5 py-16 md:py-24 text-center  flex flex-col justify-center items-center"
+        className="relative z-10 max-w-4xl mx-auto px-5 py-16 md:py-24 text-center flex flex-col justify-center items-center"
       >
         {/* Icon */}
         <motion.div
@@ -78,14 +97,14 @@ const Section3 = () => {
         {/* Main heading */}
         <motion.h1
           variants={itemVariants}
-          className="text-2xl md:text-4xl lg:text-5xl  text-gray-600 font-semibold mb-6 md:mb-8 tracking-wide"
+          className="text-2xl md:text-4xl lg:text-5xl text-gray-600 font-semibold mb-6 md:mb-8 tracking-wide"
         >
           HIGH QUALITY SINCE 1990
         </motion.h1>
 
         {/* Description */}
         <motion.div variants={itemVariants} className="space-y-4">
-          <p className="text-base sm:text-lg text-gray-600  max-w-sm sm:max-w-xl mx-auto leading-relaxed font-medium px-4 sm:px-8">
+          <p className="text-base sm:text-lg text-gray-600 max-w-sm sm:max-w-xl mx-auto leading-relaxed font-medium px-4 sm:px-8">
             For over three decades, we've been creating masterpieces that
             celebrate life's precious moments. Our commitment to excellence and
             attention to detail have made us a trusted name in fine jewelry since

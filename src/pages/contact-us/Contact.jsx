@@ -88,11 +88,19 @@ function Contact() {
           />
         </div>
 
-        <div className=" px-4 sm:px-6 max-w-5xl lg:px-8 mx-auto text-sm sm:text-base">
+        <div className=" px-4 sm:px-6 max-w-5xl lg:px-8 mx-auto text-sm sm:text-base f">
+
+        <div className="text-amber-800 mb-4 flex justify-center">
+            <img
+              src="https://auriane.jwsuperthemes.com/wp-content/uploads/2022/03/jewelry_img-2.svg"
+              alt=""
+              className="w-16 h-16 sm:w-20 sm:h-20"
+            />
+          </div>
           {/* Form Content */}
           <h1
-            className="text-2xl sm:text-4xl font-bold text-headingColor  text-center mb-8 relative z-10"
-            style={{ fontFamily: "Playfair Display, serif" }}
+            className="text-2xl sm:text-3xl marcellus-regular !font-bold text-headingColor  text-center mb-8 relative z-10 tracking-wide"
+           
           >
             Keep In Touch with Us
           </h1>

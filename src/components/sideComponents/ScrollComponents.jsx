@@ -35,7 +35,7 @@ const ScrollComponents = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 z-50 fixed bottom-10 right-4">
+    <div className="flex flex-col gap-5 z-40 fixed bottom-10 right-4">
       {/* Scroll to Top Button */}
       {!isAtTop && (
         <motion.button
