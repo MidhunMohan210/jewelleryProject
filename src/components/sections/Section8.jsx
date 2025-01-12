@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { motion } from "framer-motion";
 import flower from "../../assets/section8/flower.png";
 
@@ -80,7 +81,7 @@ function Section8() {
             whileInView="visible"
             viewport={{ once: false, amount: 0.5 }}
             variants={fadeInUp}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h2 className="text-4xl sm:text-5xl font-prem font-medium text-gray-600 max-w-56">
               It's Always the Right Size

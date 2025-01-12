@@ -51,7 +51,10 @@ export function Header() {
           <div className="flex justify-between items-center h-16 ml-4 sm:ml-0">
             {/* Logo */}
             <div className="flex-shrink-0">
+              <Link to={'/'}>
               <h1 className="text-2xl font-bold text-white">Cliq</h1>
+              
+              </Link>
             </div>
 
             {/* Desktop Navigation */}

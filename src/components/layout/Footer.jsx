@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
-    <section className="bg-white">
+    <section className="bg-white cursor-pointer">
       <div className="max-w-screen-xl px-7 py-6 mx-auto space-y-4 overflow-hidden sm:px-6 sm:py-12 lg:px-8">
         <nav className="flex flex-wrap justify-center gap-2 -mx-3 sm:-mx-5 sm:gap-0">
           <div className="px-3 py-1 sm:px-5 sm:py-2">
@@ -15,21 +15,19 @@ export function Footer() {
               Blog
             </span>
           </div>
-          <div className="px-3 py-1 sm:px-5 sm:py-2">
+          <Link to="/admin/login">
+          <div className="px-3 py-1 sm:px-5 sm:py-2 ">
             <span className="text-sm sm:text-base leading-6 text-gray-500 hover:text-gray-900">
-              Team
+              Admin
             </span>
           </div>
+          </Link>
           <div className="px-3 py-1 sm:px-5 sm:py-2">
             <span className="text-sm sm:text-base leading-6 text-gray-500 hover:text-gray-900">
               Pricing
             </span>
           </div>
-          <div className="px-3 py-1 sm:px-5 sm:py-2">
-            <span className="text-sm sm:text-base leading-6 text-gray-500 hover:text-gray-900">
-              Contact
-            </span>
-          </div>
+       
           <div className="px-3 py-1 sm:px-5 sm:py-2">
             <span className="text-sm sm:text-base leading-6 text-gray-500 hover:text-gray-900">
               Terms

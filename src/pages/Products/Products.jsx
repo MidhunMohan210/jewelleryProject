@@ -96,17 +96,20 @@ function Products() {
                 1–12 Products of 34 Products
               </span>
               <div className="flex items-center justify-end  space-x-4">
-                <span className="text-sm sm:text-base">Sort by</span>
-                <Select>
-                  <SelectTrigger className="w-[180px] no-focus-box">
-                    <SelectValue placeholder="Theme" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem  value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
+              <span className="text-sm sm:text-base">Sort by</span>
+<Select>
+  <SelectTrigger className="w-[140px] no-focus-box">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent
+    // className="absolute left-0 top-full mt-1 w-[180px]  bg-white shadow-md rounded-md"
+  >
+    <SelectItem value="light" className="text-left px-2 ">Price low -high </SelectItem>
+    <SelectItem value="dark" className="text-left px-2">Price high-low</SelectItem>
+    <SelectItem value="system" className="text-left px-2">System</SelectItem>
+  </SelectContent>
+</Select>
+
 
                 {/* <i className="fas fa-th-large"></i>
                         <i className="fas fa-th-list"></i> */}
