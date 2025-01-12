@@ -77,7 +77,7 @@ export function Header() {
                 <input
                   type="text"
                   placeholder="Search product ..."
-                  className="w-64 pl-10 pr-4 py-1 bg-gray-700  rounded-full focus:outline-none focus:text-yellow-500"
+                  className={`w-64 pl-10 pr-4 py-1   bg-gray-700  rounded-full focus:outline-none focus:text-yellow-500`}
                 />
               </div>
 

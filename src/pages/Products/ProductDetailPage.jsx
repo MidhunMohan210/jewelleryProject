@@ -308,11 +308,13 @@ function ProductDetailPage() {
                 <span className="title-font font-medium text-xl sm:text-2xl text-gray-900 jost_heading">
                   ₹ {productDetail?.price}
                 </span>
-                <button className="flex ml-auto text-white bg-gray-700 border-0 py-2 px-6 rounded-md 
+                <button
+                  className="flex ml-auto text-white bg-gray-700 border-0 py-2 px-6 rounded-md 
                    focus:outline-none hover:bg-gray-700 hover:shadow-lg hover:scale-105 
-                   transition-all duration-300 ease-in-out">
-  Add to Wishlist
-</button>
+                   transition-all duration-300 ease-in-out"
+                >
+                  Add to Wishlist
+                </button>
 
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:bg-gray-300 transition-colors">
                   <svg

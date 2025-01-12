@@ -4,6 +4,8 @@ import About from "@/pages/about/About";
 import Products from "@/pages/Products/Products";
 import ProductDetailPage from "@/pages/Products/ProductDetailPage";
 import Contact from "@/pages/contact-us/Contact";
+import AdminLogin from "@/pages/login/AdminLogin";
+import AdminDashboard from "@/pages/admin/dashboard/AdminDashboard";
 
 function Router() {
   return (
@@ -14,6 +16,8 @@ function Router() {
         <Route path="/products" element={<Products />} />
         <Route path="/productDetail/:id" element={<ProductDetailPage />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
     </>
   );

@@ -36,7 +36,7 @@ function PhoneComponent() {
     }, []);
    
   return (
-    <div className={`flex flex-col gap-5 z-50 fixed ${isAtTop ? 'bottom-10' : 'bottom-[105px]'} right-4`}>
+    <div className={`flex flex-col gap-5 z-40 fixed ${isAtTop ? 'bottom-10' : 'bottom-[105px]'} right-4`}>
 
     <motion.div
   
