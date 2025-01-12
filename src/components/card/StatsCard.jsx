@@ -2,7 +2,7 @@
 import { Package, Heart, Users, DollarSign } from "lucide-react";
 
 const StatsCard = ({ icon, value, title, change, changeColor }) => (
-  <div className="bg-gray-900 p-6 rounded-sm shadow-lg flex flex-col gap-4">
+  <div className="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col gap-4">
     <div className={`${changeColor} w-8 h-8`}>
       {icon}
     </div>
