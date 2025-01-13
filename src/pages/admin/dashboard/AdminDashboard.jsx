@@ -160,7 +160,7 @@ function AdminDashboard() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="mb-8 mt-2">
       <section className="bg-gray-800 rounded-sm">
         <h2 className="px-6 pt-6 text-2xl font-bold text-gray-400">Summary</h2>
         <StatsDashboard />
@@ -184,7 +184,7 @@ function AdminDashboard() {
         </div>
       </section>
 
-      <section className="mt-8 relative bg-gray-800 p-6 rounded-lg">
+      <section className=" mt-8 relative bg-gray-800 p-6 rounded-lg">
         <h2 className="text-2xl font-bold text-gray-400 mb-6">User Details</h2>
         <UserData />
         <div className="flex justify-end mt-5">
