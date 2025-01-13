@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import { Package, Heart, Users, DollarSign } from "lucide-react";
 
 const StatsCard = ({ icon, value, title, change, changeColor }) => (
+  
   <div className="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col gap-4">
     <div className={`${changeColor} w-8 h-8`}>
       {icon}
@@ -23,28 +23,28 @@ const StatsDashboard = () => {
       value: "500",
       title: "Total Products",
       change: 8,
-      changeColor: "text-emerald-400"
+      changeColor: "text-emerald-300"
     },
     {
       icon: <Heart className="w-full h-full" />,
       value: "320",
       title: "Wishlisted Products",
       change: 10,
-      changeColor: "text-orange-400"
+      changeColor: "text-orange-300"
     },
     {
       icon: <Users className="w-full h-full" />,
       value: "120",
       title: "Users",
       change: 2,
-      changeColor: "text-pink-400"
+      changeColor: "text-pink-300"
     },
     {
       icon: <DollarSign className="w-full h-full" />,
       value: "$5k",
       title: "Sales",
       change: 3,
-      changeColor: "text-blue-400"
+      changeColor: "text-blue-300"
     }
   ];
 

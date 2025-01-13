@@ -16,7 +16,7 @@ function UserData() {
       {users.map((user, index) => (
         <div
           key={index}
-          className="bg-gray-700 p-4 rounded-lg shadow-lg flex flex-col justify-between"
+          className="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col justify-between"
         >
           <div>
             <h3 className="text-lg font-semibold text-gray-200">{user.name}</h3>
@@ -33,7 +33,7 @@ function UserData() {
             </button>
             {/* Delete Icon */}
             <button
-              className="text-red-400 hover:text-red-600"
+              className="text-gray-200 "
               aria-label={`Delete ${user.name}`}
             >
               <Trash2 className="w-5 h-5" />
