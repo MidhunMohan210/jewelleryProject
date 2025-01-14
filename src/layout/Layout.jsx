@@ -32,23 +32,27 @@ function Layout() {
   // Admin layout with sidebar
   if (isAdminPath) {
     return (
-      <>
+      <div className="h-screen overflow-hidden">
         {isLoading ? (
           <Loader />
         ) : (
-          <div className="flex h-screen">
-            <div className="flex ">
-              <AdminSidebar />
-            </div>
-            <div className="flex-1 flex flex-col">
+          <div className="flex h-full  ">
+            {/* Sidebar - full height */}
+            <AdminSidebar className="h-full" />
+
+            {/* Main content area - flex container for header and content */}
+            <div className="flex-1 flex flex-col h-full">
+              {/* Header - fixed at top */}
               <AdminHeader />
-              <div className=" flex-1 overflow-y-auto scrollbar-none p-3 bg-[#181c29]">
+
+              {/* Router content - takes remaining space and scrollable */}
+              <div className="flex-1 overflow-y-auto scrollbar-none p-3 bg-[#181c29]">
                 <Router />
               </div>
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   }
 

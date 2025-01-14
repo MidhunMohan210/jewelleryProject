@@ -22,7 +22,7 @@ const AdminHeader = () => {
   };
 
   return (
-    <header className="w-full bg-[#181c29] border-b border-gray-800 shadow-sm">
+    <header className="w-full bg-[#181c29] border-b border-gray-800 shadow-sm ">
       <div className="px-6 py-4 pr-8 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <button
@@ -34,7 +34,7 @@ const AdminHeader = () => {
           <h1 className="text-lg font-bold text-gray-400">Admin Dashboard</h1>
         </div>
 
-        <div className="flex items-center space-x-4">
+        {/* <div className="flex items-center space-x-4">
           <CommandSearch />
           <div className="flex items-center space-x-3">
             <DropdownMenu>
@@ -52,7 +52,7 @@ const AdminHeader = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-        </div>
+        </div> */}
       </div>
     </header>
   );
