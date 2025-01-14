@@ -11,36 +11,38 @@ import {
 } from "lucide-react";
 import { useSidebar } from "../../context/SidebarContext";
 import { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const { isOpen, isMobileOpen, toggleMobileSidebar, makeSidebarOpen } =
     useSidebar();
   const sidebarRef = useRef(null);
+  const location = useLocation();
 
   const menuSections = [
     {
       title: "Menu",
       items: [
-        { icon: <LayoutDashboard size={19} />, text: "Dashboard" },
-        { icon: <Users size={19} />, text: "Users" },
-        { icon: <ShoppingCart size={19} />, text: "Products" },
-        { icon: <StarHalf size={19} />, text: "Testimonials" },
+        { icon: <LayoutDashboard size={19} />, text: "Dashboard", route: "admin/Dashboard" },
+        { icon: <Users size={19} />, text: "Users", route: "/users" },
+        { icon: <ShoppingCart size={19} />, text: "Products", route: "/products" },
+        { icon: <StarHalf size={19} />, text: "Testimonials", route: "admin/addTestimonial" },
       ],
     },
     {
       title: "Security",
-      items: [{ icon: <ShieldCheck size={19} />, text: "Privacy" }],
+      items: [{ icon: <ShieldCheck size={19} />, text: "Privacy", route: "/privacy" }],
     },
     {
       title: "Support",
       items: [
-        { icon: <HelpCircle size={19} />, text: "Help" },
+        { icon: <HelpCircle size={19} />, text: "Help", route: "/help" },
       ],
     },
     {
       title: "Settings",
       items: [
-        { icon: <Power size={19} color="red" />, text: "Logout" },
+        { icon: <Power size={19} color="red" />, text: "Logout", route: "/logout" },
       ],
     },
   ];
@@ -52,19 +54,32 @@ const Sidebar = () => {
       }
     };
 
+    const handleClickOutside = (event) => {
+      if (
+        sidebarRef.current && 
+        !sidebarRef.current.contains(event.target) && 
+        window.innerWidth < 768 && 
+        isMobileOpen
+      ) {
+        toggleMobileSidebar();
+      }
+    };
+
     handleResize();
 
     window.addEventListener("resize", handleResize);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [isMobileOpen, toggleMobileSidebar]);
 
   return (
     <div
       ref={sidebarRef}
-      className={`fixed md:relative min-h-screen flex flex-col overflow-y-scroll overflow-x-hidden scrollbar-none border-r border-gray-800 ${
+      className={`fixed md:relative h-screen flex flex-col overflow-y-scroll overflow-x-hidden scrollbar-none border-r border-gray-800 ${
         isOpen ? "w-64" : "w-24"
       } bg-[#181c29] text-white transition-all duration-500 z-50 ${
         isMobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
@@ -104,13 +119,14 @@ const Sidebar = () => {
               </h3>
             )}
             {section.items.map((item, itemIndex) => (
-              <div
+              <Link 
+                to={item.route}
                 key={itemIndex}
                 className={`flex items-center ${
-                  isOpen  && "pl-8"
+                  isOpen && "pl-8"
                 } p-4 py-2 my-7 pr-6 hover:bg-gray-700 text-gray-400 hover:text-blue-500 transition-colors cursor-pointer ${
                   !isOpen ? "justify-center" : "space-x-4 justify-between"
-                }`}
+                } ${location.pathname === item.route ? "bg-gray-700 text-blue-500" : ""}`}
               >
                 <div className="flex items-center gap-5">
                   <span className="text-sm hover:text-blue-500">
@@ -122,16 +138,16 @@ const Sidebar = () => {
                 </div>
 
                 {isOpen && <ChevronRight size={17} />}
-              </div>
+              </Link>
             ))}
           </div>
         ))}
       </nav>
 
       {/* Version Section */}
-      <div className="border-t border-gray-700 py-3 sm:py-2  px-8 bg-gray-800">
+      <div className="border-t border-gray-700 py-3 sm:py-2 px-8 bg-gray-800">
         <div className={`flex ${isOpen ? "justify-between" : "justify-center"} items-center`}>
-          <span className="text-gray-400 text-xs ">
+          <span className="text-gray-400 text-xs">
             {isOpen ? "Version" : "V"}
           </span>
           {isOpen && (

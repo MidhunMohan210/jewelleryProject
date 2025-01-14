@@ -171,13 +171,13 @@ function AdminDashboard() {
         <div className="grid grid-cols-1  md:grid-cols-2 gap-8">
           <div className="p-6 rounded-lg bg-gray-900 shadow-lg">
             <h3 className="text-xl font-semibold text-gray-300 mb-4">Monthly Sales (Bar Graph)</h3>
-            <div className="h-[300px]  sm:h-[400px]">
+            <div className="h-[300px]  sm:h-[350px]">
               <Bar data={barData} options={barOptions} />
             </div>
           </div>
           <div className="p-6 rounded-lg bg-gray-900 shadow-lg">
             <h3 className="text-xl font-semibold text-gray-300 mb-4">Revenue Trends (Line Graph)</h3>
-            <div className="h-[300px] sm:h-[400px]">
+            <div className="h-[300px] sm:h-[350px]">
               <Line data={lineData} options={lineOptions} />
             </div>
           </div>
