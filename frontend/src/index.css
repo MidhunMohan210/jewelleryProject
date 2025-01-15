@@ -143,6 +143,15 @@
   font-weight: 500;
   font-style: normal;
 }
+body {
+  /* height: 100%; */
+  margin: 0;
+  /* overflow: hidden;  Prevent scroll collapse issues */
+}
+
+/* #root {
+  height: 100%;
+} */
 
 .big-shoulders-stencil-text {
   font-family: "Big Shoulders Stencil Text", serif;
