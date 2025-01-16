@@ -1,19 +1,22 @@
-import ScrollToTop from "./components/scroll/ScrollToTop ";
-import Layout from "./layout/Layout";
+import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter } from "react-router-dom";
+import Layout from "./layout/Layout";
 import { SidebarProvider } from "./context/SidebarContext";
-// import './App.css'
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <SidebarProvider>
         <BrowserRouter>
-          <ScrollToTop />
           <Layout />
         </BrowserRouter>
       </SidebarProvider>
-    </>
+      {/* <ReactQueryDevtools  /> */}
+    </QueryClientProvider>
   );
 }
 

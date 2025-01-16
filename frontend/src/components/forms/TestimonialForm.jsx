@@ -1,11 +1,17 @@
-import { useState,useRef } from "react";
+import { useState, useRef } from "react";
 import { Camera } from "lucide-react";
 import { Cropper } from "react-cropper";
 import "cropperjs/dist/cropper.css";
-
+import { useMutation } from "@tanstack/react-query";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useForm } from "react-hook-form";
 import imageCompression from "browser-image-compression";
+import axios from "axios";
+
+
+const AddTestimonial = (data)=>{
+  return axios.post('http://localhost:7007/admin/create-testimonial',data)
+}
 
 const TestimonialForm = () => {
   const [rating, setRating] = useState(5);
@@ -14,21 +20,33 @@ const TestimonialForm = () => {
   const [cropData, setCropData] = useState(null);
   const [cropper, setCropper] = useState(null);
   const cropperRef = useRef(null);
+
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors, isSubmitting },
   } = useForm();
 
+
+  const {mutate} = useMutation({
+    mutationFn: AddTestimonial,
+  })
   const onSubmit = (data) => {
     const formData = { ...data, rating, image: compressedImage };
+    mutate(formData);
     console.log(formData, "Final Form Data");
   };
 
   const handleFileSelect = async (file) => {
+    if (!file) return;
+
+    // Reset previous crop and compressed image data
+    setCropData(null);
+    setCompressedImage(null);
+
+    // Show the new image for cropping
     const imageUrl = URL.createObjectURL(file);
-    setImagePreview(imageUrl); // Show the image in the Cropper
+    setImagePreview(imageUrl);
   };
 
   const handleCrop = async () => {
@@ -39,34 +57,21 @@ const TestimonialForm = () => {
         imageSmoothingQuality: "high",
       });
 
-      // Convert the cropped canvas to a blob for compression
       croppedCanvas.toBlob(async (blob) => {
         if (blob) {
+          // Compress the cropped image
           const compressedFile = await imageCompression(blob, {
             maxSizeMB: 1,
             maxWidthOrHeight: 1024,
             useWebWorker: true,
             fileType: "image/webp",
           });
+
+          // Update state with the cropped and compressed image
           setCompressedImage(compressedFile);
-          setCropData(croppedCanvas.toDataURL()); // Update the cropped image preview
+          setCropData(croppedCanvas.toDataURL());
         }
       });
-    }
-  }
-  const handleFileCompression = async (file) => {
-    try {
-      const options = {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1024,
-        useWebWorker: true,
-        fileType: "image/webp",
-      };
-      const compressedFile = await imageCompression(file, options);
-      setCompressedImage(compressedFile);
-      setImagePreview(URL.createObjectURL(compressedFile));
-    } catch (error) {
-      console.error("Image compression error:", error);
     }
   };
 
@@ -79,21 +84,6 @@ const TestimonialForm = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-        <style>
-{`
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus {
-    -webkit-text-fill-color: #f3f4f6;
-    -webkit-box-shadow: 0 0 0px 1000px #111827 inset;
-    transition: background-color 5000s ease-in-out 0s;
-  }
-`}
-</style>
-
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="grid grid-cols-1 gap-6 gap-y-3 sm:gap-y-6"
@@ -116,7 +106,9 @@ const TestimonialForm = () => {
                 placeholder="Full Name"
                 className="block w-full rounded-md border-gray-600 bg-gray-800 text-white shadow-sm p-2"
               />
-              {errors.name && <span className="text-red-500">{errors.name.message}</span>}
+              {errors.name && (
+                <span className="text-red-500">{errors.name.message}</span>
+              )}
             </div>
 
             {/* Position */}
@@ -200,9 +192,7 @@ const TestimonialForm = () => {
                     background={false}
                     responsive={true}
                     ref={cropperRef}
-                    onInitialized={(instance) => {
-                      setCropper(instance);
-                    }}
+                    onInitialized={(instance) => setCropper(instance)}
                   />
                   <button
                     type="button"
@@ -243,7 +233,7 @@ const TestimonialForm = () => {
                 className="absolute w-0 h-0"
                 onChange={(e) => {
                   if (e.target.files?.length) {
-                    handleFileSelect(e.target.files[0]);
+                    handleFileSelect(e.target.files[e.target.files.length - 1]);
                   }
                 }}
               />
