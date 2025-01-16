@@ -240,7 +240,7 @@ const TestimonialForm = () => {
                 id="image"
                 type="file"
                 accept="image/*"
-                className="sr-only"
+                className="absolute w-0 h-0"
                 onChange={(e) => {
                   if (e.target.files?.length) {
                     handleFileSelect(e.target.files[0]);

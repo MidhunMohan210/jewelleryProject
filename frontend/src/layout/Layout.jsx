@@ -33,9 +33,9 @@ function Layout() {
   if (isAdminPath) {
     return (
       <div className="h-screen overflow-hidden">
-        {isLoading ? (
+        {/* {isLoading ? (
           <Loader />
-        ) : (
+        ) : ( */}
           <div className="flex h-full  ">
             {/* Sidebar - full height */}
             <AdminSidebar className="h-full" />
@@ -51,7 +51,7 @@ function Layout() {
               </div>
             </div>
           </div>
-        )}
+        {/* )} */}
       </div>
     );
   }
