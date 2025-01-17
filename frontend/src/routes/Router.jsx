@@ -7,6 +7,8 @@ import Contact from "@/pages/contact-us/Contact";
 import AdminLogin from "@/pages/login/AdminLogin";
 import AdminDashboard from "@/pages/admin/dashboard/AdminDashboard";
 import AddTestimonial from "@/pages/admin/testimonial/AddTestimonial";
+import Category from "@/pages/admin/category/Category";
+import Material from "@/pages/admin/material/Material";
 
 function Router() {
   return (
@@ -22,6 +24,8 @@ function Router() {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/addTestimonial" element={<AddTestimonial />} />
+        <Route path="/admin/category" element={<Category />} />
+        <Route path="/admin/material" element={<Material />} />
       </Routes>
     </>
   );

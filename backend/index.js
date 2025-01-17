@@ -11,7 +11,7 @@ const app =express()
 
 connectDB()
 
-'mongodb+srv://webox2525:jewelery123@cluster0.ohakl.mongodb.net/jewelery-database?retryWrites=true&w=majority'
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use('/admin',adminRoute)

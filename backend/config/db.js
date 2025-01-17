@@ -1,17 +1,17 @@
 import mongoose from "mongoose";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
 const connectDB = async () => {
   try {
-
-    // console.log(process.env.MONGO_URI,'url')
-    const connect = await mongoose.connect('mongodb+srv://webox2525:jewelery123@cluster0.ohakl.mongodb.net/jewelery-database?retryWrites=true&w=majority');
-    // console.log(`MongoDB Connected ${connect.connection.host}`);
+    const connect = await mongoose.connect(
+      "mongodb+srv://webox_jewlery:Jewlery123@cluster0.ohakl.mongodb.net/jewllery?retryWrites=true&w=majority&appName=Cluster0"
+    );
+    console.log(`MongoDB Connected ${connect.connection.host}`);
   } catch (error) {
     console.log(error);
-    
+
     console.log(`Error : ${error.message}`);
     // process.exit(1)
   }

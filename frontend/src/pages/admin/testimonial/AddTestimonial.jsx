@@ -3,9 +3,7 @@ import TestimonialForm from "@/components/forms/TestimonialForm";
 const AddTestimonial = () => {
   return (
     <>
-
-      <TestimonialForm  />
-
+      <TestimonialForm />
     </>
   );
 };

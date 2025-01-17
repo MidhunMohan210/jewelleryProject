@@ -54,7 +54,7 @@ const Sidebar = () => {
           subItems: [
             {
               text: "Categories",
-              route: "admin/categories",
+              route: "admin/category",
             },
             {
               text: "Subcategories",
@@ -62,11 +62,11 @@ const Sidebar = () => {
             },
             {
               text: "Materials",
-              route: "admin/materials",
+              route: "admin/material",
             },
             {
               text: "Products",
-              route: "admin/products",
+              route: "admin/product",
             },
           ],
         },

@@ -1,13 +1,15 @@
-import {  User, Menu } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { CommandSearch } from "../command/CommandSearch";
+import {  
+  // User, 
+  Menu } from "lucide-react";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
+// import { CommandSearch } from "../command/CommandSearch";
 import { useSidebar } from "../../context/SidebarContext";
 
 const AdminHeader = () => {
