@@ -10,7 +10,9 @@ import axios from "axios";
 
 
 const AddTestimonial = (data)=>{
-  return axios.post('http://localhost:7007/admin/create-testimonial',data)
+  return axios.post('http://localhost:7007/admin/create-testimonial',data,{
+   
+  })
 }
 
 const TestimonialForm = () => {
@@ -32,10 +34,29 @@ const TestimonialForm = () => {
     mutationFn: AddTestimonial,
   })
   const onSubmit = (data) => {
-    const formData = { ...data, rating, image: compressedImage };
+    console.log('Submitting data:', data);
+  
+    if (!compressedImage) {
+      console.error('Image is missing');
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('position', data.position);
+    formData.append('comment', data.comment);
+    formData.append('rating', rating);
+    formData.append('image', compressedImage, compressedImage.name || 'image.webp');
+  
+    // Debug FormData contents
+    for (const [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
+    }
+  
     mutate(formData);
-    console.log(formData, "Final Form Data");
   };
+  
+
 
   const handleFileSelect = async (file) => {
     if (!file) return;
