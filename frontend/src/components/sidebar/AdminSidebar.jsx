@@ -5,13 +5,13 @@ import {
   Power,
   LayoutDashboard,
   StarHalf,
-  Package,
+  // Package,
   ShieldCheck,
   Menu,
   Warehouse,
-  Layers,
-  Component,
-  Grid3X3,
+  // Layers,
+  // Component,
+  // Grid3X3,
 } from "lucide-react";
 import { useSidebar } from "../../context/SidebarContext";
 import { useEffect, useRef, useState } from "react";
@@ -53,6 +53,10 @@ const Sidebar = () => {
           route: "#",
           subItems: [
             {
+              text: "Brands",
+              route: "admin/brand",
+            },
+            {
               text: "Categories",
               route: "admin/category",
             },
@@ -63,6 +67,11 @@ const Sidebar = () => {
             {
               text: "Materials",
               route: "admin/material",
+            },
+
+            {
+              text: "Sizes",
+              route: "admin/size",
             },
             {
               text: "Products",
