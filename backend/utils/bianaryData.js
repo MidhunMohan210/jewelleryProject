@@ -1,0 +1,1 @@
+import { uploadImageToCloudinary } from "../config/cloudinary";

@@ -23,24 +23,23 @@ app.use(
 );
 
 // Enable file uploads
-app.use(
-  fileUpload({
-    useTempFiles: false, // Disable temporary file usage
-    createParentPath: true, // Automatically create parent directories if needed
-  })
-);
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp/', 
+    createParentPath: true,
+  }));
 
 // Parse JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Log all incoming requests (for debugging)
-app.use((req, res, next) => {
-  console.log(`Incoming ${req.method} request to ${req.url}`);
-  console.log('Body:', req.body);
-  console.log('Files:', req.files);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(`Incoming ${req.method} request to ${req.url}`);
+//   console.log('Body:', req.body);
+//   console.log('Files:', req.files);
+//   next();
+// });
 
 // Define routes
 app.use('/admin', adminRoute);

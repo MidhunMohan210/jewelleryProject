@@ -1,44 +1,41 @@
 import TestimonialModel from "../models/testimonialModel.js";
+import { uploadImageToCloudinary } from "../config/cloudinary.js";
 
 export const createTestimonial = async (req, res) => {
   try {
+    const { name, comment, position, rating } = req.body;
+    console.log(req.files)
+    const image = req.files?.image;
 
-    console.log('Body:', req.body); // Logs text fields
-    console.log('Files:', req.files); // Logs uploaded files
-  
-    if (!req.files || !req.files.image) {
-      return res.status(400).json({ error: 'Image file is required' });
+    if (!name || !comment || !position || !rating || !image) {
+      return res.status(400).json({ error: "Missing required fields" });
     }
-  
-    const { name, position, comment, rating } = req.body;
-    const image = req.files.image;
-  
-    console.log({ name, position, comment, rating });
-    console.log('Uploaded Image:', image);
-  
-    res.json({ message: 'Data received successfully' });
-    // console.log(req.body, 'Request Body12');
+    console.log(image.data,'imageeee')
 
-    // const { name, comment,position, rating, image } = req.body;
+ 
+    const imageUploadResult = await uploadImageToCloudinary(image.tempFilePath, {
+      folder: "testimonialImages",
+    });
 
-    // if (!name || !comment || !position || !rating || !image) {
-    //   return res.status(400).json({ error: 'Missing required fields' });
-    // }
+    console.log(imageUploadResult, "Uploaded Image URL");
 
-    // const newTestimonial = new TestimonialModel({
-    //   name,
-    //   testimonial:comment,
-    //   rating,
-    //   // image,
-    //   position
-    // });
+    // Save testimonial to the database
+    const newTestimonial = new TestimonialModel({
+      name,
+      testimonial: comment,
+      rating,
+      image: imageUploadResult.secure_url, 
+      position,
+    });
 
-    // await newTestimonial.save();
+    await newTestimonial.save();
 
-    // // Respond with the created testimonial
-    // res.status(201).json(newTestimonial);
+    res.status(201).json({
+      message: "Testimonial created successfully",
+      testimonial: newTestimonial,
+    });
   } catch (err) {
-    console.error('Error creating testimonial:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error creating testimonial:", err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
