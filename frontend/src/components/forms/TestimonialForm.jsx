@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useRef,useEffect } from "react";
 import { Camera } from "lucide-react";
 import { Cropper } from "react-cropper";

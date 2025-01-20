@@ -2,7 +2,7 @@
 import apiClient from "@/config/api";
 import { Button } from "../ui/Button";
 import { useForm } from "react-hook-form";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useLoader } from "@/context/LoaderContext.";
 import { useToast } from "@/hooks/use-toast";
 

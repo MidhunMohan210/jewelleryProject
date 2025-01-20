@@ -1,6 +1,5 @@
 import TestimonialForm from "@/components/forms/TestimonialForm";
 import axios from "axios";
-import { useState,useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 
 
@@ -31,15 +30,11 @@ const AddTestimonial = () => {
   };
   return (
     <>
-<<<<<<< HEAD
-      <TestimonialForm />
-=======
     {/* <div>
       
     </div> */}
       <TestimonialForm onSubmitCreate={onSubmitCreate} mode={'create'}  />
 
->>>>>>> origin
     </>
   );
 };
