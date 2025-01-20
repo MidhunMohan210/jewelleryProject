@@ -1,6 +1,20 @@
 import TestimonialModel from "../models/testimonialModel.js";
 import { uploadImageToCloudinary } from "../config/cloudinary.js";
 
+/**
+ * Creates a new testimonial.
+ * 
+ * This function handles the incoming request to create a testimonial by:
+ * 1. Extracting the required fields (name, comment, position, rating) from the request body.
+ * 2. Validating that all required fields are provided.
+ * 3. Uploading the testimonial image to Cloudinary.
+ * 4. Saving the testimonial data, including the uploaded image URL, to the database.
+ * 5. Sending a success response with the created testimonial data or an error response if any issues occur.
+ * 
+ * @param {Object} req - The request object containing the testimonial data.
+ * @param {Object} res - The response object used to send back the desired HTTP response.
+ */
+
 export const createTestimonial = async (req, res) => {
   try {
     const { name, comment, position, rating } = req.body;

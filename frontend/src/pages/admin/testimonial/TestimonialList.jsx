@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
 import React, { useCallback, useMemo } from "react";
 import { Edit, Trash2, Star, StarHalf } from "lucide-react";
 import axios from "axios";
