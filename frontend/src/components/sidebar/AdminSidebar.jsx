@@ -26,7 +26,7 @@ const Sidebar = () => {
         { icon: <LayoutDashboard size={19} />, text: "Dashboard", route: "admin/Dashboard" },
         { icon: <Users size={19} />, text: "Users", route: "/users" },
         { icon: <ShoppingCart size={19} />, text: "Products", route: "/products" },
-        { icon: <StarHalf size={19} />, text: "Testimonials", route: "admin/addTestimonial" },
+        { icon: <StarHalf size={19} />, text: "Testimonials", route: "admin/list-Testimonial" },
       ],
     },
     {

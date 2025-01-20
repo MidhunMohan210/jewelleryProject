@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef,useEffect } from "react";
 import { Camera } from "lucide-react";
 import { Cropper } from "react-cropper";
 import "cropperjs/dist/cropper.css";
@@ -9,13 +9,11 @@ import imageCompression from "browser-image-compression";
 import axios from "axios";
 
 
-const AddTestimonial = (data)=>{
-  return axios.post('http://localhost:7007/admin/create-testimonial',data,{
-   
-  })
-}
+// const AddTestimonial = (data)=>{
+//   return axios.post('http://localhost:7008/admin/create-testimonial',data)
+// }
 
-const TestimonialForm = () => {
+const TestimonialForm = ({onSubmitCreate,mode,onSubmitEdit,productDetail}) => {
   const [rating, setRating] = useState(5);
   const [compressedImage, setCompressedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -26,36 +24,49 @@ const TestimonialForm = () => {
   const {
     register,
     handleSubmit,
+    setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm();
 
+  useEffect(() => {
 
-  const {mutate} = useMutation({
-    mutationFn: AddTestimonial,
-  })
+    console.log(productDetail,'productss')
+    if (productDetail) {
+      setValue("name", productDetail.name || ""); // Default name
+      setValue("position", productDetail.position || ""); // Default position
+      setValue("comment", productDetail.testimonial || ""); // Default comment
+      setRating(productDetail.rating || 5); // Default rating
+      if (productDetail.image) {
+        setCropData(productDetail.image); 
+      }
+    } else {
+     
+      reset();
+      setRating(5);
+      setCompressedImage(null);
+      setImagePreview(null);
+      setCropData(null);
+    }
+  }, [productDetail, setValue, reset]);
+
   const onSubmit = (data) => {
     console.log('Submitting data:', data);
-  
-    if (!compressedImage) {
-      console.error('Image is missing');
-      return;
-    }
-  
-    const formData = new FormData();
-    formData.append('name', data.name);
-    formData.append('position', data.position);
-    formData.append('comment', data.comment);
-    formData.append('rating', rating);
-    formData.append('image', compressedImage, compressedImage.name || 'image.webp');
-  
-    // Debug FormData contents
-    for (const [key, value] of formData.entries()) {
-      console.log(`${key}:`, value);
-    }
-  
-    mutate(formData);
-  };
-  
+   const dataa = {...data,rating,compressedImage}
+
+    
+console.log(dataa,'dataaaaaff')
+if(mode === 'create'){
+  onSubmitCreate(dataa)
+
+}else if (mode === 'edit'){
+
+  console.log(dataa,'data inside edit submit')
+  onSubmitEdit(dataa)
+}
+
+    // mutate(formData);
+};
 
 
   const handleFileSelect = async (file) => {
@@ -101,7 +112,7 @@ const TestimonialForm = () => {
       <Card className="bg-gray-900 text-white border-none">
         <CardHeader>
           <CardTitle className="text-2xl text-gray-400 font-bold mb-6">
-            Add Testimonial
+          {mode === "create" ? "Add Testimonial" : "Edit Testimonial"}
           </CardTitle>
         </CardHeader>
         <CardContent>

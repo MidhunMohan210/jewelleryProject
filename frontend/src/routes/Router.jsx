@@ -7,6 +7,8 @@ import Contact from "@/pages/contact-us/Contact";
 import AdminLogin from "@/pages/login/AdminLogin";
 import AdminDashboard from "@/pages/admin/dashboard/AdminDashboard";
 import AddTestimonial from "@/pages/admin/testimonial/AddTestimonial";
+import EditTestimonial from "@/pages/admin/testimonial/editTestimonial";
+import TestimonialsList from "@/pages/admin/testimonial/TestimonialList";
 
 function Router() {
   return (
@@ -22,6 +24,10 @@ function Router() {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/addTestimonial" element={<AddTestimonial />} />
+        <Route path="/admin/list-Testimonial" element={<TestimonialsList />} />
+
+        <Route path="/admin/editTestimonial/:id" element={<EditTestimonial />} />
+
       </Routes>
     </>
   );
