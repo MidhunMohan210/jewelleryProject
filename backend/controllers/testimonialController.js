@@ -1,6 +1,6 @@
 import TestimonialModel from "../models/testimonialModel.js";
 
-export const createTestimonial = async (req, res) => {
+export const  createTestimonial = async (req, res) => {
   try {
 
     console.log('Body:', req.body); // Logs text fields

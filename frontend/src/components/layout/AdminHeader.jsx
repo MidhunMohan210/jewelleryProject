@@ -13,9 +13,11 @@ import {
 // import { CommandSearch } from "../command/CommandSearch";
 import { useSidebar } from "../../context/SidebarContext";
 import CustomBarLoader from "../loader/CustomBarLoader/CustomBarLoader";
+import { useLoader } from "@/context/LoaderContext.";
 
 const AdminHeader = () => {
   const { toggleSidebar, toggleMobileSidebar } = useSidebar();
+  const { isLoading } = useLoader();
 
   const handleMenuClick = () => {
     if (window.innerWidth < 768) {
@@ -58,7 +60,7 @@ const AdminHeader = () => {
           </div>
         </div> */}
       </div>
-      {/* <CustomBarLoader /> */}
+      {isLoading && <CustomBarLoader />}
     </header>
   );
 };

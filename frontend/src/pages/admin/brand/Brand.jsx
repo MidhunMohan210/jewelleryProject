@@ -11,7 +11,7 @@ function Brand() {
 
       {/* Scrollable content area */}
       <div className="flex-1 overflow-y-auto bg-gray-900 p-4 scrollbar-none">
-        <SubDetailList />
+        <SubDetailList formType={"brand"} />
       </div>
     </div>
   );

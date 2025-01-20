@@ -2,9 +2,13 @@
 import apiClient from "@/config/api";
 import { Button } from "../ui/Button";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useLoader } from "@/context/LoaderContext.";
+import { useToast } from "@/hooks/use-toast";
 
 function InputSection({ title }) {
+  const { startLoading, stopLoading } = useLoader();
+  const { toast } = useToast();
   const formType = title?.toLowerCase() || "";
 
   /// configure hook form
@@ -16,7 +20,7 @@ function InputSection({ title }) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      [formType]: "",
+      name: "",
     },
   });
 
@@ -24,9 +28,14 @@ function InputSection({ title }) {
   /// for post data
 
   const postSubDetails = async (payload) => {
-    const { data } = await apiClient.post("/admin/create-subdetails", payload); // Payload sent in request body
+    console.log(payload);
+
+    const { data } = await apiClient.post("/admin/create-subdetails", payload, {
+      params: { type: formType?.toLowerCase() },
+    }); // Payload sent in request body
     return data;
   };
+
 
   // const editSubDetails = async (payload) => {
   //   const { data } = await apiClient.put("/admin/edit-subdetails", payload);
@@ -38,27 +47,38 @@ function InputSection({ title }) {
   //   return data;
   // };
 
-  /// configure react query mutation
-  const postMutation = useMutation({
-    mutationFn: postSubDetails,
-    onSuccess: () => {
-      alert("Successfully added!");
-      reset();
+  /// configure react query for fetching data
 
-      // Example: If the response contains a message or some specific details
-      // if (data?.message) {
-      //   alert(`Server says: ${data.message}`);
-      // }
+
+
+
+
+
+  /// configure react query mutation
+  const { mutate: postMutation } = useMutation({
+    mutationFn: postSubDetails,
+
+    onMutate: () => {
+      startLoading();
+    },
+    onSuccess: () => {
+      stopLoading();
+      reset();
     },
     onError: (error) => {
-      console.log(error);
-      alert(error.message || "Something went wrong!");
+      stopLoading();
+      toast({
+        title: "Error !",
+        description: error?.response?.data?.message,
+      });
     },
   });
 
   const onSubmit = (data) => {
-    postMutation.mutate(data);
+    postMutation(data);
   };
+
+  
 
   return (
     <>
@@ -77,7 +97,7 @@ function InputSection({ title }) {
                 type="text"
                 placeholder={`Enter ${title}`}
                 className="block w-full rounded-full bg-gray-300 text-black shadow-sm p-2 px-6"
-                {...register(formType, {
+                {...register("name", {
                   required: `${title} is required`,
                   minLength: {
                     value: 5,
@@ -85,9 +105,9 @@ function InputSection({ title }) {
                   },
                 })}
               />
-              {errors[formType] && (
+              {errors?.name && (
                 <p className="text-red-400 text-sm mt-2 ml-4">
-                  {errors[formType].message}
+                  {errors?.name?.message}
                 </p>
               )}
             </div>
