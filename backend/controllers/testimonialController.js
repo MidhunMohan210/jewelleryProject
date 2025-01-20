@@ -1,7 +1,7 @@
 import TestimonialModel from "../models/testimonialModel.js";
 import { uploadImageToCloudinary } from "../config/cloudinary.js";
 
-export const createTestimonial = async (req, res) => {
+export const  createTestimonial = async (req, res) => {
   try {
     const { name, comment, position, rating } = req.body;
     console.log(req.files)
