@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Log all incoming requests (for debugging)
 // app.use((req, res, next) => {
-//   console.log(Incoming ${req.method} request to ${req.url});
+//   console.log(`Incoming ${req.method} request to ${req.url}`);
 //   console.log('Body:', req.body);
 //   console.log('Files:', req.files);
 //   next();

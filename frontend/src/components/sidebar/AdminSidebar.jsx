@@ -87,7 +87,7 @@ const Sidebar = () => {
         {
           icon: <StarHalf size={19} />,
           text: "Testimonials",
-          route: "admin/addTestimonial",
+          route: "admin/list-Testimonial",
         },
       ],
     },
