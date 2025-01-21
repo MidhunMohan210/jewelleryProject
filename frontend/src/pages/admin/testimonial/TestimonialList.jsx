@@ -4,25 +4,21 @@ import React, { useCallback, useMemo } from "react";
 import { Edit, Trash2, Star, StarHalf } from "lucide-react";
 import apiClient from "@/config/api";
 import { Link, useNavigate } from "react-router-dom";
-import { useQuery,useMutation,useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Alert from "@/components/Alert";
 import { useLoader } from "@/context/LoaderContext.";
 import { useToast } from "@/hooks/use-toast";
 
-
 const fetchTestimonials = async () => {
-  const response = await apiClient.get(
-    "/admin/list-testimonials"
-  );
+  const response = await apiClient.get("/admin/list-testimonials");
   return response.data;
 };
 
-const deleteTestimonial = async(id)=>{
-  console.log(id,'idddd')
+const deleteTestimonial = async (id) => {
   const response = await apiClient.delete(`/admin/delete-testimonials/${id}`);
 
-  return response
-}
+  return response;
+};
 
 const RatingStars = React.memo(({ rating }) => {
   const stars = useMemo(() => {
@@ -54,38 +50,36 @@ const TestimonialsList = () => {
   const { startLoading, stopLoading } = useLoader();
   const queryClient = useQueryClient();
   const { toast } = useToast();
- 
+
   // Fetch testimonials using react-query
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["testimonials"],
     queryFn: fetchTestimonials,
   });
 
-   const {mutate} = useMutation({
-      mutationFn: deleteTestimonial,
-      onMutate: () => {
-        startLoading();
-      },
-      onSuccess: () => {
-        stopLoading();
-        toast({
-          title: "Success !",
-          description: "Testimonial Updated succesfully",
-        });
-  queryClient.invalidateQueries(["testimonials"]);
+  const { mutate } = useMutation({
+    mutationFn: deleteTestimonial,
+    onMutate: () => {
+      startLoading();
+    },
+    onSuccess: () => {
+      stopLoading();
+      toast({
+        title: "Success !",
+        description: "Testimonial Updated succesfully",
+      });
+      queryClient.invalidateQueries(["testimonials"]);
 
-        navigate('/admin/list-Testimonial')
-  
-      },
-      onError: (error) => {
-        stopLoading();
-        toast({
-          title: "Error !",
-          description: error?.response?.data?.message,
-        });
-      }
-    })
-  
+      navigate("/admin/list-Testimonial");
+    },
+    onError: (error) => {
+      stopLoading();
+      toast({
+        title: "Error !",
+        description: error?.response?.data?.message,
+      });
+    },
+  });
 
   const handleEdit = useCallback(
     (testimonial) => {
@@ -98,10 +92,13 @@ const TestimonialsList = () => {
     [navigate]
   );
 
-  const handleDelete = useCallback((id) => {
-    console.log("Delete testimonial:", id);
-    mutate(id)
-  }, [navigate]);
+  const handleDelete = useCallback(
+    (id) => {
+      console.log("Delete testimonial:", id);
+      mutate(id);
+    },
+    [navigate]
+  );
 
   if (isLoading) {
     return (
@@ -113,7 +110,6 @@ const TestimonialsList = () => {
     );
   }
 
-  
   if (isError) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -189,14 +185,14 @@ const TestimonialsList = () => {
                   className="p-2 rounded-full hover:bg-gray-800 transition-colors duration-200 group"
                   aria-label={`Delete ${testimonial.name}`}
                 >
-                   <Alert
-            triggerText= {<Trash2 className="w-5 h-5 text-red-400 group-hover:text-red-300" />}
-            title="Delete Item"
-            description={`Are you sure you want to delete ${testimonial.name}? This action cannot be undone.`}
-            onConfirm={() => handleDelete(testimonial._id)}
-          />
-       
-                 
+                  <Alert
+                    triggerText={
+                      <Trash2 className="w-5 h-5 text-red-400 group-hover:text-red-300" />
+                    }
+                    title="Delete Item"
+                    description={`Are you sure you want to delete ${testimonial.name}? This action cannot be undone.`}
+                    onConfirm={() => handleDelete(testimonial._id)}
+                  />
                 </button>
               </div>
             </div>

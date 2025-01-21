@@ -1,27 +1,86 @@
 /* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useLoader } from "@/context/LoaderContext.";
 import { useToast } from "@/hooks/use-toast";
+import { useLoader } from "@/context/LoaderContext.";
 import { Button } from "../ui/Button";
 import SubDetailSkeleton from "../skeleton/SubDetailSkeleton";
 import apiClient from "@/config/api";
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Trash2, X } from "lucide-react";
 import NotFound1 from "../notFound/NotFound1";
+import Alert from "../Alert";
+import { memo, useState } from 'react';
 
+const api = {
+  getSubDetails: async (formType) => {
+    const { data } = await apiClient.get("/admin/get-subdetails", {
+      params: { type: formType.toLowerCase() },
+    });
+    return data;
+  },
 
+  deleteSubDetails: async ({ id, formType }) => {
+    return await apiClient.delete(`/admin/delete-subdetails/${id}`, {
+      params: { type: formType.toLowerCase() },
+    });
+  },
 
+  postSubDetails: async ({ payload, formType }) => {
+    const { data } = await apiClient.post("/admin/create-subdetails", payload, {
+      params: { type: formType },
+    });
+    return data;
+  },
+
+  updateSubDetails: async ({ id, payload, formType }) => {
+    const { data } = await apiClient.put(`/admin/update-subdetails/${id}`, payload, {
+      params: { type: formType },
+    });
+    return data;
+  },
+};
+
+const ItemRow = memo(({ item, onDelete, onEdit, editItem }) => (
+  <div className="mb-4 p-5 bg-gray-800 rounded text-white mt-5 px-6 flex justify-between items-center">
+    <div>{item.name}</div>
+    <div className="flex items-center gap-5">
+      <Edit 
+        className={`text-blue-500 cursor-pointer ${editItem?._id === item._id ? 'opacity-50 pointer-events-none' : ''}`}
+        size={19} 
+        onClick={() => onEdit(item)}
+      />
+      <div className={editItem?._id === item._id ? 'opacity-50 pointer-events-none' : ''}>
+        <Alert
+          triggerText={
+            <Trash2 className="w-5 h-5 text-red-400 group-hover:text-red-300" />
+          }
+          title="Delete Item"
+          description={`Are you sure you want to delete ${item?.name}? This action cannot be undone.`}
+          onConfirm={() => onDelete(item._id)}
+          disabled={editItem?._id === item._id}
+        />
+      </div>
+    </div>
+  </div>
+));
+
+ItemRow.displayName = 'ItemRow';
 
 function InputSection({ title }) {
   const { startLoading, stopLoading } = useLoader();
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const formType = title?.toLowerCase() || "";
+  const [editItem, setEditItem] = useState(null);
+
+  console.log(editItem,'editItem');
+  
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
@@ -29,55 +88,6 @@ function InputSection({ title }) {
     },
   });
 
-  // API calls with error handling
-  const getSubDetails = async () => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      const { data } = await apiClient.get("/admin/get-subdetails", {
-        params: { type: formType.toLowerCase() },
-      });
-      return data;
-    } catch (error) {
-      throw new Error(
-        error?.response?.data?.message || "Failed to fetch details"
-      );
-    }
-  };
-
-  const deleteSubDetials = async(id)=>{
-    try{
-
-      console.log(formType,'from delete')
-    return  await apiClient.delete(`/admin/delete-subdetails/${id}`,{
-      params: { type: formType.toLowerCase() },
-   
-    })
-    }catch(err){
-      throw new Error(
-        err?.response?.data?.message || "Failed to create details"
-      );
-    }
-  }
-  const postSubDetails = async (payload) => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-
-      const { data } = await apiClient.post(
-        "/admin/create-subdetails",
-        payload,
-        {
-          params: { type: formType },
-        }
-      );
-      return data;
-    } catch (error) {
-      throw new Error(
-        error?.response?.data?.message || "Failed to create details"
-      );
-    }
-  };
-
-  // Query configuration
   const {
     isPending,
     isError: isFetchError,
@@ -86,43 +96,26 @@ function InputSection({ title }) {
     refetch,
   } = useQuery({
     queryKey: ["subDetails", formType],
-    queryFn: getSubDetails,
+    queryFn: () => api.getSubDetails(formType),
     retry: 1,
-    enabled: !!formType,
+    enabled: Boolean(formType),
   });
 
-  // Mutation configuration
   const { mutate: postMutation } = useMutation({
-    mutationFn: postSubDetails,
-    onMutate: () => {
-      startLoading();
-    },
-    onSuccess: (response) => {
+    mutationFn: (data) => api.postSubDetails({ payload: data, formType }),
+    onMutate: () => startLoading(),
+    onSuccess: (newData) => {
       stopLoading();
       reset();
-      // queryClient.invalidateQueries(["subDetails", formType]);
-      const newData = response.data; // Extract the `data` field from the response
-
-      queryClient.setQueryData(["subDetails", formType], (oldQueryData) => {
-        // Handle case where oldQueryData is null/undefined
-        if (!oldQueryData) {
-          return { data: [newData] };
-        }
-
-        // Handle case where oldQueryData.data might not be an array
-        const previousData = Array.isArray(oldQueryData.data)
-          ? oldQueryData.data
-          : [];
-
-        return {
-          ...oldQueryData,
-          data: [...previousData, newData],
-        };
-      });
+      queryClient.setQueryData(["subDetails", formType], (old) => ({
+        ...old,
+        data: [...(old?.data || []), newData.data],
+      }));
       toast({
         title: "Success!",
         description: `${title} added successfully`,
         variant: "success",
+
       });
     },
     onError: (error) => {
@@ -133,30 +126,39 @@ function InputSection({ title }) {
         variant: "destructive",
       });
     },
-  },);
+  });
 
-  const { mutate: deleteMutation } = useMutation({
-    mutationFn: deleteSubDetials, // Define your API call function for deletion
-    onMutate: async (id) => {
+  const { mutate: updateMutation } = useMutation({
+    mutationFn: ({ id, data }) => api.updateSubDetails({ 
+      id, 
+      payload: data, 
+      formType 
+    }),
+    onMutate: async ({ id, data }) => {
       startLoading();
       await queryClient.cancelQueries(["subDetails", formType]);
-  
       const previousData = queryClient.getQueryData(["subDetails", formType]);
-  
-      queryClient.setQueryData(["subDetails", formType], (oldQueryData) => {
-        if (!oldQueryData) return { data: [] };
-  
-        const updatedData = oldQueryData.data.filter((item) => item.id !== id);
-  
-        return {
-          ...oldQueryData,
-          data: updatedData,
-        };
-      });
-  
+
+      queryClient.setQueryData(["subDetails", formType], (old) => ({
+        ...old,
+        data: old.data.map(item => 
+          item._id === id ? { ...item, ...data } : item
+        ),
+      }));
+
       return { previousData };
     },
-    onError: (error, id, context) => {
+    onSuccess: () => {
+      stopLoading();
+      reset();
+      setEditItem(null);
+      toast({
+        title: "Updated!",
+        description: `${title} updated successfully`,
+        variant: "success",
+      });
+    },
+    onError: (error, _, context) => {
       stopLoading();
       queryClient.setQueryData(["subDetails", formType], context.previousData);
       toast({
@@ -166,33 +168,73 @@ function InputSection({ title }) {
       });
     },
     onSettled: () => {
-      stopLoading();
       queryClient.invalidateQueries(["subDetails", formType]);
+    },
+  });
+
+  const { mutate: deleteMutation, isPending: isDeletePending } = useMutation({
+    mutationFn: (id) => api.deleteSubDetails({ id, formType }),
+    onMutate: async (id) => {
+      startLoading();
+      await queryClient.cancelQueries(["subDetails", formType]);
+      const previousData = queryClient.getQueryData(["subDetails", formType]);
+      
+      queryClient.setQueryData(["subDetails", formType], (old) => ({
+        ...old,
+        data: old?.data?.filter(item => item._id !== id) || [],
+      }));
+      
+      return { previousData };
+    },
+    onError: (error, _, context) => {
+      stopLoading();
+      queryClient.setQueryData(["subDetails", formType], context.previousData);
+      toast({
+        title: "Error!",
+        description: error.message,
+        variant: "destructive",
+      });
     },
     onSuccess: () => {
       stopLoading();
       toast({
         title: "Deleted!",
-        description: `Item deleted successfully.`,
+        description: "Item deleted successfully.",
         variant: "success",
       });
     },
+    onSettled: () => {
+      stopLoading();
+      queryClient.invalidateQueries(["subDetails", formType]);
+    },
   });
-const handleDelete = (id)=>{
-  deleteMutation(id)
-}
-  const onSubmit = async (data) => {
-    if (isSubmitting) return;
-    postMutation(data);
+
+  const handleEdit = (item) => {
+    setEditItem(item);
+    setValue("name", item.name);
   };
 
-  // Error UI
+  const cancelEdit = () => {
+    setEditItem(null);
+    reset();
+  };
+
+  const onSubmit = (data) => {
+    if (isSubmitting) return;
+    
+    if (editItem) {
+      updateMutation({ id: editItem._id, data });
+    } else {
+      postMutation(data);
+    }
+  };
+
   if (isFetchError) {
     return (
       <div className="text-red-500 p-4 text-center">
         <p>Error: {fetchError?.message}</p>
         <Button
-          onClick={() => refetch()}
+          onClick={refetch}
           className="mt-2 bg-gray-800 hover:bg-gray-900"
         >
           Retry
@@ -201,13 +243,37 @@ const handleDelete = (id)=>{
     );
   }
 
+  const renderContent = () => {
+    if (isPending || isDeletePending) {
+      return [...Array(5)].map((_, i) => <SubDetailSkeleton key={i} />);
+    }
+
+    if (!subDetails?.data?.length) {
+      return (
+        <div className="text-white text-center py-8 h-full flex items-center justify-center">
+          <NotFound1 message={`No ${title.toLowerCase()}s available`} />
+        </div>
+      );
+    }
+
+    return subDetails.data.map((item) => (
+      <ItemRow
+        key={item._id}
+        item={item}
+        onDelete={deleteMutation}
+        onEdit={handleEdit}
+        editItem={editItem}
+      />
+    ));
+  };
+
   return (
     <>
-      <section className="sticky top-0 z-10 ">
+      <section className="sticky top-0 z-10">
         <div className="h-[250px] bg-[#513cac] flex items-center justify-center border-b-2 border-gray-400">
           <div className="p-2 w-full flex flex-col items-center justify-center gap-5">
             <p className="font-bold text-md sm:text-xl text-gray-200">
-              ADD YOUR DESIRED {title?.toUpperCase()}
+              {editItem ? `EDIT ${title?.toUpperCase()}` : `ADD YOUR DESIRED ${title?.toUpperCase()}`}
             </p>
 
             <form
@@ -215,28 +281,39 @@ const handleDelete = (id)=>{
               className="w-full flex flex-col items-center gap-5"
             >
               <div className="w-3/4 sm:w-1/2 relative flex flex-col items-center">
-                <input
-                  type="text"
-                  placeholder={`Enter ${title}`}
-                  className={`block w-full rounded-full shadow-sm p-2 px-6 ${
-                    errors?.name
-                      ? "border-2 border-red-500 bg-red-50"
-                      : "bg-gray-300"
-                  } text-black`}
-                  disabled={isSubmitting}
-                  {...register("name", {
-                    required: `${title} is required`,
-                    minLength: {
-                      value: 1,
-                      message: "Must be at least 1 characters",
-                    },
-                    pattern: {
-                      value: /^[a-zA-Z0-9\s-]+$/,
-                      message:
-                        "Only letters, numbers, spaces and hyphens allowed",
-                    },
-                  })}
-                />
+                <div className="w-full relative">
+                  <input
+                    type="text"
+                    placeholder={`Enter ${title}`}
+                    className={`block w-full rounded-full shadow-sm p-2 px-6 ${
+                      errors?.name
+                        ? "border-2 border-red-500 bg-red-50"
+                        : "bg-gray-300"
+                    } text-black`}
+                    disabled={isSubmitting}
+                    {...register("name", {
+                      required: `${title} is required`,
+                      validate: (value) => value.trim() !== "",
+                      minLength: {
+                        value: 1,
+                        message: "Must be at least 1 character",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z0-9\s-]+$/,
+                        message: "Only letters, numbers, spaces and hyphens allowed",
+                      },
+                    })}
+                  />
+                  {editItem && (
+                    <button
+                      type="button"
+                      onClick={cancelEdit}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                    >
+                      <X className="h-5 w-5 text-gray-500 hover:text-gray-700" />
+                    </button>
+                  )}
+                </div>
                 {errors?.name && (
                   <p className="text-red-400 text-sm mt-2 ml-4 self-start">
                     {errors?.name?.message}
@@ -253,9 +330,7 @@ const handleDelete = (id)=>{
                     : "hover:bg-gray-900"
                 }`}
               >
-                <p className="text-white">
-                  {isSubmitting ? "Submitting..." : "Submit"}
-                </p>
+                {isSubmitting ? "Submitting..." : editItem ? "Update" : "Submit"}
               </Button>
             </form>
           </div>
@@ -263,27 +338,7 @@ const handleDelete = (id)=>{
       </section>
 
       <section className="mt-4">
-        {isPending && !subDetails && !isFetchError ? (
-          [...Array(5)].map((_, i) => <SubDetailSkeleton key={i} />)
-        ) : subDetails?.data?.length > 0 ? (
-          subDetails.data.map((item) => (
-            <div
-              key={item.id || item._id}
-              className="mb-4 p-5 bg-gray-800 rounded text-white mt-5 px-6 flex justify-between items-center"
-            >
-              <div>{item.name}</div>
-              <div className="flex items-center  gap-5">
-                <Edit className="text-blue-500 " size={19} />
-                <Trash2 onClick={()=>handleDelete(item._id)} className="text-red-500" size={19} />
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className="text-white text-center py-8 ">
-            
-            <NotFound1 message={`No ${title.toLowerCase()}s available`} />
-          </div>
-        )}
+        {renderContent()}
       </section>
     </>
   );

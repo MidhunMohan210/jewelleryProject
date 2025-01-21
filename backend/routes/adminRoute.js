@@ -5,6 +5,7 @@ import {
   createSubDetail,
   deleteSubdetials,
   getSubDetails,
+  updateSubdetails,
 } from "../controllers/subDetailsController.js";
 
 import {
@@ -27,6 +28,7 @@ router.delete("/delete-testimonials/:id", deleteTestimonial);
 ///sub details route
 router.post("/create-subdetails", createSubDetail);
 router.delete("/delete-subdetails/:id", deleteSubdetials);
+router.put("/update-subdetails/:id", updateSubdetails);
 
 router.get("/get-subdetails", getSubDetails);
 

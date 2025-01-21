@@ -23,7 +23,7 @@ function App() {
       <CombinedProvider>
         <BrowserRouter>
           <Layout />
-          <Toaster />
+          <Toaster  />
         </BrowserRouter>
       </CombinedProvider>
       <ReactQueryDevtools initialIsOpen={false}/>
