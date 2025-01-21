@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import ScrollComponents from "@/components/sideComponents/ScrollComponents";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Loader from "@/components/loader/Loader";
+import Loader from "@/components/loader/navigationLoader/Loader";
 import AdminSidebar from "@/components/sidebar/AdminSidebar";
 import AdminHeader from "@/components/layout/AdminHeader";
 
@@ -33,9 +33,9 @@ function Layout() {
   if (isAdminPath) {
     return (
       <div className="h-screen overflow-hidden">
-        {isLoading ? (
+        {/* {isLoading ? (
           <Loader />
-        ) : (
+        ) : ( */}
           <div className="flex h-full  ">
             {/* Sidebar - full height */}
             <AdminSidebar className="h-full" />
@@ -51,7 +51,7 @@ function Layout() {
               </div>
             </div>
           </div>
-        )}
+        {/* )} */}
       </div>
     );
   }

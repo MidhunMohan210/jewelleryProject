@@ -1,17 +1,23 @@
-import {  User, Menu } from "lucide-react";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { CommandSearch } from "../command/CommandSearch";
+  // User,
+  Menu,
+} from "lucide-react";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
+// import { CommandSearch } from "../command/CommandSearch";
 import { useSidebar } from "../../context/SidebarContext";
+import CustomBarLoader from "../loader/CustomBarLoader/CustomBarLoader";
+import { useLoader } from "@/context/LoaderContext.";
 
 const AdminHeader = () => {
   const { toggleSidebar, toggleMobileSidebar } = useSidebar();
+  const { isLoading } = useLoader();
 
   const handleMenuClick = () => {
     if (window.innerWidth < 768) {
@@ -22,7 +28,7 @@ const AdminHeader = () => {
   };
 
   return (
-    <header className="w-full bg-[#181c29] border-b border-gray-800 shadow-sm ">
+    <header className="w-full bg-[#181c29] border-b border-gray-800 shadow-sm  ">
       <div className="px-6 py-4 pr-8 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <button
@@ -54,6 +60,7 @@ const AdminHeader = () => {
           </div>
         </div> */}
       </div>
+      {isLoading && <CustomBarLoader />}
     </header>
   );
 };

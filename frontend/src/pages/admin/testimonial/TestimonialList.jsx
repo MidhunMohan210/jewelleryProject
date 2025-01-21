@@ -2,18 +2,27 @@
 /* eslint-disable react/prop-types */
 import React, { useCallback, useMemo } from "react";
 import { Edit, Trash2, Star, StarHalf } from "lucide-react";
-import axios from "axios";
+import apiClient from "@/config/api";
 import { Link, useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery,useMutation,useQueryClient } from "@tanstack/react-query";
 import Alert from "@/components/Alert";
+import { useLoader } from "@/context/LoaderContext.";
+import { useToast } from "@/hooks/use-toast";
 
 
 const fetchTestimonials = async () => {
-  const response = await axios.get(
-    "http://localhost:7008/admin/list-testimonials"
+  const response = await apiClient.get(
+    "/admin/list-testimonials"
   );
   return response.data;
 };
+
+const deleteTestimonial = async(id)=>{
+  console.log(id,'idddd')
+  const response = await apiClient.delete(`/admin/delete-testimonials/${id}`);
+
+  return response
+}
 
 const RatingStars = React.memo(({ rating }) => {
   const stars = useMemo(() => {
@@ -42,12 +51,41 @@ const RatingStars = React.memo(({ rating }) => {
 
 const TestimonialsList = () => {
   const navigate = useNavigate();
-
+  const { startLoading, stopLoading } = useLoader();
+  const queryClient = useQueryClient();
+  const { toast } = useToast();
+ 
   // Fetch testimonials using react-query
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["testimonials"],
     queryFn: fetchTestimonials,
   });
+
+   const {mutate} = useMutation({
+      mutationFn: deleteTestimonial,
+      onMutate: () => {
+        startLoading();
+      },
+      onSuccess: () => {
+        stopLoading();
+        toast({
+          title: "Success !",
+          description: "Testimonial Updated succesfully",
+        });
+  queryClient.invalidateQueries(["testimonials"]);
+
+        navigate('/admin/list-Testimonial')
+  
+      },
+      onError: (error) => {
+        stopLoading();
+        toast({
+          title: "Error !",
+          description: error?.response?.data?.message,
+        });
+      }
+    })
+  
 
   const handleEdit = useCallback(
     (testimonial) => {
@@ -55,14 +93,15 @@ const TestimonialsList = () => {
       navigate(`/admin/editTestimonial/${testimonial._id}`, {
         state: { testimonial },
       });
+      // queryClient.invalidateQueries(["testimonials"]);
     },
     [navigate]
   );
 
   const handleDelete = useCallback((id) => {
     console.log("Delete testimonial:", id);
-    
-  }, []);
+    mutate(id)
+  }, [navigate]);
 
   if (isLoading) {
     return (

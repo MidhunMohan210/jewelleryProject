@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import express from 'express';
 import userRoute from './routes/userRoute.js';
 import adminRoute from './routes/adminRoute.js';

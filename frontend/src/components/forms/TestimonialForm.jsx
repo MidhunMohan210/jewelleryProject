@@ -1,24 +1,21 @@
-import { useState, useRef,useEffect } from "react";
-import { Camera } from "lucide-react";
+/* eslint-disable react/prop-types */
+import { useState, useRef, useEffect } from "react";
+import { Camera, } from "lucide-react";
 import { Cropper } from "react-cropper";
 import "cropperjs/dist/cropper.css";
-import { useMutation } from "@tanstack/react-query";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useForm } from "react-hook-form";
 import imageCompression from "browser-image-compression";
-import axios from "axios";
 
-
-// const AddTestimonial = (data)=>{
-//   return axios.post('http://localhost:7008/admin/create-testimonial',data)
-// }
-
-const TestimonialForm = ({onSubmitCreate,mode,onSubmitEdit,productDetail}) => {
+const TestimonialForm = ({ onSubmitCreate, mode, onSubmitEdit, productDetail }) => {
   const [rating, setRating] = useState(5);
   const [compressedImage, setCompressedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [cropData, setCropData] = useState(null);
   const [cropper, setCropper] = useState(null);
+  const [backendImage, setBackendImage] = useState(null);
+  const [isImageModified, setIsImageModified] = useState(false);
+  const [showCropper, setShowCropper] = useState(false);
   const cropperRef = useRef(null);
 
   const {
@@ -30,55 +27,59 @@ const TestimonialForm = ({onSubmitCreate,mode,onSubmitEdit,productDetail}) => {
   } = useForm();
 
   useEffect(() => {
-
-    console.log(productDetail,'productss')
     if (productDetail) {
-      setValue("name", productDetail.name || ""); // Default name
-      setValue("position", productDetail.position || ""); // Default position
-      setValue("comment", productDetail.testimonial || ""); // Default comment
-      setRating(productDetail.rating || 5); // Default rating
+      setValue("name", productDetail.name || "");
+      setValue("position", productDetail.position || "");
+      setValue("comment", productDetail.testimonial || "");
+      setRating(productDetail.rating || 5);
+      
       if (productDetail.image) {
-        setCropData(productDetail.image); 
+        setBackendImage(productDetail.image);
+        setCropData(productDetail.image);
+        setIsImageModified(false);
       }
     } else {
-     
       reset();
       setRating(5);
       setCompressedImage(null);
       setImagePreview(null);
       setCropData(null);
+      setBackendImage(null);
+      setIsImageModified(false);
+      setShowCropper(false);
     }
   }, [productDetail, setValue, reset]);
 
   const onSubmit = (data) => {
-    console.log('Submitting data:', data);
-   const dataa = {...data,rating,compressedImage}
+    console.log(compressedImage,'imagee')
 
-    
-console.log(dataa,'dataaaaaff')
-if(mode === 'create'){
-  onSubmitCreate(dataa)
+    if (mode === 'create' && !compressedImage) {
+      return;
+    }
 
-}else if (mode === 'edit'){
+    const dataa = {
+      ...data,
+      rating,
+      ...(isImageModified ? { compressedImage } : {})
+    };
 
-  console.log(dataa,'data inside edit submit')
-  onSubmitEdit(dataa)
-}
-
-    // mutate(formData);
-};
-
+    if (mode === 'create') {
+      onSubmitCreate(dataa);
+    } else if (mode === 'edit') {
+      onSubmitEdit(dataa);
+    }
+  };
 
   const handleFileSelect = async (file) => {
     if (!file) return;
 
-    // Reset previous crop and compressed image data
+    setIsImageModified(true);
     setCropData(null);
     setCompressedImage(null);
 
-    // Show the new image for cropping
     const imageUrl = URL.createObjectURL(file);
     setImagePreview(imageUrl);
+    setShowCropper(true);
   };
 
   const handleCrop = async () => {
@@ -87,23 +88,47 @@ if(mode === 'create'){
         width: 1024,
         height: 1024,
         imageSmoothingQuality: "high",
+        
       });
 
       croppedCanvas.toBlob(async (blob) => {
         if (blob) {
-          // Compress the cropped image
           const compressedFile = await imageCompression(blob, {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 1024,
-            useWebWorker: true,
-            fileType: "image/webp",
+            maxSizeMB: 0.5,             // Limit file size to 0.5MB
+            maxWidthOrHeight: 1024,     // Resize image to fit within 1024px
+            useWebWorker: true,         // Use Web Worker for better performance
+            fileType: "image/webp",     // WebP format for better compression
+            quality: 0.5,               // Reduce quality further to lower file size
           });
-
-          // Update state with the cropped and compressed image
+          
           setCompressedImage(compressedFile);
           setCropData(croppedCanvas.toDataURL());
+          setShowCropper(false);
+          setIsImageModified(true);
         }
       });
+    }
+  };
+
+  const handleDiscardChanges = () => {
+    if (backendImage) {
+      setCropData(backendImage);
+      setImagePreview(null);
+      setCompressedImage(null);
+      setIsImageModified(false);
+    } else {
+      setImagePreview(null);
+      setCropData(null);
+      setCompressedImage(null);
+      setIsImageModified(false);
+    }
+    setShowCropper(false);
+  };
+
+  const handleEditExistingImage = () => {
+    if (backendImage) {
+      setImagePreview(backendImage);
+      setShowCropper(true);
     }
   };
 
@@ -112,7 +137,7 @@ if(mode === 'create'){
       <Card className="bg-gray-900 text-white border-none">
         <CardHeader>
           <CardTitle className="text-2xl text-gray-400 font-bold mb-6">
-          {mode === "create" ? "Add Testimonial" : "Edit Testimonial"}
+            {mode === "create" ? "Add Testimonial" : "Edit Testimonial"}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -213,8 +238,8 @@ if(mode === 'create'){
 
             {/* Image Upload */}
             <div className="p-2">
-              {imagePreview && !cropData ? (
-                <>
+              {showCropper ? (
+                <div className="space-y-4">
                   <Cropper
                     src={imagePreview}
                     style={{ height: 400, width: "100%" }}
@@ -226,37 +251,88 @@ if(mode === 'create'){
                     ref={cropperRef}
                     onInitialized={(instance) => setCropper(instance)}
                   />
-                  <button
-                    type="button"
-                    onClick={handleCrop}
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mt-4 rounded-sm"
-                  >
-                    Crop Image
-                  </button>
-                </>
-              ) : (
-                <label
-                  htmlFor="image"
-                  className="block w-full h-48 border-2 border-dashed border-gray-600 rounded-md cursor-pointer hover:border-gray-500 bg-gray-800"
-                >
-                  <div className="flex flex-col items-center justify-center h-full">
-                    {cropData ? (
-                      <img
-                        src={cropData}
-                        alt="Cropped Preview"
-                        className="h-full object-cover rounded-lg"
-                      />
-                    ) : (
-                      <>
-                        <Camera className="w-12 h-12 text-gray-400 mb-2" />
-                        <p className="text-gray-400">Select Image</p>
-                        <p className="text-gray-500 text-sm mt-1">
-                          PNG, JPG, SVG (Max 2MB)
-                        </p>
-                      </>
-                    )}
+                  <div className="flex gap-4">
+                    <button
+                      type="button"
+                      onClick={handleCrop}
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-sm"
+                    >
+                      Crop Image
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleDiscardChanges}
+                      className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-sm"
+                    >
+                      Discard Changes
+                    </button>
+                    {/* <label
+                      htmlFor="image"
+                      className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-sm cursor-pointer flex items-center gap-2"
+                    >
+                      <Upload className="w-4 h-4" />
+                      Choose Different Image
+                    </label> */}
                   </div>
-                </label>
+                </div>
+              ) : (
+                <div className="relative">
+                  <label
+                    htmlFor="image"
+                    className="block w-full h-48 border-2 border-dashed border-gray-600 rounded-md cursor-pointer hover:border-gray-500 bg-gray-800"
+                  >
+                    <div className="flex flex-col items-center justify-center h-full">
+                      {cropData ? (
+                        <div className="relative w-full h-full">
+                          <img
+                            src={cropData}
+                            alt="Cropped Preview"
+                            className="h-full w-full object-cover rounded-lg"
+                          />
+                          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">
+                            <div className="flex gap-2">
+                              {mode === 'edit' && !isImageModified ? (
+                                <button
+                                  type="button"
+                                  onClick={handleEditExistingImage}
+                                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                                >
+                                  Edit Image
+                                </button>
+                              ) : (
+                                <>
+                                  {isImageModified && (
+                                    <button
+                                      type="button"
+                                      onClick={handleDiscardChanges}
+                                      className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+                                    >
+                                      Reset
+                                    </button>
+                                  )}
+                                  <label
+                                    htmlFor="image"
+                                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded cursor-pointer"
+                                  >
+                                    Change Image
+                                  </label>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          <Camera className="w-12 h-12 text-gray-400 mb-2" />
+                          <p className="text-gray-400">Select Image</p>
+                          <p className="text-gray-500 text-sm mt-1">
+                            PNG, JPG, SVG (Max 2MB)
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  </label>
+                </div>
               )}
               <input
                 id="image"
@@ -269,6 +345,9 @@ if(mode === 'create'){
                   }
                 }}
               />
+               {!compressedImage && (
+                <span className="text-red-500 mt-5">Please select an Image</span>
+              )}
             </div>
 
             {/* Submit Button */}
@@ -278,7 +357,7 @@ if(mode === 'create'){
                 className="block w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-sm"
                 disabled={isSubmitting}
               >
-                Submit Testimonial
+                {mode === "create" ? "Submit Testimonial" : "Update Testimonial"}
               </button>
             </div>
           </form>

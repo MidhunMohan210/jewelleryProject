@@ -1,16 +1,22 @@
 import TestimonialForm from "@/components/forms/TestimonialForm";
-import axios from "axios";
-import { useState,useEffect } from "react";
-import { useMutation } from "@tanstack/react-query";
+import apiClient from "@/config/api";
+import { useNavigate } from "react-router-dom";
+import { useMutation,useQueryClient } from "@tanstack/react-query";
 import { useParams,useLocation } from "react-router-dom";
+import { useLoader } from "@/context/LoaderContext.";
+import { useToast } from "@/hooks/use-toast";
 
 
 const editTestimoniall = (data,id)=>{
-  return axios.put(`http://localhost:7008/admin/edit-testimonials/${id}`,data,{
+  return apiClient.put(`/admin/edit-testimonials/${id}`,data,{
    
   })
 }
 const EditTestimonial = () => {
+  const { startLoading, stopLoading } = useLoader();
+  const queryClient = useQueryClient();
+  const { toast } = useToast();
+  const navigate = useNavigate('')
     const location = useLocation();
     const productDetail = location?.state?.testimonial;
 
@@ -34,13 +40,27 @@ const EditTestimonial = () => {
    
   console.log(formData,'dataaa')
     mutate({ data: formData, id }, {
-        onSuccess: () => {
-          alert("Testimonial updated successfully!");
-        },
-        onError: (error) => {
-          console.error("Error updating testimonial:", error);
-          alert("Failed to update testimonial.");
-        },
+      onMutate: () => {
+        startLoading();
+      },
+      onSuccess: () => {
+        stopLoading();
+        toast({
+          title: "Success !",
+          description: "Testimonial Updated succesfully",
+        });
+  queryClient.invalidateQueries(["testimonials"]);
+
+        navigate('/admin/list-Testimonial')
+  
+      },
+      onError: (error) => {
+        stopLoading();
+        toast({
+          title: "Error !",
+          description: error?.response?.data?.message,
+        });
+   },
       });
   
   };
