@@ -8,7 +8,6 @@ import SubDetailSkeleton from "../skeleton/SubDetailSkeleton";
 import apiClient from "@/config/api";
 import { Edit, Trash2 } from "lucide-react";
 import NotFound1 from "../notFound/NotFound1";
-import { icon } from "@fortawesome/fontawesome-svg-core";
 
 function InputSection({ title }) {
   const { startLoading, stopLoading } = useLoader();
