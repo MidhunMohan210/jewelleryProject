@@ -3,6 +3,7 @@ import { getProducts } from "../controllers/productController.js";
 
 import {
   createSubDetail,
+  deleteSubdetials,
   getSubDetails,
 } from "../controllers/subDetailsController.js";
 
@@ -25,6 +26,8 @@ router.delete("/delete-testimonials/:id", deleteTestimonial);
 
 ///sub details route
 router.post("/create-subdetails", createSubDetail);
+router.delete("/delete-subdetails/:id", deleteSubdetials);
+
 router.get("/get-subdetails", getSubDetails);
 
 export default router;

@@ -7,8 +7,10 @@ import { useLoader } from "@/context/LoaderContext.";
 import { useToast } from "@/hooks/use-toast";
 
 
-const editTestimoniall = (data,id)=>{
-  return apiClient.put(`/admin/edit-testimonials/${id}`,data,{
+const editTestimoniall = async(data,id)=>{
+
+
+  return  await apiClient.put(`/admin/edit-testimonials/${id}`,data,{
    
   })
 }

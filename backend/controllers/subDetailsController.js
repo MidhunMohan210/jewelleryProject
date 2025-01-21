@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import BrandModel from "../models/brandModel.js";
 import CategoryModel from "../models/categoryMode.js";
 import SubCategoryModel from "../models/subCategoryModel.js";
@@ -27,7 +28,7 @@ export const createSubDetail = async (req, res) => {
     case "category":
       model = CategoryModel;
       break;
-    case "subcategory":
+    case "subcategory": 
       model = SubCategoryModel;
       break;
     case "material":
@@ -95,6 +96,7 @@ export const getSubDetails = async (req, res) => {
       return res.status(400).json({ message: "Invalid type provided." });
   }
 
+
   try {
     // Fetch all records of the selected model
     const records = await model.find();
@@ -110,3 +112,52 @@ export const getSubDetails = async (req, res) => {
   }
 };
 
+
+export const deleteSubdetials = async(req,res)=>{
+  // Delete all sub-details of a specific type (brand, category, etc.)
+
+  try{
+const type = req.query.type;
+
+console.log(type,'type')
+// Get the type (brand, category, etc.)
+// Get the type (brand, category, etc.)
+const {id} =req.params
+console.log(id,'idd' )
+
+let model 
+
+switch (type) {
+  case 'brand':
+    model = BrandModel;
+    break;
+  case 'category':
+    model = CategoryModel;
+    break;
+  case 'subcategory': 
+    model = SubCategoryModel;
+    break;
+  case 'material':
+    model = MaterialModel;
+    break;
+  case 'size':
+    model = SizeModel;
+    break;
+  default:
+    return res.status(400).json({ message: "Invalid type provided." });
+}
+
+const deleteItem = await model.findByIdAndDelete( {_id:id} );
+if (deleteItem) {
+  return res.status(204).json({ message: "Item Deleted Successfully" });
+}else{
+  return res.status(404).json({ message: "Item Not Found" });
+}
+
+
+  }catch(err){
+    console.log(err)
+    res.status(500).json({ message: "Internal server error." });
+
+  }
+}

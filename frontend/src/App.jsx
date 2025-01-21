@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import Layout from "./layout/Layout";
 import CombinedProvider from "./context/CombinedProvider";
 import { Toaster } from "@/components/ui/toaster"
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,7 +26,7 @@ function App() {
           <Toaster />
         </BrowserRouter>
       </CombinedProvider>
-      {/* <ReactQueryDevtools  /> */}
+      <ReactQueryDevtools initialIsOpen={false}/>
     </QueryClientProvider>
   );
 }

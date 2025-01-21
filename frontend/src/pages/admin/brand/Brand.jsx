@@ -1,5 +1,4 @@
 import InputSection from "@/components/subDetails/InputSection";
-import SubDetailList from "@/components/subDetails/subDetailList";
 
 function Brand() {
   return (
@@ -9,10 +8,7 @@ function Brand() {
         <InputSection title="Brand" />
       </div>
 
-      {/* Scrollable content area */}
-      <div className="flex-1 overflow-y-auto bg-gray-900 p-4 scrollbar-none">
-        <SubDetailList formType={"brand"} />
-      </div>
+      
     </div>
   );
 }
