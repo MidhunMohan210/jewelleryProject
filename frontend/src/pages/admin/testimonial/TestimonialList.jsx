@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
 import React, { useCallback, useMemo } from "react";
 import { Edit, Trash2, Star, StarHalf } from "lucide-react";
 import axios from "axios";
@@ -8,7 +10,7 @@ import Alert from "@/components/Alert";
 
 const fetchTestimonials = async () => {
   const response = await axios.get(
-    "http://localhost:7008/admin/list-testimonials"
+    "http://localhost:7007/admin/list-testimonials"
   );
   return response.data;
 };

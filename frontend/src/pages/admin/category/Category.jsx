@@ -1,5 +1,4 @@
 import InputSection from "@/components/subDetails/InputSection";
-import SubDetailList from "@/components/subDetails/subDetailList";
 
 function Category() {
   return (
@@ -9,10 +8,7 @@ function Category() {
         <InputSection title="Category" />
       </div>
 
-      {/* Scrollable content area */}
-      <div className="flex-1 overflow-y-auto bg-gray-900 p-4 scrollbar-none">
-        <SubDetailList />
-      </div>
+     
     </div>
   );
 }

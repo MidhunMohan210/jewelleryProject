@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 
 
 const AddTestimoniall = (data)=>{
-  return axios.post('http://localhost:7008/admin/create-testimonial',data,{
+  return axios.post('http://localhost:7007/admin/create-testimonial',data,{
    
   })
 }
