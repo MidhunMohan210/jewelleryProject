@@ -1,6 +1,9 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable react/prop-types */
 import {
   // User,
   Menu,
+  Plus,
 } from "lucide-react";
 // import {
 //   DropdownMenu,
@@ -14,10 +17,23 @@ import {
 import { useSidebar } from "../../context/SidebarContext";
 import CustomBarLoader from "../loader/CustomBarLoader/CustomBarLoader";
 import { useLoader } from "@/context/LoaderContext.";
+import { Button } from "../ui/Button";
+import { useNavigate } from "react-router-dom";
 
 const AdminHeader = ({ title }) => {
   const { toggleSidebar, toggleMobileSidebar } = useSidebar();
   const { isLoading } = useLoader();
+  const navigate = useNavigate();
+
+  // Define pages that should show the add button and their corresponding navigation routes
+  const addButtonConfig = {
+    "Testimonial List": "/admin/addTestimonial",
+    // Add more pages as needed, for example:
+    // "Category": "/admin/add-category",
+    // "Brand": "/admin/add-brand",
+  };
+  const showAddButton = addButtonConfig.hasOwnProperty(title);
+  const addButtonRoute = addButtonConfig[title];
 
   const handleMenuClick = () => {
     if (window.innerWidth < 768) {
@@ -25,6 +41,10 @@ const AdminHeader = ({ title }) => {
     } else {
       toggleSidebar();
     }
+  };
+
+  const handleAddClick = () => {
+    navigate(addButtonRoute);
   };
 
   return (
@@ -40,25 +60,12 @@ const AdminHeader = ({ title }) => {
           <h1 className="text-lg font-bold text-gray-400">{title}</h1>
         </div>
 
-        {/* <div className="flex items-center space-x-4">
-          <CommandSearch />
-          <div className="flex items-center space-x-3">
-            <DropdownMenu>
-              <DropdownMenuTrigger className="focus:outline-none">
-                <User className="w-5 h-5 text-gray-300 hover:text-gray-100 transition-colors" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="mt-6 mr-2 bg-gray-900 border border-gray-800">
-                <DropdownMenuLabel className="text-gray-200">
-                  My Account
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator className="bg-gray-800" />
-                <DropdownMenuItem className="text-gray-300 hover:text-gray-100 focus:bg-gray-800 focus:text-gray-100 cursor-pointer">
-                  Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        </div> */}
+        {showAddButton && (
+          <Plus
+            onClick={handleAddClick}
+            className="w-6 h-6 text-gray-400 hover:text-gray-100 cursor-pointer "
+          />
+        )}
       </div>
       {isLoading && <CustomBarLoader />}
     </header>

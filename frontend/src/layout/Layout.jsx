@@ -15,25 +15,32 @@ function Layout() {
   const isAdminPath = location.pathname.includes("admin");
   const isLoginPath = location.pathname.includes("login");
 
-  const adminTitles = {
-    "/admin/dashboard": "Dashboard",
-    "/admin/category": "Category",
-    "/admin/material": "Material",
-    "/admin/brand": "Brand",
-    "/admin/size": "Size",
-    "/admin/list-Testimonial": "Testimonial List",
-    "/admin/editTestimonial": "Edit Testimonial",
-    "/admin/subcategory": "Subcategory",
+  const getAdminTitle = (pathname) => {
+    // Base admin routes
+    const adminTitles = {
+      "/admin/dashboard": "Dashboard",
+      "/admin/category": "Category",
+      "/admin/material": "Material",
+      "/admin/brand": "Brand",
+      "/admin/size": "Size",
+      "/admin/list-Testimonial": "Testimonial List",
+      "/admin/editTestimonial": "Edit Testimonial",
+      "/admin/product": "Products",
+    };
+
+    // Check if it's a subcategory path
+    if (pathname.startsWith("/admin/subcategory")) {
+      return "Subcategory";
+    }
+
+    // Check for exact matches first
+    if (adminTitles[pathname]) {
+      return adminTitles[pathname];
+    }
+
+    // If no match found, return default
+    return "Admin Panel";
   };
-
-  const adminTitle = Object.keys(adminTitles).find((path) =>
-    location.pathname.startsWith(path)
-  )
-    ? adminTitles[location.pathname.split("?")[0]]
-    : "Admin Panel";
-
-  // console.log(location, "location");
-  // console.log(adminTitle, "adminTitle");
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,6 +51,9 @@ function Layout() {
     return () => clearTimeout(timer);
   }, [location]);
 
+  // Get the current admin title
+  const adminTitle = getAdminTitle(location.pathname);
+
   // Login page - no layout
   if (isLoginPath) {
     return isLoading ? <Loader /> : <Router />;
@@ -53,25 +63,15 @@ function Layout() {
   if (isAdminPath) {
     return (
       <div className="h-screen overflow-hidden">
-        {/* {isLoading ? (
-          <Loader />
-        ) : ( */}
-        <div className="flex h-full  ">
-          {/* Sidebar - full height */}
+        <div className="flex h-full">
           <AdminSidebar className="h-full" />
-
-          {/* Main content area - flex container for header and content */}
           <div className="flex-1 flex flex-col h-full">
-            {/* Header - fixed at top */}
             <AdminHeader title={adminTitle} />
-
-            {/* Router content - takes remaining space and scrollable */}
             <div className="flex-1 overflow-y-auto scrollbar-none p-3 bg-[#181c29]">
               <Router />
             </div>
           </div>
         </div>
-        {/* )} */}
       </div>
     );
   }
