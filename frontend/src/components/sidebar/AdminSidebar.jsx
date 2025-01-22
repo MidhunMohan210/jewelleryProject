@@ -60,10 +60,7 @@ const Sidebar = () => {
               text: "Categories",
               route: "admin/category",
             },
-            {
-              text: "Subcategories",
-              route: "admin/subcategories",
-            },
+          
             {
               text: "Materials",
               route: "admin/material",

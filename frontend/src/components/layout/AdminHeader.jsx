@@ -15,7 +15,7 @@ import { useSidebar } from "../../context/SidebarContext";
 import CustomBarLoader from "../loader/CustomBarLoader/CustomBarLoader";
 import { useLoader } from "@/context/LoaderContext.";
 
-const AdminHeader = () => {
+const AdminHeader = ({ title }) => {
   const { toggleSidebar, toggleMobileSidebar } = useSidebar();
   const { isLoading } = useLoader();
 
@@ -37,7 +37,7 @@ const AdminHeader = () => {
           >
             <Menu className="w-5 h-5 text-gray-400 hover:text-gray-100" />
           </button>
-          <h1 className="text-lg font-bold text-gray-400">Admin Dashboard</h1>
+          <h1 className="text-lg font-bold text-gray-400">{title}</h1>
         </div>
 
         {/* <div className="flex items-center space-x-4">

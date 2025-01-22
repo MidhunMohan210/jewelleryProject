@@ -15,6 +15,26 @@ function Layout() {
   const isAdminPath = location.pathname.includes("admin");
   const isLoginPath = location.pathname.includes("login");
 
+  const adminTitles = {
+    "/admin/dashboard": "Dashboard",
+    "/admin/category": "Category",
+    "/admin/material": "Material",
+    "/admin/brand": "Brand",
+    "/admin/size": "Size",
+    "/admin/list-Testimonial": "Testimonial List",
+    "/admin/editTestimonial": "Edit Testimonial",
+    "/admin/subcategory": "Subcategory",
+  };
+
+  const adminTitle = Object.keys(adminTitles).find((path) =>
+    location.pathname.startsWith(path)
+  )
+    ? adminTitles[location.pathname.split("?")[0]]
+    : "Admin Panel";
+
+  // console.log(location, "location");
+  // console.log(adminTitle, "adminTitle");
+
   useEffect(() => {
     setIsLoading(true);
     const timer = setTimeout(() => {
@@ -36,21 +56,21 @@ function Layout() {
         {/* {isLoading ? (
           <Loader />
         ) : ( */}
-          <div className="flex h-full  ">
-            {/* Sidebar - full height */}
-            <AdminSidebar className="h-full" />
+        <div className="flex h-full  ">
+          {/* Sidebar - full height */}
+          <AdminSidebar className="h-full" />
 
-            {/* Main content area - flex container for header and content */}
-            <div className="flex-1 flex flex-col h-full">
-              {/* Header - fixed at top */}
-              <AdminHeader />
+          {/* Main content area - flex container for header and content */}
+          <div className="flex-1 flex flex-col h-full">
+            {/* Header - fixed at top */}
+            <AdminHeader title={adminTitle} />
 
-              {/* Router content - takes remaining space and scrollable */}
-              <div className="flex-1 overflow-y-auto scrollbar-none p-3 bg-[#181c29]">
-                <Router />
-              </div>
+            {/* Router content - takes remaining space and scrollable */}
+            <div className="flex-1 overflow-y-auto scrollbar-none p-3 bg-[#181c29]">
+              <Router />
             </div>
           </div>
+        </div>
         {/* )} */}
       </div>
     );

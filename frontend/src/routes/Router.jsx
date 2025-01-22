@@ -13,6 +13,8 @@ import Brand from "@/pages/admin/brand/Brand";
 import Size from "@/pages/admin/size/Size";
 import EditTestimonial from "@/pages/admin/testimonial/editTestimonial";
 import TestimonialsList from "@/pages/admin/testimonial/TestimonialList";
+import { Sub } from "@radix-ui/react-dropdown-menu";
+import SubCategory from "@/pages/admin/category/SubCategory";
 
 function Router() {
   return (
@@ -29,6 +31,7 @@ function Router() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/addTestimonial" element={<AddTestimonial />} />
         <Route path="/admin/category" element={<Category />} />
+        <Route path="/admin/subcategory/:catId/:catName" element={<SubCategory />} />
         <Route path="/admin/material" element={<Material />} />
         <Route path="/admin/brand" element={<Brand />} />
         <Route path="/admin/size" element={<Size />} />

@@ -16,7 +16,7 @@ import SizeModel from "../models/sizeModel.js";
 
 export const createSubDetail = async (req, res) => {
   const type = req.query.type; // Get the type (brand, category, etc.)
-  const { name, description } = req.body; // Data to be added
+  const { name, categoryId } = req.body; // Data to be added
 
   // Select the appropriate model based on the type
   let model;
@@ -47,8 +47,28 @@ export const createSubDetail = async (req, res) => {
       return res.status(409).json({ message: "Record already exists." });
     }
 
+    // Handle specific logic for subcategories
+    const dataToSave = { name };
+    if (type === "subcategory") {
+      // Ensure categoryId is provided
+      if (!categoryId) {
+        return res
+          .status(400)
+          .json({ message: "categoryId is required for subcategories." });
+      }
+
+      // Verify if the categoryId exists in the CategoryModel
+      const categoryExists = await CategoryModel.findById(categoryId);
+      if (!categoryExists) {
+        return res.status(404).json({ message: "Category not found." });
+      }
+
+      // Add categoryId to the data to save
+      dataToSave.categoryId = categoryId;
+    }
+
     // Create a new record
-    const newRecord = new model({ name, description });
+    const newRecord = new model(dataToSave);
     const savedRecord = await newRecord.save();
 
     // Send success response
@@ -71,6 +91,7 @@ export const createSubDetail = async (req, res) => {
  */
 export const getSubDetails = async (req, res) => {
   const type = req.query.type; // Get the type (brand, category, etc.)
+  const categoryId = req.query.categoryId; // Get the categoryId for filtering subcategories
 
   // Select the appropriate model based on the type
   let model;
@@ -95,11 +116,49 @@ export const getSubDetails = async (req, res) => {
   }
 
   try {
-    // Fetch all records of the selected model
-    const records = await model.find();
+    if (type === "category") {
+      // Fetch categories and include subcategory count
+      const records = await CategoryModel.aggregate([
+        {
+          $lookup: {
+            from: "subcategories", // Replace with your actual subcategories collection name
+            localField: "_id",
+            foreignField: "categoryId",
+            as: "subcategories",
+          },
+        },
+        {
+          $addFields: {
+            subcategoryCount: { $size: "$subcategories" },
+          },
+        },
+        {
+          $project: {
+            subcategories: 0, // Exclude the subcategories array if you only need the count
+          },
+        },
+      ]);
 
-    // Send success response with the data
-    res.status(200).json({
+      return res.status(200).json({
+        message: "Category details fetched successfully.",
+        data: records,
+      });
+    }
+
+    // For subcategories with filtering by categoryId
+    const query = {};
+    if (type === "subcategory" && categoryId) {
+      const categoryExists = await CategoryModel.findById(categoryId);
+      if (!categoryExists) {
+        return res.status(404).json({ message: "Category not found." });
+      }
+      query.categoryId = categoryId;
+    }
+
+    // Fetch records for other types or filtered subcategories
+    const records = await model.find(query);
+
+    return res.status(200).json({
       message: `${type} details fetched successfully.`,
       data: records,
     });
@@ -108,6 +167,7 @@ export const getSubDetails = async (req, res) => {
     res.status(500).json({ message: "Internal server error." });
   }
 };
+
 
 /**
  * @desc Delete a single sub-detail of a specific type (brand, category, etc.)
@@ -155,12 +215,11 @@ export const deleteSubdetials = async (req, res) => {
   }
 };
 
-
 export const updateSubdetails = async (req, res) => {
   try {
-    const type = req.query.type;    // Get the type (brand, category, etc.)
-    const { id } = req.params;      // Get the ID from URL params
-    const { name } = req.body;      // Get updated name from request body
+    const type = req.query.type; // Get the type (brand, category, etc.)
+    const { id } = req.params; // Get the ID from URL params
+    const { name } = req.body; // Get updated name from request body
 
     // Input validation
     if (!name || !name.trim()) {
@@ -190,14 +249,16 @@ export const updateSubdetails = async (req, res) => {
     }
 
     // Check if name already exists (excluding current item)
-    const existingItem = await model.findOne({ 
+    const existingItem = await model.findOne({
       name: name.trim(),
-      _id: { $ne: id } // Exclude current item from check
+      _id: { $ne: id }, // Exclude current item from check
     });
 
     if (existingItem) {
-      return res.status(400).json({ 
-        message: `${type.charAt(0).toUpperCase() + type.slice(1)} with this name already exists` 
+      return res.status(400).json({
+        message: `${
+          type.charAt(0).toUpperCase() + type.slice(1)
+        } with this name already exists`,
       });
     }
 
@@ -214,12 +275,10 @@ export const updateSubdetails = async (req, res) => {
 
     return res.status(200).json({
       message: "Item updated successfully",
-      data: updatedItem
+      data: updatedItem,
     });
-
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
