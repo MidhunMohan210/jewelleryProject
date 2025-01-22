@@ -18,6 +18,7 @@ export function Header() {
 
   const isHomePage =
     location.pathname === "/" ||
+    location.pathname === "/home" ||
     location.pathname === "/about" ||
     location.pathname === "/products" ||
     location.pathname === "/contact";

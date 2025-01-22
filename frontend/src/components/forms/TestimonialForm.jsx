@@ -135,11 +135,11 @@ const TestimonialForm = ({ onSubmitCreate, mode, onSubmitEdit, productDetail }) 
   return (
     <div className="h-screen w-full">
       <Card className="bg-gray-900 text-white border-none">
-        <CardHeader>
+        {/* <CardHeader>
           <CardTitle className="text-2xl text-gray-400 font-bold mb-6">
             {mode === "create" ? "Add Testimonial" : "Edit Testimonial"}
           </CardTitle>
-        </CardHeader>
+        </CardHeader> */}
         <CardContent>
           <form
             onSubmit={handleSubmit(onSubmit)}

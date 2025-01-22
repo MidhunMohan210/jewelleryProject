@@ -21,6 +21,7 @@ function Router() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/productDetail/:id" element={<ProductDetailPage />} />
@@ -29,18 +30,23 @@ function Router() {
         {/* admin */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/addTestimonial" element={<AddTestimonial />} />
-        <Route path="/admin/category" element={<Category />} />
-        <Route path="/admin/subcategory/:catId/:catName" element={<SubCategory />} />
-        <Route path="/admin/material" element={<Material />} />
-        <Route path="/admin/brand" element={<Brand />} />
-        <Route path="/admin/size" element={<Size />} />
-        <Route path="/admin/list-Testimonial" element={<TestimonialsList />} />
 
+
+        {/* inventory routes */}  
+        <Route path="/admin/inventory/category" element={<Category />} />
         <Route
-          path="/admin/editTestimonial/:id"
-          element={<EditTestimonial />}
+          path="/admin/inventory/subcategory/:catId/:catName"
+          element={<SubCategory />}
         />
+        <Route path="/admin/inventory/material" element={<Material />} />
+        <Route path="/admin/inventory/brand" element={<Brand />} />
+        <Route path="/admin/inventory/size" element={<Size />} />
+
+        {/* testimonial routes */}
+
+        <Route path="/admin/list-Testimonial" element={<TestimonialsList />} />
+        <Route path="/admin/addTestimonial" element={<AddTestimonial />} />
+        <Route path="/admin/editTestimonial/:id" element={<EditTestimonial />}/>
       </Routes>
     </>
   );

@@ -50,7 +50,7 @@ const AddTestimonial = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="">
       {/* Render the Loader if the mutation is in progress */}
       {/* {isLoading && (
         <div className="flex justify-center items-center h-screen">

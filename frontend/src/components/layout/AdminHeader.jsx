@@ -5,19 +5,9 @@ import {
   Menu,
   Plus,
 } from "lucide-react";
-// import {
-//   DropdownMenu,
-//   DropdownMenuContent,
-//   DropdownMenuItem,
-//   DropdownMenuLabel,
-//   DropdownMenuSeparator,
-//   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu";
-// import { CommandSearch } from "../command/CommandSearch";
 import { useSidebar } from "../../context/SidebarContext";
 import CustomBarLoader from "../loader/CustomBarLoader/CustomBarLoader";
 import { useLoader } from "@/context/LoaderContext.";
-import { Button } from "../ui/Button";
 import { useNavigate } from "react-router-dom";
 
 const AdminHeader = ({ title }) => {
@@ -48,7 +38,7 @@ const AdminHeader = ({ title }) => {
   };
 
   return (
-    <header className="w-full bg-[#181c29] border-b border-gray-800 shadow-sm  ">
+    <header className="w-full bg-[#181c29] border-b border-gray-800 shadow-sm   ">
       <div className="px-6 py-4 pr-8 flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <button

@@ -19,17 +19,18 @@ function Layout() {
     // Base admin routes
     const adminTitles = {
       "/admin/dashboard": "Dashboard",
-      "/admin/category": "Category",
-      "/admin/material": "Material",
-      "/admin/brand": "Brand",
-      "/admin/size": "Size",
+      "/admin/inventory/category": "Category",
+      "/admin/inventory/material": "Material",
+      "/admin/inventory/brand": "Brand",
+      "/admin/inventory/size": "Size",
       "/admin/list-Testimonial": "Testimonial List",
+      "/admin/addTestimonial": "Add Testimonial",
       "/admin/editTestimonial": "Edit Testimonial",
       "/admin/product": "Products",
     };
 
     // Check if it's a subcategory path
-    if (pathname.startsWith("/admin/subcategory")) {
+    if (pathname.startsWith("/admin/inventory/subcategory")) {
       return "Subcategory";
     }
 
@@ -38,9 +39,13 @@ function Layout() {
       return adminTitles[pathname];
     }
 
+
     // If no match found, return default
     return "Admin Panel";
   };
+
+
+  const isInventoryRoute = location.pathname.includes("/admin/inventory");
 
   useEffect(() => {
     setIsLoading(true);
@@ -66,8 +71,10 @@ function Layout() {
         <div className="flex h-full">
           <AdminSidebar className="h-full" />
           <div className="flex-1 flex flex-col h-full">
-            <AdminHeader title={adminTitle} />
-            <div className="flex-1 overflow-y-auto scrollbar-none p-3 bg-[#181c29]">
+            {/* Admin Header with fixed height */}
+            <AdminHeader className="h-16" title={adminTitle} />
+            {/* Remaining content takes up the rest of the height */}
+            <div className={`${!isInventoryRoute && "p-3"} flex-1 overflow-y-auto scrollbar-none bg-[#181c29]`}>
               <Router />
             </div>
           </div>
@@ -75,6 +82,7 @@ function Layout() {
       </div>
     );
   }
+  
 
   // Regular layout
   return (

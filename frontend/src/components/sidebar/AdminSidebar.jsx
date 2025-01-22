@@ -1,21 +1,19 @@
 import {
   Users,
   HelpCircle,
-  ChevronRight,
   Power,
   LayoutDashboard,
   StarHalf,
-  // Package,
   ShieldCheck,
   Menu,
-  Warehouse,
-  // Layers,
-  // Component,
-  // Grid3X3,
+  ShoppingCart,
+  ChevronDown,
 } from "lucide-react";
 import { useSidebar } from "../../context/SidebarContext";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+
 
 const Sidebar = () => {
   const { isOpen, isMobileOpen, toggleMobileSidebar, makeSidebarOpen } =
@@ -32,10 +30,31 @@ const Sidebar = () => {
     }));
   };
 
+  // Helper function to check if current route is under Inventory
+  const isInventoryRoute = (item) => {
+    if (!item.subItems) return false;
+    return item.subItems.some((subItem) =>
+      location.pathname.includes(subItem.route)
+    );
+  };
+
+  // Helper function to determine if item should be highlighted
+  const isActiveRoute = (item) => {
+    if (item.text === "Inventory") {
+      return isInventoryRoute(item);
+    }
+    return location.pathname.includes(item.route);
+  };
+
   const menuSections = [
     {
       title: "Menu",
       items: [
+        {
+          icon: <FaHome size={19} />,
+          text: "Home",
+          route: "/home",
+        },
         {
           icon: <LayoutDashboard size={19} />,
           text: "Dashboard",
@@ -48,31 +67,29 @@ const Sidebar = () => {
       title: "Inventory",
       items: [
         {
-          icon: <Warehouse size={19} />,
+          icon: <ShoppingCart size={19} />,
           text: "Inventory",
           route: "#",
           subItems: [
             {
               text: "Brands",
-              route: "admin/brand",
+              route: "admin/inventory/brand",
             },
             {
               text: "Categories",
-              route: "admin/category",
+              route: "admin/inventory/category",
             },
-          
             {
               text: "Materials",
-              route: "admin/material",
+              route: "admin/inventory/material",
             },
-
             {
               text: "Sizes",
-              route: "admin/size",
+              route: "admin/inventory/size",
             },
             {
               text: "Products",
-              route: "admin/product",
+              route: "admin/inventory/product",
             },
           ],
         },
@@ -91,12 +108,12 @@ const Sidebar = () => {
     {
       title: "Security",
       items: [
-        { icon: <ShieldCheck size={19} />, text: "Privacy", route: "/privacy" },
+        { icon: <ShieldCheck size={19} />, text: "Privacy", route: "admin/privacy" },
       ],
     },
     {
       title: "Support",
-      items: [{ icon: <HelpCircle size={19} />, text: "Help", route: "/help" }],
+      items: [{ icon: <HelpCircle size={19} />, text: "Help", route: "admin/help" }],
     },
     {
       title: "Settings",
@@ -104,7 +121,7 @@ const Sidebar = () => {
         {
           icon: <Power size={19} color="red" />,
           text: "Logout",
-          route: "/logout",
+          route: "admin/logout",
         },
       ],
     },
@@ -189,30 +206,26 @@ const Sidebar = () => {
                   }
                   className={`flex items-center ${
                     isOpen && "pl-8"
-                  } p-4 py-2 my-2 pr-6 hover:bg-gray-700 text-gray-400 hover:text-blue-500 transition-colors cursor-pointer ${
+                  } p-4 py-2 my-2 pr-6 hover:bg-gray-800 text-gray-400  transition-colors cursor-pointer ${
                     !isOpen ? "justify-center" : "space-x-4 justify-between"
-                  } ${
-                    location.pathname === item.route
-                      ? "bg-gray-700 text-blue-500"
-                      : ""
-                  }`}
+                  } ${isActiveRoute(item) ? "bg-gray-800 text-blue-500 border-l-2 " : ""}`}
                 >
-                  <div className="flex items-center gap-5">
-                    <span className="text-sm hover:text-blue-500">
-                      {item.icon}
-                    </span>
-                    {isOpen && (
-                      <Link to={item.route}>
+                  <Link to={item.route}>
+                    <div className="flex items-center gap-5">
+                      <span className="text-sm hover:text-blue-500">
+                        {item.icon}
+                      </span>
+                      {isOpen && (
                         <span className="text-sm font-bold">{item.text}</span>
-                      </Link>
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  </Link>
                   {isOpen && item.subItems && (
-                    <ChevronRight
+                    <ChevronDown
                       size={17}
                       className={`transform transition-transform duration-200 ${
                         expandedItems[`${section.title}-${item.text}`]
-                          ? "rotate-90"
+                          ? "rotate-180"
                           : ""
                       }`}
                     />
@@ -226,7 +239,13 @@ const Sidebar = () => {
                         <div key={subIndex} className="py-1">
                           <Link
                             to={subItem.route}
-                            className="block text-gray-400 hover:text-blue-500 py-2 pl-6 text-sm"
+                            className={`
+                               ${
+                                 location?.pathname.includes(subItem?.route)
+                                   ? " text-blue-500"
+                                   : "text-gray-400"
+                               }
+                              block  hover:text-blue-500 py-2 pl-6 text-sm`}
                           >
                             {subItem.text}
                           </Link>
